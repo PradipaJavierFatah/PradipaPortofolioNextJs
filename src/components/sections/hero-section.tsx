@@ -162,7 +162,7 @@ export function HeroSection() {
 
                                 <div className="w-full h-full bg-zinc-800 flex items-center justify-center relative">
                                     <Image
-                                        src="/images/profileDipa.png"
+                                        src="/images/profileDipa2.jpg"
                                         alt="Pradipa Javier Fatah"
                                         fill
                                         className="object-cover"
