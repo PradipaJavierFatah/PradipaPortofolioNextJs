@@ -157,15 +157,13 @@ export function HeroSection() {
                                 Changed from rounded-full to rounded-[2.5rem] (Square with soft corners)
                              */}
                             <div className="relative w-72 h-72 sm:w-96 sm:h-96 rounded-[2.5rem] overflow-hidden border-2 border-primary/20 shadow-2xl shadow-primary/10 rotate-3 hover:rotate-0 transition-transform duration-500">
-                                {/* Accent Gradient Border Effect */}
-                                <div className="absolute inset-0 border-[6px] border-transparent rounded-[2.5rem] bg-gradient-to-tr from-transparent via-primary/30 to-transparent z-20 pointer-events-none" />
 
                                 <div className="w-full h-full bg-zinc-800 flex items-center justify-center relative">
                                     <Image
                                         src="/images/profileDipa2.jpg"
                                         alt="Pradipa Javier Fatah"
                                         fill
-                                        className="object-cover"
+                                        className="object-cover scale-[1.35] hover:scale-[1.4] transition-transform duration-500"
                                         priority
                                     />
                                 </div>

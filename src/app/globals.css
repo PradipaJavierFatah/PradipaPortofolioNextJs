@@ -94,19 +94,19 @@
   }
 }
 
-/* Text Selection Highlight - Global Scope for better Support */
+/* Text Selection Highlight - Global Scope with !important for iOS override */
 ::selection {
-  background-color: #f97316; /* Orange-500 */
-  color: #ffffff;
-  -webkit-text-fill-color: #ffffff;
+  background-color: #f97316 !important; /* Orange-500 */
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 ::-moz-selection {
-  background-color: #f97316;
-  color: #ffffff;
+  background-color: #f97316 !important;
+  color: #ffffff !important;
 }
 
 ::-webkit-selection {
-  background-color: #f97316;
-  color: #ffffff;
+  background-color: #f97316 !important;
+  color: #ffffff !important;
 }
