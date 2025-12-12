@@ -29,6 +29,15 @@ export async function sendEmail(prevState: any, formData: FormData) {
 
     const { name, email, subject, message } = validatedFields.data;
 
+    // Validate Server Configuration
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+        console.error("Missing EMAIL_USER or EMAIL_PASS environment variables");
+        return {
+            success: false,
+            message: "Configuration Error: Server is missing email credentials."
+        };
+    }
+
     // 1. Configure the transporter
     // Using explicit SMTP settings for better reliability on Vercel
     const transporter = nodemailer.createTransport({
