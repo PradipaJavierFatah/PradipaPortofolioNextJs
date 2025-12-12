@@ -30,11 +30,15 @@ export async function sendEmail(prevState: any, formData: FormData) {
     const { name, email, subject, message } = validatedFields.data;
 
     // Validate Server Configuration
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-        console.error("Missing EMAIL_USER or EMAIL_PASS environment variables");
+    const missingVars = [];
+    if (!process.env.EMAIL_USER) missingVars.push("EMAIL_USER");
+    if (!process.env.EMAIL_PASS) missingVars.push("EMAIL_PASS");
+
+    if (missingVars.length > 0) {
+        console.error("Missing environment variables:", missingVars.join(", "));
         return {
             success: false,
-            message: "Configuration Error: Server is missing email credentials."
+            message: `Server Config Error: Missing ${missingVars.join(" & ")}. Check Vercel Settings.`
         };
     }
 
