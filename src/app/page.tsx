@@ -12,7 +12,7 @@ import { BioInterests } from "@/components/sections/bio-interests";
 
 export default function Home() {
     return (
-        <main className="flex min-h-screen flex-col bg-background">
+        <main className="flex min-h-screen flex-col bg-background space-y-16 sm:space-y-32">
             <HeroSection />
             <BioInterests />
             <ExperienceSection />
