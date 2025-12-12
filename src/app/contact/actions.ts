@@ -30,9 +30,11 @@ export async function sendEmail(prevState: any, formData: FormData) {
     const { name, email, subject, message } = validatedFields.data;
 
     // 1. Configure the transporter
-    // NOTE: User must provide these in .env.local
+    // Using explicit SMTP settings for better reliability on Vercel
     const transporter = nodemailer.createTransport({
-        service: "gmail",
+        host: "smtp.gmail.com",
+        port: 465, // Use 465 for secure: true
+        secure: true,
         auth: {
             user: process.env.EMAIL_USER,
             pass: process.env.EMAIL_PASS,
@@ -44,7 +46,7 @@ export async function sendEmail(prevState: any, formData: FormData) {
         await transporter.sendMail({
             from: `"${name}" <${process.env.EMAIL_USER}>`,
             replyTo: email,
-            to: "pradipajavierfatah.id@gmail.com",
+            to: process.env.EMAIL_USER, // Send to self
             subject: `Portfolio Contact: ${subject}`,
             text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
             html: `
@@ -63,6 +65,10 @@ export async function sendEmail(prevState: any, formData: FormData) {
         return { success: true, message: "Email sent successfully!" };
     } catch (error) {
         console.error("Email send error:", error);
-        return { success: false, message: "Failed to send email. Server configuration error." };
+        // Return exact error message for debugging purposes
+        return {
+            success: false,
+            message: `Send Failed: ${(error as Error).message}`
+        };
     }
 }
