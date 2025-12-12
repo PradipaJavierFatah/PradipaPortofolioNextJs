@@ -52,7 +52,8 @@ export function HeroSection() {
              */}
             <div className="absolute inset-0 -z-10 h-full w-full bg-background">
                 {/* animated gradient blob background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 bg-[size:400%_400%] animate-gradient blur-[100px]" />
+                {/* animated gradient blob background - Optimized for Mobile */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 bg-[size:400%_400%] sm:animate-gradient blur-[50px] sm:blur-[100px] opacity-60 sm:opacity-100 will-change-transform" />
 
                 {/* Subtle Grid overlay */}
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20" />

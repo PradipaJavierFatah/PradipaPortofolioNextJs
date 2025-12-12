@@ -92,10 +92,21 @@
         cursor: none;
     }
   }
+}
 
-  /* Text Selection Highlight */
-  ::selection {
-    background-color: #f97316; /* Orange-500 */
-    color: #ffffff;
-  }
+/* Text Selection Highlight - Global Scope for better Support */
+::selection {
+  background-color: #f97316; /* Orange-500 */
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+}
+
+::-moz-selection {
+  background-color: #f97316;
+  color: #ffffff;
+}
+
+::-webkit-selection {
+  background-color: #f97316;
+  color: #ffffff;
 }
