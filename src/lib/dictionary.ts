@@ -85,7 +85,7 @@ export const DICTIONARY = {
             instagram: "https://www.instagram.com/pprraaddiippaa/",
             linkedin: "https://www.linkedin.com/in/pradipajavierfatah/",
             github: "https://github.com/PradipaJavierFatah",
-            cv: "https://drive.google.com/file/d/1t-r2kmtFKNNoYeTzi6sVxHe7-nLWJcYr/view?usp=sharing",
+            cv: "https://drive.google.com/file/d/16RrLpuy9ROCiSSmoI0n12arhHZXBcoQ-/view?usp=sharing",
         },
         projects: {
             title: "Projects",
