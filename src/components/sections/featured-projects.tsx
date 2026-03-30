@@ -206,14 +206,24 @@ function ProjectCard({ project, index, t, disableAnimation = false, onConfidenti
                         </div>
                     </Button>
                 ) : (
-                    <Button size="sm" variant="outline" className="flex-1 group h-8 text-xs" asChild>
-                        <Link href={project.link} target="_blank" className="flex flex-row items-center justify-center gap-2">
-                            <Globe className="h-3 w-3 text-blue-500 group-hover:text-blue-600" />
-                            <span>{t.projects.viewProject}</span>
-                        </Link>
-                    </Button>
-                )}
+                    <>
+                        <Button size="sm" variant="outline" className="flex-1 group h-8 text-xs" asChild>
+                            <Link href={project.link} target="_blank" className="flex flex-row items-center justify-center gap-2">
+                                <Globe className="h-3 w-3 text-blue-500 group-hover:text-blue-600" />
+                                <span>{t.projects.viewProject}</span>
+                            </Link>
+                        </Button>
 
+                        {project.github && project.github !== "#" && (
+                            <Button size="sm" variant="outline" className="flex-1 group h-8 text-xs" asChild>
+                                <Link href={project.github} target="_blank" className="flex flex-row items-center justify-center gap-2">
+                                    <Github className="h-3 w-3 text-purple-500 group-hover:text-purple-600" />
+                                    <span>{t.projects.viewCode}</span>
+                                </Link>
+                            </Button>
+                        )}
+                    </>
+                )}
             </CardFooter>
         </Card>
     );

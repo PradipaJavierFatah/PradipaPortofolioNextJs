@@ -85,7 +85,7 @@ export const DICTIONARY = {
             instagram: "https://www.instagram.com/pprraaddiippaa/",
             linkedin: "https://www.linkedin.com/in/pradipajavierfatah/",
             github: "https://github.com/PradipaJavierFatah",
-            cv: "https://drive.google.com/file/d/16RrLpuy9ROCiSSmoI0n12arhHZXBcoQ-/view?usp=sharing",
+            cv: "https://docs.google.com/document/d/1cVlXhGIh8SQMEH_Gtc0HiWqO84P9mOwZyrCkzGgEuNI/edit?usp=sharing",
         },
         projects: {
             title: "Projects",
@@ -112,7 +112,7 @@ export const DICTIONARY = {
                     description: "Extracted patterns and insights from large datasets using advanced data mining techniques.",
                     techStack: ["Python", "Pandas", "Scikit-learn"],
                     link: "https://steadfast-beard-007.notion.site/Data-Mining-213e97aa4e8a8034b1c3ed93a81f5e7f",
-                    github: "#",
+                    github: "https://github.com/PradipaJavierFatah/Diabetes_Predictive_Analytics",
                     image: "/images/Portofolio_DataMining.png",
                 },
                 {
@@ -129,16 +129,16 @@ export const DICTIONARY = {
                     title: "Sistem Layanan Penyaluran Sampah (SILAP)",
                     description: "A comprehensive reporting system dashboard for managing data analytics and generating insights.",
                     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Recharts"],
-                    link: "#",
-                    github: "#",
+                    link: "https://canva.link/yxa3qc8w6gdwg08",
+                    github: "https://github.com/chgnw/silap_2",
                     image: "/images/Portofolio_SILAP.png",
                 },
                 {
                     title: "Kawan Project",
                     description: "A web application designed to connect people and foster community engagement.",
                     techStack: ["React", "Node.js", "MongoDB"],
-                    link: "#",
-                    github: "#",
+                    link: "https://github.com/PradipaJavierFatah/kawan_project_v2",
+                    github: "https://github.com/PradipaJavierFatah/kawan_project_v2",
                     image: "/images/Portofolio_KawanProject.png",
                 }
             ],
@@ -291,7 +291,7 @@ export const DICTIONARY = {
             instagram: "https://www.instagram.com/pprraaddiippaa/",
             linkedin: "https://www.linkedin.com/in/pradipajavierfatah/",
             github: "https://github.com/PradipaJavierFatah",
-            cv: "https://drive.google.com/file/d/1t-r2kmtFKNNoYeTzi6sVxHe7-nLWJcYr/view?usp=sharing",
+            cv: "https://docs.google.com/document/d/1cVlXhGIh8SQMEH_Gtc0HiWqO84P9mOwZyrCkzGgEuNI/edit?usp=sharing",
         },
         projects: {
             title: "Proyek Unggulan",
@@ -317,8 +317,8 @@ export const DICTIONARY = {
                     title: "Proyek Data Mining",
                     description: "Mengekstrak pola dan wawasan dari kumpulan data besar menggunakan teknik data mining tingkat lanjut.",
                     techStack: ["Python", "Pandas", "Scikit-learn"],
-                    link: "#",
-                    github: "#",
+                    link: "https://steadfast-beard-007.notion.site/Data-Mining-213e97aa4e8a8034b1c3ed93a81f5e7f",
+                    github: "https://github.com/PradipaJavierFatah/Diabetes_Predictive_Analytics",
                     image: "/images/Portofolio_DataMining.png",
                 },
                 {
@@ -335,8 +335,8 @@ export const DICTIONARY = {
                     title: "Sistem Layanan Penyaluran Sampah (SILAP)",
                     description: "Dashboard sistem laporan komprehensif untuk mengelola analitik data dan menghasilkan wawasan.",
                     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Recharts"],
-                    link: "#",
-                    github: "#",
+                    link: "https://canva.link/yxa3qc8w6gdwg08",
+                    github: "https://github.com/chgnw/silap_2",
                     image: "/images/Portofolio_SILAP.png",
                 },
                 {
@@ -344,7 +344,7 @@ export const DICTIONARY = {
                     description: "Aplikasi web yang dirancang untuk menghubungkan orang-orang dan meningkatkan keterlibatan komunitas.",
                     techStack: ["React", "Node.js", "MongoDB"],
                     link: "https://github.com/PradipaJavierFatah/kawan_project_v2",
-                    github: "#",
+                    github: "https://github.com/PradipaJavierFatah/kawan_project_v2",
                     image: "/images/Portofolio_KawanProject.png",
                 }
             ],

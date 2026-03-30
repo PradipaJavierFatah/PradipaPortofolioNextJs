@@ -156,9 +156,8 @@ export function HeroSection() {
                                 PHOTO CONTAINER
                                 Changed from rounded-full to rounded-[2.5rem] (Square with soft corners)
                              */}
-                            <div className="relative w-72 h-72 sm:w-96 sm:h-96 rounded-[2.5rem] overflow-hidden border-2 border-primary/20 shadow-2xl shadow-primary/10 rotate-3 hover:rotate-0 transition-transform duration-500">
-
-                                <div className="w-full h-full bg-zinc-800 flex items-center justify-center relative">
+                            <div className="relative w-72 sm:w-96 bg-white p-3 sm:p-4 pb-16 sm:pb-24 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.2)] rotate-3 hover:rotate-0 transition-all duration-500 border border-zinc-100">
+                                <div className="relative aspect-square w-full overflow-hidden bg-zinc-900 ring-1 ring-black/5">
                                     <Image
                                         src="/images/profileDipa2.jpg"
                                         alt="Pradipa Javier Fatah"
@@ -166,6 +165,10 @@ export function HeroSection() {
                                         className="object-cover scale-[1.35] hover:scale-[1.4] transition-transform duration-500"
                                         priority
                                     />
+                                </div>
+                                <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-transparent via-transparent to-white/10" />
+                                <div className="absolute bottom-4 left-0 right-0 text-center select-none">
+                                    <p className="text-zinc-400 font-serif italic text-sm sm:text-base opacity-40">Pradipa Javier Fatah</p>
                                 </div>
                             </div>
 

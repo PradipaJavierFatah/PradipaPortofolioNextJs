@@ -28,8 +28,8 @@ export default function RootLayout({
             <body className={cn(inter.variable, "min-h-screen bg-background font-sans antialiased selection:bg-orange-500 selection:text-white")}>
                 <ThemeProvider
                     attribute="class"
-                    defaultTheme="system"
-                    enableSystem
+                    defaultTheme="light"
+                    enableSystem={false}
                     disableTransitionOnChange
                 >
                     <LanguageProvider>
