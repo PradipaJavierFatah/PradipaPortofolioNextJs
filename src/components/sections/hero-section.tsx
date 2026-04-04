@@ -64,16 +64,7 @@ export function HeroSection() {
 
                     {/* Left Column: Text Content */}
                     <div className="flex flex-col gap-8 text-center lg:text-left items-center lg:items-start">
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.5 }}
-                        >
-                            <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary shadow-sm backdrop-blur-sm">
-                                <BarChart3 className="h-4 w-4" />
-                                <span>{t.hero.badge}</span>
-                            </span>
-                        </motion.div>
+
 
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}

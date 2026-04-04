@@ -50,7 +50,7 @@ export function FeaturedProjects({ variant = "grid" }: FeaturedProjectsProps) {
                             transition={{
                                 repeat: Infinity,
                                 ease: "linear",
-                                duration: 30, // Adjust speed here
+                                duration: 50, // Adjust speed here
                             }}
                             style={{ width: "max-content" }}
                         >

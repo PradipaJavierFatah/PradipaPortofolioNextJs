@@ -6,7 +6,7 @@ import {
     SiPython, SiCplusplus, SiTypescript, SiJavascript, SiMysql,
     SiReact, SiNextdotjs, SiTailwindcss, SiFigma,
     SiNodedotjs, SiPostgresql, SiPhp, SiHtml5, SiCss3, SiJira, SiCanva,
-    SiTableau, SiGoogleanalytics
+    SiTableau, SiGoogleanalytics, SiLaravel
 } from "react-icons/si";
 import { FaJava, FaRProject } from "react-icons/fa";
 import { RiFileExcel2Fill } from "react-icons/ri";
@@ -38,6 +38,8 @@ export function SkillsSection() {
         "CSS": SiCss3,
         "JavaScript": SiJavascript,
         "Tailwind CSS": SiTailwindcss,
+        "Next.js": SiNextdotjs,
+        "Laravel": SiLaravel,
         "Jira": SiJira,
         "Figma": SiFigma,
         "PowerPoint": BiSolidSlideshow, // Need to import
