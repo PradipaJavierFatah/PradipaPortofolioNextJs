@@ -174,7 +174,7 @@ export function HeroSection() {
                                         src="/images/profileDipa.jpg"
                                         alt="Pradipa Javier Fatah"
                                         fill
-                                        className="object-cover scale-[1.35] hover:scale-[1.4] transition-transform duration-500"
+                                        className="object-cover hover:scale-105 transition-transform duration-500"
                                         priority
                                     />
                                 </div>
