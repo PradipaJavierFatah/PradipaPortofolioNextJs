@@ -81,10 +81,10 @@ export function FeaturedProjects({ variant = "grid", showViewAll = false }: Feat
                         <div className="space-y-8">
                             <div className="flex items-center gap-4">
                                 <div className="h-px bg-border flex-1" />
-                                <h3 className="text-2xl font-bold text-primary px-4 border-x border-primary/20 bg-primary/5 py-1 rounded-full">
-                                    {t.projects.categories.data}
-                                </h3>
-                                <div className="h-px bg-border flex-1" />
+                                <h3 className="text-xl font-bold bg-[#0c262d] text-primary px-6 py-2 rounded-full shadow-lg border border-primary/20">
+                                     {t.projects.categories.data}
+                                 </h3>
+                                 <div className="h-px bg-border flex-1" />
                             </div>
                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {t.projects.data.map((project, index) => (
@@ -105,10 +105,10 @@ export function FeaturedProjects({ variant = "grid", showViewAll = false }: Feat
                         <div className="space-y-8">
                             <div className="flex items-center gap-4">
                                 <div className="h-px bg-border flex-1" />
-                                <h3 className="text-2xl font-bold text-primary px-4 border-x border-primary/20 bg-primary/5 py-1 rounded-full">
-                                    {t.projects.categories.web}
-                                </h3>
-                                <div className="h-px bg-border flex-1" />
+                                <h3 className="text-xl font-bold bg-[#0c262d] text-primary px-6 py-2 rounded-full shadow-lg border border-primary/20">
+                                     {t.projects.categories.web}
+                                 </h3>
+                                 <div className="h-px bg-border flex-1" />
                             </div>
                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {t.projects.web.map((project, index) => (
@@ -129,10 +129,10 @@ export function FeaturedProjects({ variant = "grid", showViewAll = false }: Feat
                         <div className="space-y-8">
                             <div className="flex items-center gap-4">
                                 <div className="h-px bg-border flex-1" />
-                                <h3 className="text-2xl font-bold text-primary px-4 border-x border-primary/20 bg-primary/5 py-1 rounded-full">
-                                    {t.projects.categories.design}
-                                </h3>
-                                <div className="h-px bg-border flex-1" />
+                                <h3 className="text-xl font-bold bg-[#0c262d] text-primary px-6 py-2 rounded-full shadow-lg border border-primary/20">
+                                     {t.projects.categories.design}
+                                 </h3>
+                                 <div className="h-px bg-border flex-1" />
                             </div>
                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {t.projects.design.map((project, index) => (

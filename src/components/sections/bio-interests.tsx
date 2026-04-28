@@ -66,12 +66,12 @@ export function BioInterests() {
                         {/* Center Intersection: Innovation */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[40%] text-center z-20">
                             <motion.div
-                                initial={{ opacity: 0, scale: 0 }}
+                                initial={{ opacity: 0, scale: 0.8 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 transition={{ delay: 0.8, type: "spring" }}
-                                className="bg-white dark:bg-zinc-900 border border-primary/20 shadow-xl px-4 py-2 rounded-full"
+                                className="bg-[#0c262d] text-primary shadow-xl px-6 py-2 rounded-full border border-primary/20"
                             >
-                                <span className="font-extrabold text-primary">
+                                <span className="font-extrabold uppercase tracking-wider text-sm">
                                     {t.interests.diagram.innovation}
                                 </span>
                             </motion.div>
