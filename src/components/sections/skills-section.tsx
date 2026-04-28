@@ -30,7 +30,8 @@ export function SkillsSection() {
         "Excel": RiFileExcel2Fill,
         "Looker Studio": SiGoogleanalytics, // Approximation
         "Tableau": SiTableau,
-        "SQL": SiPostgresql, // or SiMysql
+        "SQL": SiPostgresql,
+        "MySQL": SiMysql,
         "C": SiCplusplus, // Approximation for C
         "Java": FaJava,
         "PHP": SiPhp,

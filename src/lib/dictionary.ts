@@ -151,7 +151,7 @@ export const DICTIONARY = {
                 {
                     title: "Kawan Project",
                     description: "A web application designed to connect people and foster community engagement.",
-                    techStack: ["React", "Node.js", "MongoDB"],
+                    techStack: ["Laravel", "PHP", "MySQL"],
                     link: "https://github.com/PradipaJavierFatah/kawan_project_v2",
                     github: "https://github.com/PradipaJavierFatah/kawan_project_v2",
                     image: "/images/Portofolio_KawanProject.png",
@@ -372,7 +372,7 @@ export const DICTIONARY = {
                 {
                     title: "Kawan Project",
                     description: "Aplikasi web yang dirancang untuk menghubungkan orang-orang dan meningkatkan keterlibatan komunitas.",
-                    techStack: ["React", "Node.js", "MongoDB"],
+                    techStack: ["Laravel", "PHP", "MySQL"],
                     link: "https://github.com/PradipaJavierFatah/kawan_project_v2",
                     github: "https://github.com/PradipaJavierFatah/kawan_project_v2",
                     image: "/images/Portofolio_KawanProject.png",
