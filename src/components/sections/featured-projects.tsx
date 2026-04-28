@@ -203,7 +203,7 @@ function ProjectCard({ project, index, t, disableAnimation = false, onConfidenti
             <div className="flex-1 p-6 pt-0 mt-auto">
                 <div className="flex flex-wrap gap-2">
                     {project.techStack.map((tag: string) => (
-                        <Badge key={tag} variant="secondary" className="bg-primary/5 text-primary hover:bg-primary/10 text-[10px] px-2 py-0.5 border border-primary/10">
+                        <Badge key={tag} variant="secondary" className="bg-[#0c262d] text-primary hover:bg-[#0c262d]/80 text-[10px] px-2 py-0.5 border border-primary/20">
                             {tag}
                         </Badge>
                     ))}

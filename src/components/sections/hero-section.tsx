@@ -55,7 +55,7 @@ export function HeroSection() {
                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-lime-500/20 to-teal-500/20 bg-[size:400%_400%] sm:animate-gradient blur-[50px] sm:blur-[100px] opacity-60 sm:opacity-100 will-change-transform" />
 
                 {/* LARGE SQUIGGLES (NeuroPark Pattern) */}
-                <div 
+                <div
                     className="absolute inset-0 opacity-10"
                     style={{
                         backgroundImage: `url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M-50 200 C 50 50, 150 50, 200 200 S 350 350, 450 200' stroke='%23afee07' stroke-width='60' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")`,
@@ -169,13 +169,15 @@ export function HeroSection() {
                                 Changed from rounded-full to rounded-[2.5rem] (Square with soft corners)
                              */}
                             <div className="relative w-72 sm:w-96 bg-white p-3 sm:p-4 pb-16 sm:pb-24 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.2)] rotate-3 hover:rotate-0 transition-all duration-500 border border-zinc-100">
-                                <div className="relative aspect-square w-full overflow-hidden bg-zinc-900 ring-1 ring-black/5">
+                                <div className="relative aspect-square w-full overflow-hidden bg-zinc-900/50 ring-1 ring-black/5">
                                     <Image
-                                        src="/images/profileDipa.jpg"
+                                        src="/images/profileDipa1.jpg"
                                         alt="Pradipa Javier Fatah"
-                                        fill
-                                        className="object-cover hover:scale-105 transition-transform duration-500"
+                                        width={500}
+                                        height={500}
+                                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                                         priority
+                                        unoptimized
                                     />
                                 </div>
                                 <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-transparent via-transparent to-white/10" />

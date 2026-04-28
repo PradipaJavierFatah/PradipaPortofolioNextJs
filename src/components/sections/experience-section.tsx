@@ -21,7 +21,7 @@ export function ExperienceSection() {
                 transition={{ duration: 0.5 }}
                 className="flex flex-col items-center gap-4 text-center mb-16 z-10 relative"
             >
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                     {t.experience.title}
                 </h2>
                 <p className="text-muted-foreground max-w-[42rem] leading-normal sm:text-xl sm:leading-8">
