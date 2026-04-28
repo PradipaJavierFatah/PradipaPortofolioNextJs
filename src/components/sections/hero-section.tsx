@@ -160,19 +160,25 @@ export function HeroSection() {
                                 PHOTO CONTAINER
                                 Changed from rounded-full to rounded-[2.5rem] (Square with soft corners)
                              */}
-                            <div className="relative w-72 sm:w-96 bg-white p-3 sm:p-4 pb-16 sm:pb-24 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.2)] rotate-3 hover:rotate-0 transition-all duration-500 border border-zinc-100">
+                            <div 
+                                className="relative w-72 sm:w-96 bg-primary p-3 sm:p-4 pb-16 sm:pb-24 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.3)] rotate-3 hover:rotate-0 transition-all duration-500 border border-primary/20 overflow-hidden"
+                                style={{
+                                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M-10 50 Q 15 10 40 50 T 90 50 T 140 50' stroke='%230c262d' stroke-width='8' fill='none' opacity='0.1'/%3E%3C/svg%3E")`,
+                                    backgroundSize: '100px 100px'
+                                }}
+                            >
                                 <div className="relative aspect-square w-full overflow-hidden bg-zinc-900 ring-1 ring-black/5">
                                     <Image
-                                        src="/images/profileDipa2.jpg"
+                                        src="/images/profileDipa.jpg"
                                         alt="Pradipa Javier Fatah"
                                         fill
                                         className="object-cover scale-[1.35] hover:scale-[1.4] transition-transform duration-500"
                                         priority
                                     />
                                 </div>
-                                <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-transparent via-transparent to-white/10" />
+                                <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-transparent via-transparent to-white/5" />
                                 <div className="absolute bottom-4 left-0 right-0 text-center select-none">
-                                    <p className="text-zinc-400 font-serif italic text-sm sm:text-base opacity-40">Pradipa Javier Fatah</p>
+                                    <p className="text-primary-foreground font-serif italic text-sm sm:text-base opacity-70">Pradipa Javier Fatah</p>
                                 </div>
                             </div>
 
