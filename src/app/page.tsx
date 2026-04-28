@@ -17,7 +17,7 @@ export default function Home() {
             <BioInterests />
             <ExperienceSection />
             <SkillsSection />
-            <FeaturedProjects variant="marquee" />
+            <FeaturedProjects variant="marquee" showViewAll={true} />
             <SocialConnect />
             <ContactSection />
         </main>

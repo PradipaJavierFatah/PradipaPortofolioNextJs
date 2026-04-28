@@ -53,7 +53,7 @@ export function HeroSection() {
             <div className="absolute inset-0 -z-10 h-full w-full bg-background">
                 {/* animated gradient blob background */}
                 {/* animated gradient blob background - Optimized for Mobile */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 bg-[size:400%_400%] sm:animate-gradient blur-[50px] sm:blur-[100px] opacity-60 sm:opacity-100 will-change-transform" />
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-lime-500/20 to-teal-500/20 bg-[size:400%_400%] sm:animate-gradient blur-[50px] sm:blur-[100px] opacity-60 sm:opacity-100 will-change-transform" />
 
                 {/* Subtle Grid overlay */}
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20" />
@@ -74,12 +74,12 @@ export function HeroSection() {
                         >
                             {t.hero.greeting} {SITE_CONFIG.name}. <br />
                             <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-2 min-h-[1.2em] sm:min-h-[1.3em]">
-                                {t.hero.rolePrefix} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 font-mono">
+                                {t.hero.rolePrefix} <span className="text-primary font-mono">
                                     {typingText}
                                     <motion.span
                                         animate={{ opacity: [0, 1, 0] }}
                                         transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
-                                        className="inline-block ml-1 w-1 h-6 sm:h-8 md:h-10 bg-purple-500 align-middle"
+                                        className="inline-block ml-1 w-1 h-6 sm:h-8 md:h-10 bg-lime-500 align-middle"
                                     />
                                 </span>
                             </span>
@@ -100,16 +100,29 @@ export function HeroSection() {
                             transition={{ duration: 0.5, delay: 0.3 }}
                             className="flex flex-col sm:flex-row gap-4 w-full justify-center lg:justify-start mt-2"
                         >
-                            <Button size="lg" asChild className="h-12 px-8 text-base bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 rounded-full group">
+                            {/* Download CV - Now Primary Action with Pulse */}
+                            <motion.div
+                                animate={{
+                                    scale: [1, 1.05, 1],
+                                }}
+                                transition={{
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                }}
+                            >
+                                <Button size="lg" asChild className="h-12 px-8 text-base bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 rounded-full group">
+                                    <Link href={t.links.cv} target="_blank" className="flex items-center gap-2">
+                                        <Download className="h-4 w-4 animate-bounce" />
+                                        {t.hero.downloadCV}
+                                    </Link>
+                                </Button>
+                            </motion.div>
+
+                            {/* View Projects - Now Secondary Outline Action */}
+                            <Button variant="outline" size="lg" className="h-12 px-8 text-base rounded-full border-primary/20 bg-background/50 hover:bg-primary/5 text-foreground backdrop-blur-sm group" asChild>
                                 <Link href="/projects" className="flex items-center gap-2">
-                                    {/* Adjusted gap to ensure consistency */}
                                     {t.hero.viewProjects} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                                </Link>
-                            </Button>
-                            <Button variant="outline" size="lg" className="h-12 px-8 text-base rounded-full border-primary/20 bg-background/50 hover:bg-primary/5 text-foreground backdrop-blur-sm" asChild>
-                                <Link href={t.links.cv} target="_blank" className="flex items-center gap-2">
-                                    <Download className="h-4 w-4" />
-                                    {t.hero.downloadCV}
                                 </Link>
                             </Button>
                         </motion.div>
@@ -127,13 +140,13 @@ export function HeroSection() {
                         >
                             {/* Floating Icons positioned around the circle */}
                             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-8 bg-background/80 p-3 rounded-2xl border border-primary/20 shadow-lg backdrop-blur-md">
-                                <Code2 className="h-6 w-6 text-blue-500" />
+                                <Code2 className="h-6 w-6 text-emerald-500" />
                             </div>
                             <div className="absolute bottom-0 right-1/4 translate-y-8 bg-background/80 p-3 rounded-2xl border border-primary/20 shadow-lg backdrop-blur-md">
-                                <Database className="h-6 w-6 text-purple-500" />
+                                <Database className="h-6 w-6 text-lime-500" />
                             </div>
                             <div className="absolute bottom-0 left-1/4 translate-y-8 bg-background/80 p-3 rounded-2xl border border-primary/20 shadow-lg backdrop-blur-md">
-                                <BarChart3 className="h-6 w-6 text-green-500" />
+                                <BarChart3 className="h-6 w-6 text-teal-500" />
                             </div>
                         </motion.div>
 

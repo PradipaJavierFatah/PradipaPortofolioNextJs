@@ -21,7 +21,7 @@ export function ExperienceSection() {
                 transition={{ duration: 0.5 }}
                 className="flex flex-col items-center gap-4 text-center mb-16 z-10 relative"
             >
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">
                     {t.experience.title}
                 </h2>
                 <p className="text-muted-foreground max-w-[42rem] leading-normal sm:text-xl sm:leading-8">
@@ -48,7 +48,7 @@ export function ExperienceSection() {
                                 }`}
                         >
                             {/* Timeline Node */}
-                            <div className="absolute left-8 sm:left-1/2 -ml-[18px] sm:-ml-4 top-0 sm:top-8 w-8 h-8 rounded-full bg-background border-4 border-primary shadow-[0_0_15px_rgba(168,85,247,0.5)] z-20 flex items-center justify-center">
+                            <div className="absolute left-8 sm:left-1/2 -ml-[18px] sm:-ml-4 top-0 sm:top-8 w-8 h-8 rounded-full bg-background border-4 border-primary shadow-[0_0_15px_rgba(175,238,7,0.5)] z-20 flex items-center justify-center">
                                 <div className="w-2 h-2 rounded-full bg-primary" />
                             </div>
 

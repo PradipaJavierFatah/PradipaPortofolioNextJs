@@ -23,7 +23,7 @@ export function SocialConnect({ className }: { className?: string }) {
             icon: <Instagram className="h-10 w-10" />,
             description: t.socials.instagram,
             href: t.links.instagram,
-            backColor: "bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500", // Insta Gradient
+            backColor: "bg-gradient-to-tr from-yellow-400 via-red-500 to-pink-500", // Insta Gradient
             iconColor: "text-[#E1306C]", // Insta Pink
             rank: "K"
         },

@@ -46,7 +46,7 @@ export function CustomCursor() {
         <div className="pointer-events-none fixed left-0 top-0 z-[9999] mix-blend-normal">
             {/* Trailing Neon Glow */}
             <motion.div
-                className="absolute left-0 top-0 h-4 w-4 bg-orange-500/50 dark:bg-orange-500/80 rounded-full blur-md"
+                className="absolute left-0 top-0 h-4 w-4 bg-primary/50 dark:bg-primary/80 rounded-full blur-md"
                 style={{
                     x: cursorX,
                     y: cursorY,
@@ -70,11 +70,11 @@ export function CustomCursor() {
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    className="drop-shadow-[0_0_8px_rgba(249,115,22,0.4)] dark:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-colors duration-300"
+                    className="drop-shadow-[0_0_8px_rgba(175,238,7,0.4)] dark:drop-shadow-[0_0_8px_rgba(175,238,7,0.8)] transition-colors duration-300"
                 >
                     <path
                         d="M5.65376 12.3673H5.46026L5.31717 12.4976L0.500002 16.8829L0.500002 1.19138L15.6493 12.3673H5.65376Z"
-                        className="fill-zinc-100 dark:fill-zinc-950 stroke-orange-600 dark:stroke-orange-500 stroke-[1.5]"
+                        className="fill-zinc-100 dark:fill-zinc-950 stroke-primary stroke-[1.5]"
                     />
                 </svg>
             </motion.div>

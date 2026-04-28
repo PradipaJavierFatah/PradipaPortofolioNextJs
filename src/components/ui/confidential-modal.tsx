@@ -33,8 +33,8 @@ export function ConfidentialModal({ isOpen, onClose, title = "Confidential Proje
                         className="fixed left-[50%] top-[50%] z-[101] grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 sm:rounded-lg"
                     >
                         <div className="flex flex-col items-center gap-4 text-center">
-                            <div className="rounded-full bg-orange-100 p-3 dark:bg-orange-900/20">
-                                <Lock className="h-6 w-6 text-orange-600 dark:text-orange-500" />
+                            <div className="rounded-full bg-primary/20 p-3">
+                                <Lock className="h-6 w-6 text-primary" />
                             </div>
 
                             <div className="space-y-2">

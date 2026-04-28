@@ -32,6 +32,12 @@ export const DICTIONARY = {
             description: "Milestones that define my professional and academic path.",
             list: [
                 {
+                    company: "Neuro Park ⋅ Entrepreneur (In Development)",
+                    role: "Founder & Full Stack Developer",
+                    period: "Feb 2026 – Present",
+                    description: "Designed and implemented a complete end-to-end smart parking management system integrating computer vision (ALPR).",
+                },
+                {
                     company: "Adira Finance",
                     role: "Data Analyst Intern",
                     period: "Feb 2025 - Feb 2026",
@@ -67,7 +73,7 @@ export const DICTIONARY = {
                 soft: "Soft Skills",
             },
             dataList: ["Python", "R", "Excel", "Looker Studio", "Tableau", "SQL"],
-            devList: ["Python", "C", "Java", "SQL", "PHP", "R", "HTML", "CSS", "JavaScript", "Tailwind CSS", "Next.js", "Laravel", "Jira"],
+            devList: ["Python", "React", "C", "Java", "SQL", "PHP", "R", "HTML", "CSS", "JavaScript", "Tailwind CSS", "Next.js", "Laravel", "Jira"],
             designList: ["Figma", "PowerPoint", "Canva"],
             softList: ["Communication", "Problem Solving", "Teamwork", "Time Management", "Adaptability", "Leadership"],
         },
@@ -85,7 +91,7 @@ export const DICTIONARY = {
             instagram: "https://www.instagram.com/pprraaddiippaa/",
             linkedin: "https://www.linkedin.com/in/pradipajavierfatah/",
             github: "https://github.com/PradipaJavierFatah",
-            cv: "https://drive.google.com/file/d/10R4LE5TtK9UU1Nywmqs-ARLhX-Ssh6th/view?usp=sharing",
+            cv: "https://drive.google.com/file/d/16_9QH9mHrx1c8SYs9dWtADpK8Kf31MJ3/view?usp=sharing",
         },
         projects: {
             title: "Projects",
@@ -93,6 +99,7 @@ export const DICTIONARY = {
             viewProject: "View Project",
             viewCode: "View Code",
             confidentialMsg: "This project is confidential and cannot be viewed publicly.",
+            viewAll: "View All Projects",
             categories: {
                 data: "Data Science & Analytics",
                 web: "Web Development",
@@ -125,6 +132,14 @@ export const DICTIONARY = {
                 }
             ],
             web: [
+                {
+                    title: "Neuro Park",
+                    description: "Designed and implemented a complete end-to-end smart parking management system integrating computer vision (ALPR), IoT hardware, real-time monitoring, and digital payment processing using React, FastAPI, PostgreSQL, and Xendit.",
+                    techStack: ["React", "PostgreSQL", "Python", "IoT", "Payment Gateway", "API"],
+                    link: "https://neuropark.my.id/",
+                    github: "#",
+                    image: "/images/Neuropark_Dashboard.png",
+                },
                 {
                     title: "Sistem Layanan Penyaluran Sampah (SILAP)",
                     description: "A comprehensive reporting system dashboard for managing data analytics and generating insights.",
@@ -238,6 +253,12 @@ export const DICTIONARY = {
             description: "Pencapaian yang menentukan jalur profesional dan akademik saya.",
             list: [
                 {
+                    company: "Neuro Park ⋅ Wirausaha (Dalam Pengembangan)",
+                    role: "Founder & Pengembang Full Stack",
+                    period: "Feb 2026 – Sekarang",
+                    description: "Arsitektur & Pengembangan Sistem Full Stack: Merancang dan mengimplementasikan sistem manajemen parkir pintar end-to-end lengkap yang mengintegrasikan computer vision (ALPR),",
+                },
+                {
                     company: "Adira Finance",
                     role: "Magang Analis Data",
                     period: "Feb 2025 - Feb 2026",
@@ -273,7 +294,7 @@ export const DICTIONARY = {
                 soft: "Soft Skills",
             },
             dataList: ["Python", "R", "Excel", "Looker Studio", "Tableau", "SQL"],
-            devList: ["Python", "C", "Java", "SQL", "PHP", "R", "HTML", "CSS", "JavaScript", "Tailwind CSS", "Next.js", "Laravel", "Jira"],
+            devList: ["Python", "React", "C", "Java", "SQL", "PHP", "R", "HTML", "CSS", "JavaScript", "Tailwind CSS", "Next.js", "Laravel", "Jira"],
             designList: ["Figma", "PowerPoint", "Canva"],
             softList: ["Komunikasi", "Pemecahan Masalah", "Kerjasama Tim", "Manajemen Waktu", "Adaptabilitas", "Kepemimpinan"],
         },
@@ -291,7 +312,7 @@ export const DICTIONARY = {
             instagram: "https://www.instagram.com/pprraaddiippaa/",
             linkedin: "https://www.linkedin.com/in/pradipajavierfatah/",
             github: "https://github.com/PradipaJavierFatah",
-            cv: "https://drive.google.com/file/d/10R4LE5TtK9UU1Nywmqs-ARLhX-Ssh6th/view?usp=sharing",
+            cv: "https://drive.google.com/file/d/16_9QH9mHrx1c8SYs9dWtADpK8Kf31MJ3/view?usp=sharing",
         },
         projects: {
             title: "Proyek Unggulan",
@@ -299,6 +320,7 @@ export const DICTIONARY = {
             viewProject: "Lihat Proyek",
             viewCode: "Lihat Kode",
             confidentialMsg: "Proyek ini bersifat rahasia dan tidak dapat dilihat secara publik.",
+            viewAll: "Lihat Semua Proyek",
             categories: {
                 data: "Sains Data & Analitik",
                 web: "Pengembangan Web",
@@ -331,6 +353,14 @@ export const DICTIONARY = {
                 }
             ],
             web: [
+                {
+                    title: "Neuro Park",
+                    description: "Merancang dan mengimplementasikan sistem manajemen parkir pintar end-to-end lengkap yang mengintegrasikan computer vision (ALPR), perangkat keras IoT, pemantauan real-time, dan pemrosesan pembayaran digital menggunakan React, FastAPI, PostgreSQL, dan Xendit.",
+                    techStack: ["React", "PostgreSQL", "Python", "IoT", "Payment Gateway", "API"],
+                    link: "https://neuropark.my.id/",
+                    github: "#",
+                    image: "/images/Neuropark_Dashboard.png",
+                },
                 {
                     title: "Sistem Layanan Penyaluran Sampah (SILAP)",
                     description: "Dashboard sistem laporan komprehensif untuk mengelola analitik data dan menghasilkan wawasan.",

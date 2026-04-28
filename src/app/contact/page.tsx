@@ -39,7 +39,7 @@ export default function ContactPage() {
     return (
         <div className="container py-20 lg:py-32 max-w-4xl px-4">
             <div className="text-center mb-16 space-y-4">
-                <h1 className="text-4xl font-bold tracking-tight lg:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60">
+                <h1 className="text-4xl font-bold tracking-tight lg:text-6xl text-primary">
                     {t.contact.title}
                 </h1>
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -54,7 +54,7 @@ export default function ContactPage() {
                 className="relative"
             >
                 {/* Decorative background element */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-3xl blur-3xl -z-10" />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-emerald-500/10 rounded-3xl blur-3xl -z-10" />
 
                 <div className="bg-card/80 backdrop-blur-xl border border-border/50 rounded-3xl p-8 md:p-12 shadow-2xl">
                     <form onSubmit={handleSubmit} className="space-y-8">

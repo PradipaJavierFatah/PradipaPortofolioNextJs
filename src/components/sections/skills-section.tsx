@@ -38,6 +38,7 @@ export function SkillsSection() {
         "CSS": SiCss3,
         "JavaScript": SiJavascript,
         "Tailwind CSS": SiTailwindcss,
+        "React": SiReact,
         "Next.js": SiNextdotjs,
         "Laravel": SiLaravel,
         "Jira": SiJira,
@@ -88,7 +89,7 @@ export function SkillsSection() {
                         key={tab.id}
                         variant={activeTab === tab.id ? "default" : "outline"}
                         onClick={() => setActiveTab(tab.id)}
-                        className={`rounded-full px-8 ${activeTab === tab.id ? 'bg-orange-500 hover:bg-orange-600 text-white' : ''} transition-all duration-300`}
+                        className={`rounded-full px-8 ${activeTab === tab.id ? 'bg-primary hover:bg-primary/90 text-primary-foreground' : ''} transition-all duration-300`}
                     >
                         {tab.label}
                     </Button>
@@ -112,9 +113,9 @@ export function SkillsSection() {
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.3, delay: index * 0.05 }}
-                            className="group flex flex-col items-center justify-center p-6 rounded-xl bg-card border border-border/50 shadow-sm hover:shadow-lg hover:border-orange-500/30 hover:bg-orange-500/5 transition-all text-center gap-4 cursor-default"
+                            className="group flex flex-col items-center justify-center p-6 rounded-xl bg-card border border-border/50 shadow-sm hover:shadow-lg hover:border-primary/30 hover:bg-primary/5 transition-all text-center gap-4 cursor-default"
                         >
-                            <div className="p-4 rounded-full bg-background group-hover:bg-background/80 shadow-inner text-4xl text-muted-foreground group-hover:text-orange-500 transition-colors">
+                            <div className="p-4 rounded-full bg-background group-hover:bg-background/80 shadow-inner text-4xl text-muted-foreground group-hover:text-primary transition-colors">
                                 <Icon />
                             </div>
                             <span className="font-medium text-sm text-muted-foreground group-hover:text-foreground transition-colors">

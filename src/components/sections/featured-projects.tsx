@@ -3,7 +3,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FolderGit2, Globe, Github, Lock } from "lucide-react";
+import { FolderGit2, Globe, Github, Lock, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
@@ -16,9 +16,10 @@ import { ConfidentialModal } from "@/components/ui/confidential-modal";
 
 interface FeaturedProjectsProps {
     variant?: "grid" | "marquee";
+    showViewAll?: boolean;
 }
 
-export function FeaturedProjects({ variant = "grid" }: FeaturedProjectsProps) {
+export function FeaturedProjects({ variant = "grid", showViewAll = false }: FeaturedProjectsProps) {
     const { t } = useLanguage();
     const [showConfidential, setShowConfidential] = useState(false);
 
@@ -149,6 +150,23 @@ export function FeaturedProjects({ variant = "grid" }: FeaturedProjectsProps) {
                 </div>
             )}
 
+            {/* View All Projects Button */}
+            {showViewAll && (
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5 }}
+                    className="mt-16 flex justify-center"
+                >
+                    <Button size="lg" asChild className="h-12 px-8 text-base bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 rounded-full group">
+                        <Link href="/projects" className="flex items-center gap-2">
+                            {t.projects.viewAll} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                    </Button>
+                </motion.div>
+            )}
+
             <ConfidentialModal
                 isOpen={showConfidential}
                 onClose={() => setShowConfidential(false)}
@@ -197,11 +215,11 @@ function ProjectCard({ project, index, t, disableAnimation = false, onConfidenti
                     <Button
                         size="sm"
                         variant="outline"
-                        className="flex-1 group h-8 text-xs hover:bg-orange-500/10 hover:text-orange-500 hover:border-orange-500/50 transition-colors"
+                        className="flex-1 group h-8 text-xs hover:bg-primary/10 hover:text-primary hover:border-primary/50 transition-colors"
                         onClick={onConfidentialClick}
                     >
                         <div className="flex flex-row items-center justify-center gap-2">
-                            <Lock className="h-3 w-3 text-orange-500" />
+                            <Lock className="h-3 w-3 text-primary" />
                             <span>Confidential</span>
                         </div>
                     </Button>
@@ -209,7 +227,7 @@ function ProjectCard({ project, index, t, disableAnimation = false, onConfidenti
                     <>
                         <Button size="sm" variant="outline" className="flex-1 group h-8 text-xs" asChild>
                             <Link href={project.link} target="_blank" className="flex flex-row items-center justify-center gap-2">
-                                <Globe className="h-3 w-3 text-blue-500 group-hover:text-blue-600" />
+                                <Globe className="h-3 w-3 text-emerald-500 group-hover:text-emerald-400" />
                                 <span>{t.projects.viewProject}</span>
                             </Link>
                         </Button>
@@ -217,7 +235,7 @@ function ProjectCard({ project, index, t, disableAnimation = false, onConfidenti
                         {project.github && project.github !== "#" && (
                             <Button size="sm" variant="outline" className="flex-1 group h-8 text-xs" asChild>
                                 <Link href={project.github} target="_blank" className="flex flex-row items-center justify-center gap-2">
-                                    <Github className="h-3 w-3 text-purple-500 group-hover:text-purple-600" />
+                                    <Github className="h-3 w-3 text-lime-500 group-hover:text-lime-400" />
                                     <span>{t.projects.viewCode}</span>
                                 </Link>
                             </Button>

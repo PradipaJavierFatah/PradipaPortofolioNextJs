@@ -38,11 +38,11 @@ export function BioInterests() {
                     >
                         {/* Circle 1: Technology (Top) */}
                         <motion.div
-                            className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-48 rounded-full bg-blue-500/30 border-2 border-blue-500/50 backdrop-blur-sm flex items-start justify-center pt-8 z-10"
+                            className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-48 rounded-full bg-emerald-500/30 border-2 border-emerald-500/50 backdrop-blur-sm flex items-start justify-center pt-8 z-10"
                             animate={{ y: [0, -10, 0] }}
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                         >
-                            <span className="font-bold text-blue-600 dark:text-blue-300 transform -translate-y-2">{t.interests.diagram.tech}</span>
+                            <span className="font-bold text-emerald-600 dark:text-emerald-300 transform -translate-y-2">{t.interests.diagram.tech}</span>
                         </motion.div>
 
                         {/* Circle 2: Business (Bottom Left) */}
@@ -71,7 +71,7 @@ export function BioInterests() {
                                 transition={{ delay: 0.8, type: "spring" }}
                                 className="bg-white dark:bg-zinc-900 border border-primary/20 shadow-xl px-4 py-2 rounded-full"
                             >
-                                <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-red-600">
+                                <span className="font-extrabold text-primary">
                                     {t.interests.diagram.innovation}
                                 </span>
                             </motion.div>
