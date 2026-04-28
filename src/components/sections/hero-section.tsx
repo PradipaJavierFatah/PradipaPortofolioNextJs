@@ -50,10 +50,18 @@ export function HeroSection() {
                 Using a large background size and animating the position.
                 Colors are shifted to be "softer" (opacity/pastel) but still deep purple context.
              */}
-            <div className="absolute inset-0 -z-10 h-full w-full bg-background">
+            <div className="absolute inset-0 -z-10 h-full w-full bg-background overflow-hidden">
                 {/* animated gradient blob background */}
-                {/* animated gradient blob background - Optimized for Mobile */}
                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-lime-500/20 to-teal-500/20 bg-[size:400%_400%] sm:animate-gradient blur-[50px] sm:blur-[100px] opacity-60 sm:opacity-100 will-change-transform" />
+
+                {/* LARGE SQUIGGLES (NeuroPark Pattern) */}
+                <div 
+                    className="absolute inset-0 opacity-10"
+                    style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M-50 200 C 50 50, 150 50, 200 200 S 350 350, 450 200' stroke='%23afee07' stroke-width='60' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")`,
+                        backgroundSize: '600px 600px'
+                    }}
+                />
 
                 {/* Subtle Grid overlay */}
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20" />
@@ -160,13 +168,7 @@ export function HeroSection() {
                                 PHOTO CONTAINER
                                 Changed from rounded-full to rounded-[2.5rem] (Square with soft corners)
                              */}
-                            <div 
-                                className="relative w-72 sm:w-96 bg-primary p-3 sm:p-4 pb-16 sm:pb-24 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.3)] rotate-3 hover:rotate-0 transition-all duration-500 border border-primary/20 overflow-hidden"
-                                style={{
-                                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M-10 50 Q 15 10 40 50 T 90 50 T 140 50' stroke='%230c262d' stroke-width='8' fill='none' opacity='0.1'/%3E%3C/svg%3E")`,
-                                    backgroundSize: '100px 100px'
-                                }}
-                            >
+                            <div className="relative w-72 sm:w-96 bg-white p-3 sm:p-4 pb-16 sm:pb-24 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.2)] rotate-3 hover:rotate-0 transition-all duration-500 border border-zinc-100">
                                 <div className="relative aspect-square w-full overflow-hidden bg-zinc-900 ring-1 ring-black/5">
                                     <Image
                                         src="/images/profileDipa.jpg"
@@ -176,9 +178,9 @@ export function HeroSection() {
                                         priority
                                     />
                                 </div>
-                                <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-transparent via-transparent to-white/5" />
+                                <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-transparent via-transparent to-white/10" />
                                 <div className="absolute bottom-4 left-0 right-0 text-center select-none">
-                                    <p className="text-primary-foreground font-serif italic text-sm sm:text-base opacity-70">Pradipa Javier Fatah</p>
+                                    <p className="text-zinc-400 font-serif italic text-sm sm:text-base opacity-40">Pradipa Javier Fatah</p>
                                 </div>
                             </div>
 
