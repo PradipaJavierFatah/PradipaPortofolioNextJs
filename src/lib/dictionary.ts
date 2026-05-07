@@ -20,12 +20,12 @@ export const DICTIONARY = {
         },
         about: {
             title: "About Me",
-            bio1: "I'm Pradipa Javier Fatah, a Computer Science student driven by the challenge of building complex, scalable software systems. My journey started with a curiosity about how things work under the hood, leading me to specialize in modern web technologies and performant front-end architecture.",
+            bio1: "I'm Pradipa Javier Fatah, a Computer Science graduate driven by the challenge of building complex, scalable software systems. My journey started with a curiosity about how things work under the hood, leading me to specialize in modern web technologies and performant front-end architecture.",
             bio2: "I am passionate about the intersection of technology, business, and product development where innovative solutions meet real user needs. I enjoy exploring modern technologies to build efficient systems, applying data driven thinking to support strategic decisions, and shaping product experiences that align user value with business goals. My focus is on creating impactful, scalable solutions that drive meaningful outcomes.",
             educationTitle: "Education",
             university: "Binus University",
-            major: "Computer Science, 2021 - 2025",
-            gpa: "GPA: 3.85/4.00",
+            major: "Computer Science, 2021 - 2026",
+            gpa: "GPA: 3.43/4.00",
         },
         experience: {
             title: "My Journey",
