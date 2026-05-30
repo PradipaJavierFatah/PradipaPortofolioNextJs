@@ -45,30 +45,11 @@ export function HeroSection() {
 
     return (
         <section className="relative flex min-h-screen flex-col justify-center overflow-hidden py-16 lg:py-20">
-            {/*
-                BACKGROUND: Softer Moving Gradient
-                Using a large background size and animating the position.
-                Colors are shifted to be "softer" (opacity/pastel) but still deep purple context.
-             */}
-            <div className="absolute inset-0 -z-10 h-full w-full bg-background overflow-hidden">
-                {/* animated gradient blob background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-lime-500/20 to-teal-500/20 bg-[size:400%_400%] sm:animate-gradient blur-[50px] sm:blur-[100px] opacity-60 sm:opacity-100 will-change-transform" />
-
-                {/* LARGE SQUIGGLES (NeuroPark Pattern) */}
-                <div
-                    className="absolute inset-0 opacity-10"
-                    style={{
-                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M-50 200 C 50 50, 150 50, 200 200 S 350 350, 450 200' stroke='%23afee07' stroke-width='60' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")`,
-                        backgroundSize: '600px 600px'
-                    }}
-                />
-
-                {/* Subtle Grid overlay */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20" />
-            </div>
+            {/* BACKGROUND: Clean, no gradients */}
+            <div className="absolute inset-0 -z-10 h-full w-full bg-background overflow-hidden" />
 
             <div className="container relative z-10 px-4">
-                <div className="grid gap-8 lg:gap-16 lg:grid-cols-2 lg:items-center">
+                <div className="grid gap-4 lg:gap-6 lg:grid-cols-2 lg:items-center">
 
                     {/* Left Column: Text Content */}
                     <div className="flex flex-col gap-6 text-center lg:text-left items-center lg:items-start">
