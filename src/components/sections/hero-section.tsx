@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Terminal, Code2, Database, Cpu, Globe, BarChart3 } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -125,39 +125,16 @@ export function HeroSection() {
                         </motion.div>
                     </div>
 
-                    {/* Right Column: Profile Photo & Tech Elements */}
-                    <div className="relative flex justify-center lg:justify-end">
-                        {/* 
-                            Tech Orbitals - Simplified/Cleaned up 
-                        */}
-                        <motion.div
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-0 z-0 opacity-30 pointer-events-none"
-                        >
-                            {/* Floating Icons positioned around the circle */}
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-8 bg-background/80 p-3 rounded-2xl border border-primary/20 shadow-lg backdrop-blur-md">
-                                <Code2 className="h-6 w-6 text-emerald-500" />
-                            </div>
-                            <div className="absolute bottom-0 right-1/4 translate-y-8 bg-background/80 p-3 rounded-2xl border border-primary/20 shadow-lg backdrop-blur-md">
-                                <Database className="h-6 w-6 text-lime-500" />
-                            </div>
-                            <div className="absolute bottom-0 left-1/4 translate-y-8 bg-background/80 p-3 rounded-2xl border border-primary/20 shadow-lg backdrop-blur-md">
-                                <BarChart3 className="h-6 w-6 text-teal-500" />
-                            </div>
-                        </motion.div>
-
+                    {/* Right Column: Profile Photo */}
+                    <div className="relative flex justify-center lg:justify-end items-center">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="relative z-10"
+                            className="relative"
                         >
-                            {/* 
-                                PHOTO CONTAINER
-                                Changed from rounded-full to rounded-[2.5rem] (Square with soft corners)
-                             */}
-                            <div className="relative w-72 sm:w-96 bg-white p-3 sm:p-4 pb-16 sm:pb-24 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.2)] rotate-3 hover:rotate-0 transition-all duration-500 border border-zinc-100">
+                            {/* PHOTO CONTAINER */}
+                            <div className="relative w-72 sm:w-96 bg-white p-3 sm:p-4 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.2)] rotate-3 hover:rotate-0 transition-all duration-500 border border-zinc-100">
                                 <div className="relative aspect-square w-full overflow-hidden bg-zinc-900/50 ring-1 ring-black/5">
                                     <Image
                                         src="/images/profileDipa1.jpg"
@@ -174,20 +151,6 @@ export function HeroSection() {
                                     <p className="text-zinc-400 font-serif italic text-sm sm:text-base opacity-40">Pradipa Javier Fatah</p>
                                 </div>
                             </div>
-
-                            {/* Floating "Status" Card attached to the photo */}
-                            <motion.div
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.6 }}
-                                className="absolute -bottom-8 -right-8 bg-card/90 backdrop-blur-md border border-border p-4 rounded-2xl shadow-xl flex items-center gap-3"
-                            >
-                                <div className="h-3 w-3 rounded-full bg-green-500 animate-pulse" />
-                                <div>
-                                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Status</p>
-                                    <p className="text-sm font-semibold">{t.hero.status}</p>
-                                </div>
-                            </motion.div>
                         </motion.div>
                     </div>
                 </div>
