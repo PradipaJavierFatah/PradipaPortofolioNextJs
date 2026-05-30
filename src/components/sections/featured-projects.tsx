@@ -81,7 +81,7 @@ export function FeaturedProjects({ variant = "grid", showViewAll = false }: Feat
                         <div className="space-y-8">
                             <div className="flex items-center gap-4">
                                 <div className="h-px bg-border flex-1" />
-                                <h3 className="text-xl font-bold bg-[#0c262d] text-primary px-6 py-2 rounded-full shadow-lg border border-primary/20">
+                                <h3 className="text-xl font-bold bg-[#0c262d] text-primary px-6 py-2 rounded-full border border-primary/20">
                                      {t.projects.categories.data}
                                  </h3>
                                  <div className="h-px bg-border flex-1" />
@@ -105,7 +105,7 @@ export function FeaturedProjects({ variant = "grid", showViewAll = false }: Feat
                         <div className="space-y-8">
                             <div className="flex items-center gap-4">
                                 <div className="h-px bg-border flex-1" />
-                                <h3 className="text-xl font-bold bg-[#0c262d] text-primary px-6 py-2 rounded-full shadow-lg border border-primary/20">
+                                <h3 className="text-xl font-bold bg-[#0c262d] text-primary px-6 py-2 rounded-full border border-primary/20">
                                      {t.projects.categories.web}
                                  </h3>
                                  <div className="h-px bg-border flex-1" />
@@ -129,7 +129,7 @@ export function FeaturedProjects({ variant = "grid", showViewAll = false }: Feat
                         <div className="space-y-8">
                             <div className="flex items-center gap-4">
                                 <div className="h-px bg-border flex-1" />
-                                <h3 className="text-xl font-bold bg-[#0c262d] text-primary px-6 py-2 rounded-full shadow-lg border border-primary/20">
+                                <h3 className="text-xl font-bold bg-[#0c262d] text-primary px-6 py-2 rounded-full border border-primary/20">
                                      {t.projects.categories.design}
                                  </h3>
                                  <div className="h-px bg-border flex-1" />
@@ -159,7 +159,7 @@ export function FeaturedProjects({ variant = "grid", showViewAll = false }: Feat
                     transition={{ delay: 0.5 }}
                     className="mt-16 flex justify-center"
                 >
-                    <Button size="lg" asChild className="h-12 px-8 text-base bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 rounded-full group">
+                    <Button size="lg" asChild className="h-12 px-8 text-base bg-primary hover:bg-primary/90 rounded-full group">
                         <Link href="/projects" className="flex items-center gap-2">
                             {t.projects.viewAll} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Link>
@@ -191,6 +191,13 @@ function ProjectCard({ project, index, t, disableAnimation = false, onConfidenti
                 ) : (
                     <div className="absolute inset-0 flex items-center justify-center bg-secondary/20 text-muted-foreground group-hover:bg-secondary/30 transition-colors">
                         <FolderGit2 className="h-12 w-12 opacity-20" />
+                    </div>
+                )}
+                {project.badge && (
+                    <div className="absolute top-3 left-3 z-10">
+                        <span className="bg-red-500 text-white text-xs font-bold px-2.5 py-1 rounded">
+                            {project.badge}
+                        </span>
                     </div>
                 )}
             </div>

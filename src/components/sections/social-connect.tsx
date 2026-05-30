@@ -92,7 +92,7 @@ export function SocialConnect({ className }: { className?: string }) {
                                 <p className="text-white/90 font-medium mb-6 text-center px-4 text-sm leading-relaxed">
                                     {social.description}
                                 </p>
-                                <div className="flex items-center gap-2 text-primary font-bold bg-white px-6 py-2 rounded-full hover:bg-gray-100 transition-colors shadow-lg">
+                                <div className="flex items-center gap-2 text-primary font-bold bg-white px-6 py-2 rounded-full hover:bg-gray-100 transition-colors">
                                     <span className="text-inherit">Visit Profile</span>
                                     <ExternalLink className="h-4 w-4 text-inherit" />
                                 </div>

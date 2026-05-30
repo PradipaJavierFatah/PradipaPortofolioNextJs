@@ -108,24 +108,13 @@ export function HeroSection() {
                             transition={{ duration: 0.5, delay: 0.3 }}
                             className="flex flex-col sm:flex-row gap-4 w-full justify-center lg:justify-start mt-2"
                         >
-                            {/* Download CV - Now Primary Action with Pulse */}
-                            <motion.div
-                                animate={{
-                                    scale: [1, 1.05, 1],
-                                }}
-                                transition={{
-                                    duration: 2,
-                                    repeat: Infinity,
-                                    ease: "easeInOut",
-                                }}
-                            >
-                                <Button size="lg" asChild className="h-12 px-8 text-base bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 rounded-full group">
-                                    <Link href={t.links.cv} target="_blank" className="flex items-center gap-2">
-                                        <Download className="h-4 w-4 animate-bounce" />
-                                        {t.hero.downloadCV}
-                                    </Link>
-                                </Button>
-                            </motion.div>
+                            {/* Download CV */}
+                            <Button size="lg" asChild className="h-12 px-8 text-base bg-primary hover:bg-primary/90 rounded-full group">
+                                <Link href={t.links.cv} target="_blank" className="flex items-center gap-2">
+                                    <Download className="h-4 w-4" />
+                                    {t.hero.downloadCV}
+                                </Link>
+                            </Button>
 
                             {/* View Projects - Now Secondary Outline Action */}
                             <Button variant="outline" size="lg" className="h-12 px-8 text-base rounded-full border-primary/20 bg-background/50 hover:bg-primary/5 text-foreground backdrop-blur-sm group" asChild>

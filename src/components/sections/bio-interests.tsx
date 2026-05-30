@@ -69,7 +69,7 @@ export function BioInterests() {
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 transition={{ delay: 0.8, type: "spring" }}
-                                className="bg-[#0c262d] text-primary shadow-xl px-6 py-2 rounded-full border border-primary/20"
+                                className="bg-[#0c262d] text-primary px-6 py-2 rounded-full border border-primary/20"
                             >
                                 <span className="font-extrabold uppercase tracking-wider text-sm">
                                     {t.interests.diagram.innovation}

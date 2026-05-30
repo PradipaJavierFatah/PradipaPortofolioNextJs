@@ -41,7 +41,7 @@ export function ScrollToTop() {
                     <Button
                         size="icon"
                         variant="secondary"
-                        className="rounded-full shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all bg-primary text-primary-foreground hover:bg-primary/90"
+                        className="rounded-full hover:-translate-y-1 transition-all bg-primary text-primary-foreground hover:bg-primary/90"
                         onClick={scrollToTop}
                         aria-label="Scroll to top"
                     >

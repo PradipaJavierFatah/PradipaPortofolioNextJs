@@ -160,7 +160,7 @@ export default function ContactPage() {
                             <Button
                                 type="submit"
                                 size="lg"
-                                className="w-full h-14 text-base font-semibold rounded-xl shadow-lg hover:shadow-primary/25 transition-all duration-300"
+                                className="w-full h-14 text-base font-semibold rounded-xl transition-all duration-300"
                                 disabled={status === "submitting"}
                             >
                                 {status === "submitting" ? (
