@@ -16,9 +16,6 @@ export function ContactSection() {
                 transition={{ duration: 0.5 }}
                 className="flex flex-col items-center justify-center gap-4 text-center rounded-3xl bg-[#0c262d] p-8 md:p-16 text-primary shadow-2xl relative overflow-hidden"
             >
-                {/* Subtle Glow inside the card */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] -z-10" />
-                
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
                     Let&apos;s Work Together
                 </h2>
