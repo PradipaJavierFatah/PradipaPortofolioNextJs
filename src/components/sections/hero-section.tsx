@@ -44,9 +44,9 @@ export function HeroSection() {
     const typingText = useTypewriter(t.hero.roles, 200, 3000);
 
     return (
-        <section className="relative flex min-h-[calc(100vh-4rem)] flex-col justify-center overflow-hidden py-20 lg:py-32">
-            {/* 
-                BACKGROUND: Softer Moving Gradient 
+        <section className="relative flex min-h-screen flex-col justify-center overflow-hidden py-16 lg:py-20">
+            {/*
+                BACKGROUND: Softer Moving Gradient
                 Using a large background size and animating the position.
                 Colors are shifted to be "softer" (opacity/pastel) but still deep purple context.
              */}
@@ -68,26 +68,26 @@ export function HeroSection() {
             </div>
 
             <div className="container relative z-10 px-4">
-                <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+                <div className="grid gap-8 lg:gap-16 lg:grid-cols-2 lg:items-center">
 
                     {/* Left Column: Text Content */}
-                    <div className="flex flex-col gap-8 text-center lg:text-left items-center lg:items-start">
+                    <div className="flex flex-col gap-6 text-center lg:text-left items-center lg:items-start">
 
 
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
-                            className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl leading-tight"
+                            className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl leading-tight"
                         >
                             {t.hero.greeting} {SITE_CONFIG.name}. <br />
-                            <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-2 min-h-[1.2em] sm:min-h-[1.3em]">
+                            <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-3 min-h-[1.2em] sm:min-h-[1.3em]">
                                 {t.hero.rolePrefix} <span className="text-primary font-mono">
                                     {typingText}
                                     <motion.span
                                         animate={{ opacity: [0, 1, 0] }}
                                         transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
-                                        className="inline-block ml-1 w-1 h-6 sm:h-8 md:h-10 bg-lime-500 align-middle"
+                                        className="inline-block ml-1 w-1 h-5 sm:h-7 md:h-8 bg-lime-500 align-middle"
                                     />
                                 </span>
                             </span>
@@ -97,7 +97,7 @@ export function HeroSection() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="text-lg text-muted-foreground sm:text-xl max-w-2xl leading-relaxed"
+                            className="text-base text-muted-foreground sm:text-lg max-w-xl lg:max-w-2xl leading-relaxed"
                         >
                             {t.hero.description}
                         </motion.p>
@@ -106,18 +106,18 @@ export function HeroSection() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.3 }}
-                            className="flex flex-col sm:flex-row gap-4 w-full justify-center lg:justify-start mt-2"
+                            className="flex flex-col sm:flex-row gap-3 w-full justify-center lg:justify-start max-w-md lg:max-w-none"
                         >
                             {/* Download CV */}
-                            <Button size="lg" asChild className="h-12 px-8 text-base bg-primary hover:bg-primary/90 rounded-full group">
+                            <Button size="md" asChild className="h-10 px-6 text-sm sm:text-base bg-primary hover:bg-primary/90 rounded-full group">
                                 <Link href={t.links.cv} target="_blank" className="flex items-center gap-2">
                                     <Download className="h-4 w-4" />
                                     {t.hero.downloadCV}
                                 </Link>
                             </Button>
 
-                            {/* View Projects - Now Secondary Outline Action */}
-                            <Button variant="outline" size="lg" className="h-12 px-8 text-base rounded-full border-primary/20 bg-background/50 hover:bg-primary/5 text-foreground backdrop-blur-sm group" asChild>
+                            {/* View Projects */}
+                            <Button variant="outline" size="md" className="h-10 px-6 text-sm sm:text-base rounded-full border-primary/20 bg-background/50 hover:bg-primary/5 text-foreground backdrop-blur-sm group" asChild>
                                 <Link href="/projects" className="flex items-center gap-2">
                                     {t.hero.viewProjects} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                                 </Link>
@@ -126,7 +126,7 @@ export function HeroSection() {
                     </div>
 
                     {/* Right Column: Profile Photo */}
-                    <div className="relative flex justify-center lg:justify-end items-center">
+                    <div className="relative flex justify-center lg:justify-end items-center mt-8 lg:mt-0">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
@@ -134,7 +134,7 @@ export function HeroSection() {
                             className="relative"
                         >
                             {/* PHOTO CONTAINER */}
-                            <div className="relative w-72 sm:w-96 bg-white p-3 sm:p-4 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.2)] rotate-3 hover:rotate-0 transition-all duration-500 border border-zinc-100">
+                            <div className="relative w-64 sm:w-80 lg:w-96 bg-white p-3 sm:p-4 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.2)] rotate-3 hover:rotate-0 transition-all duration-500 border border-zinc-100">
                                 <div className="relative aspect-square w-full overflow-hidden bg-zinc-900/50 ring-1 ring-black/5">
                                     <Image
                                         src="/images/profileDipa1.jpg"

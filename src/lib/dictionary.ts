@@ -133,7 +133,7 @@ export const DICTIONARY = {
             ],
             web: [
                 {
-                    title: "Neuro Parking",
+                    title: "Neuro Smart Parking System",
                     badge: "New",
                     description: "Designed and implemented a complete end-to-end smart parking management system integrating computer vision (ALPR), IoT hardware, real-time monitoring, and digital payment processing using React, FastAPI, PostgreSQL, and Xendit.",
                     techStack: ["React", "PostgreSQL", "Python", "IoT", "Payment Gateway", "API"],
@@ -355,7 +355,7 @@ export const DICTIONARY = {
             ],
             web: [
                 {
-                    title: "Neuro Parking",
+                    title: "Neuro Smart Parking System",
                     badge: "New",
                     description: "Merancang dan mengimplementasikan sistem manajemen parkir pintar end-to-end lengkap yang mengintegrasikan computer vision (ALPR), perangkat keras IoT, pemantauan real-time, dan pemrosesan pembayaran digital menggunakan React, FastAPI, PostgreSQL, dan Xendit.",
                     techStack: ["React", "PostgreSQL", "Python", "IoT", "Payment Gateway", "API"],

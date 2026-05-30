@@ -194,8 +194,8 @@ function ProjectCard({ project, index, t, disableAnimation = false, onConfidenti
                     </div>
                 )}
                 {project.badge && (
-                    <div className="absolute top-3 left-3 z-10">
-                        <span className="bg-red-500 text-white text-xs font-bold px-2.5 py-1 rounded">
+                    <div className="absolute top-4 left-4 z-10">
+                        <span className="bg-red-500 text-white text-sm font-bold px-3 py-1.5 rounded-full shadow-lg border border-red-600">
                             {project.badge}
                         </span>
                     </div>
