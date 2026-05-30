@@ -61,7 +61,10 @@ export function HeroSection() {
                             transition={{ duration: 0.5, delay: 0.1 }}
                             className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl leading-tight"
                         >
-                            {t.hero.greeting} {SITE_CONFIG.name}. <br />
+                            {t.hero.greeting} <br />
+                            <span className="block">
+                                {SITE_CONFIG.name}
+                            </span>
                             <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-3 min-h-[1.2em] sm:min-h-[1.3em]">
                                 {t.hero.rolePrefix} <span className="text-primary font-mono">
                                     {typingText}
