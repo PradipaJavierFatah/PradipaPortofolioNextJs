@@ -109,7 +109,7 @@ export function HeroSection() {
                             className="flex flex-col sm:flex-row gap-3 w-full justify-center lg:justify-start max-w-md lg:max-w-none"
                         >
                             {/* Download CV */}
-                            <Button size="md" asChild className="h-10 px-6 text-sm sm:text-base bg-primary hover:bg-primary/90 rounded-full group">
+                            <Button size="sm" asChild className="px-5 text-sm sm:text-base bg-primary hover:bg-primary/90 rounded-full group">
                                 <Link href={t.links.cv} target="_blank" className="flex items-center gap-2">
                                     <Download className="h-4 w-4" />
                                     {t.hero.downloadCV}
@@ -117,7 +117,7 @@ export function HeroSection() {
                             </Button>
 
                             {/* View Projects */}
-                            <Button variant="outline" size="md" className="h-10 px-6 text-sm sm:text-base rounded-full border-primary/20 bg-background/50 hover:bg-primary/5 text-foreground backdrop-blur-sm group" asChild>
+                            <Button variant="outline" size="sm" className="px-5 text-sm sm:text-base rounded-full border-primary/20 bg-background/50 hover:bg-primary/5 text-foreground backdrop-blur-sm group" asChild>
                                 <Link href="/projects" className="flex items-center gap-2">
                                     {t.hero.viewProjects} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                                 </Link>
