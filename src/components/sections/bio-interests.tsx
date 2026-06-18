@@ -9,6 +9,7 @@ export function BioInterests() {
     return (
         <section className="container py-20 px-4">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
+
                 {/* Left: Bio Text */}
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
@@ -27,57 +28,115 @@ export function BioInterests() {
                     </p>
                 </motion.div>
 
-                {/* Right: Venn Diagram Visualization */}
-                <div className="relative flex items-center justify-center h-[400px]">
-                    <motion.div
-                        className="relative w-[300px] h-[300px]"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.7 }}
+                {/* Right: Venn Diagram */}
+                <motion.div
+                    className="flex items-center justify-center"
+                    initial={{ opacity: 0, scale: 0.88 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+                >
+                    {/*
+                     * Three-circle Venn diagram — SVG so circles overlap cleanly.
+                     *
+                     * Layout (viewBox 0 0 400 405):
+                     *   Technology : cx=200 cy=140 r=120  → label at (200, 76)
+                     *   Business   : cx=128 cy=270 r=120  → label at (90, 358)
+                     *   Product    : cx=272 cy=270 r=120  → label at (310, 358)
+                     *   INNOVATION badge centred at (200, 219) — inside triple-overlap zone
+                     */}
+                    <svg
+                        viewBox="0 0 400 405"
+                        className="w-full max-w-[420px]"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-label="Venn diagram: Technology, Business, Product — at the intersection: Innovation"
                     >
-                        {/* Circle 1: Technology (Top) */}
-                        <motion.div
-                            className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-48 rounded-full bg-emerald-500/30 border-2 border-emerald-500/50 backdrop-blur-sm flex items-start justify-center pt-8 z-10"
-                            animate={{ y: [0, -10, 0] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        >
-                            <span className="font-bold text-emerald-600 dark:text-emerald-300 transform -translate-y-2">{t.interests.diagram.tech}</span>
-                        </motion.div>
+                        {/* ── Circles ─────────────────────────────────── */}
 
-                        {/* Circle 2: Business (Bottom Left) */}
-                        <motion.div
-                            className="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-amber-500/30 border-2 border-amber-500/50 backdrop-blur-sm flex items-end justify-start pb-10 pl-8 z-10"
-                            animate={{ x: [0, -5, 0], y: [0, 5, 0] }}
-                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                        >
-                            <span className="font-bold text-amber-600 dark:text-amber-300 transform translate-y-2 -translate-x-2">{t.interests.diagram.biz}</span>
-                        </motion.div>
+                        {/* Technology — top, teal */}
+                        <circle
+                            cx="200" cy="140" r="120"
+                            fill="rgba(16,163,127,0.38)"
+                            stroke="rgba(16,163,127,0.82)"
+                            strokeWidth="2"
+                        />
 
-                        {/* Circle 3: Product (Bottom Right) */}
-                        <motion.div
-                            className="absolute bottom-0 right-0 w-48 h-48 rounded-full bg-red-500/30 border-2 border-red-500/50 backdrop-blur-sm flex items-end justify-end pb-10 pr-8 z-10"
-                            animate={{ x: [0, 5, 0], y: [0, 5, 0] }}
-                            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                        >
-                            <span className="font-bold text-red-600 dark:text-red-300 transform translate-y-2 translate-x-2">{t.interests.diagram.prod}</span>
-                        </motion.div>
+                        {/* Business — bottom-left, amber */}
+                        <circle
+                            cx="128" cy="270" r="120"
+                            fill="rgba(202,138,4,0.38)"
+                            stroke="rgba(202,138,4,0.82)"
+                            strokeWidth="2"
+                        />
 
-                        {/* Center Intersection: Innovation */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[40%] text-center z-20">
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: 0.8, type: "spring" }}
-                                className="bg-[#0c262d] text-primary px-6 py-2 rounded-full border border-primary/20"
-                            >
-                                <span className="font-extrabold uppercase tracking-wider text-sm">
-                                    {t.interests.diagram.innovation}
-                                </span>
-                            </motion.div>
-                        </div>
-                    </motion.div>
-                </div>
+                        {/* Product — bottom-right, crimson */}
+                        <circle
+                            cx="272" cy="270" r="120"
+                            fill="rgba(185,28,28,0.38)"
+                            stroke="rgba(185,28,28,0.82)"
+                            strokeWidth="2"
+                        />
+
+                        {/* ── Labels ───────────────────────────────────── */}
+
+                        {/* Technology — upper non-overlapping zone */}
+                        <text
+                            x="200" y="76"
+                            textAnchor="middle"
+                            fill="#6ee7b7"
+                            fontSize="15"
+                            fontWeight="700"
+                            fontFamily="Plus Jakarta Sans, sans-serif"
+                        >
+                            {t.interests.diagram.tech}
+                        </text>
+
+                        {/* Business — lower-left non-overlapping zone */}
+                        <text
+                            x="90" y="360"
+                            textAnchor="middle"
+                            fill="#fde047"
+                            fontSize="15"
+                            fontWeight="700"
+                            fontFamily="Plus Jakarta Sans, sans-serif"
+                        >
+                            {t.interests.diagram.biz}
+                        </text>
+
+                        {/* Product — lower-right non-overlapping zone */}
+                        <text
+                            x="310" y="360"
+                            textAnchor="middle"
+                            fill="#fca5a5"
+                            fontSize="15"
+                            fontWeight="700"
+                            fontFamily="Plus Jakarta Sans, sans-serif"
+                        >
+                            {t.interests.diagram.prod}
+                        </text>
+
+                        {/* ── INNOVATION badge — triple-overlap centroid ── */}
+                        <rect
+                            x="128" y="202"
+                            width="144" height="34"
+                            rx="17"
+                            fill="hsl(193,58%,8%)"
+                            stroke="rgba(175,238,7,0.35)"
+                            strokeWidth="1.5"
+                        />
+                        <text
+                            x="200" y="224"
+                            textAnchor="middle"
+                            fill="#afee07"
+                            fontSize="11.5"
+                            fontWeight="800"
+                            fontFamily="Plus Jakarta Sans, sans-serif"
+                            letterSpacing="2.5"
+                        >
+                            {t.interests.diagram.innovation.toUpperCase()}
+                        </text>
+                    </svg>
+                </motion.div>
             </div>
         </section>
     );
