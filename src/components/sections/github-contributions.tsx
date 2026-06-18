@@ -120,47 +120,35 @@ function formatContribDate(dateStr: string): string {
 }
 
 async function fetchTopLanguages(): Promise<LanguageStat[]> {
-    const reposRes = await fetch(
-        `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=pushed&type=owner`,
-        { cache: "no-store" }
+    // One API call only — use each repo's primary `language` field.
+    // Per-repo language endpoint requires N+1 calls and hits the 60 req/hr
+    // unauthenticated rate limit when there are many repos.
+    const res = await fetch(
+        `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=pushed&type=owner`
     );
-    if (!reposRes.ok) return [];
-    const repos: Array<{ name: string; fork: boolean; size: number }> = await reposRes.json();
+    if (!res.ok) return [];
 
-    // Only non-fork repos that have content
-    const eligible = repos.filter((r) => !r.fork && r.size > 0);
+    const repos: Array<{ fork: boolean; language: string | null; size: number }> =
+        await res.json();
 
-    // Parallel fetch — allSettled so one 403/404 doesn't abort the rest
-    const results = await Promise.allSettled(
-        eligible.map((repo) =>
-            fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${repo.name}/languages`, {
-                cache: "no-store",
-            }).then((r) => (r.ok ? (r.json() as Promise<Record<string, number>>) : {}))
-        )
-    );
-
-    // Aggregate bytes across all repos
-    const totals: Record<string, number> = {};
-    for (const result of results) {
-        if (result.status !== "fulfilled") continue;
-        for (const [lang, bytes] of Object.entries(result.value as Record<string, number>)) {
-            totals[lang] = (totals[lang] ?? 0) + bytes;
-        }
+    // Count repos per primary language (skip forks and empty repos)
+    const counts: Record<string, number> = {};
+    for (const repo of repos) {
+        if (repo.fork || repo.size === 0 || !repo.language) continue;
+        counts[repo.language] = (counts[repo.language] ?? 0) + 1;
     }
 
-    const allBytes = Object.values(totals).reduce((s, b) => s + b, 0);
-    if (allBytes === 0) return [];
+    if (Object.keys(counts).length === 0) return [];
 
-    // Top 5 by bytes, percentage from grand total so they're honest
-    const top5 = Object.entries(totals)
+    const top5 = Object.entries(counts)
         .sort(([, a], [, b]) => b - a)
         .slice(0, 5);
 
-    const top5Bytes = top5.reduce((s, [, b]) => s + b, 0);
+    const top5Total = top5.reduce((s, [, c]) => s + c, 0);
 
-    return top5.map(([name, bytes]) => ({
+    return top5.map(([name, count]) => ({
         name,
-        percentage: Math.round((bytes / top5Bytes) * 1000) / 10,
+        percentage: Math.round((count / top5Total) * 1000) / 10,
         color: LANG_COLORS[name] ?? "#8b8b8b",
     }));
 }
@@ -268,10 +256,10 @@ export function GitHubContributions() {
                                 <button
                                     key={year}
                                     onClick={() => setSelectedYear(year)}
-                                    className={`px-2 py-0.5 rounded text-xs font-medium transition-colors ${
+                                    className={`text-xs font-medium transition-colors ${
                                         selectedYear === year
-                                            ? "bg-primary text-primary-foreground"
-                                            : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                                            ? "text-primary underline underline-offset-2"
+                                            : "text-muted-foreground hover:text-foreground"
                                     }`}
                                 >
                                     {year}
