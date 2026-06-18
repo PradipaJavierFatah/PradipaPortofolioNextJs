@@ -53,7 +53,7 @@ const config: Config = {
                 sm: "calc(var(--radius) - 4px)",
             },
             fontFamily: {
-                sans: ["var(--font-inter)", "sans-serif"],
+                sans: ["var(--font-jakarta)", "sans-serif"],
             },
             animation: {
                 "accordion-down": "accordion-down 0.2s ease-out",
