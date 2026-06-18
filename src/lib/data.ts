@@ -3,7 +3,7 @@ export const SITE_CONFIG = {
     role: "Aspiring Software Engineer",
     description: "Computer Science Student | Frontend Specialist | Data Scientist in Training",
     socials: {
-        github: "https://github.com/pradipajavier",
+        github: "https://github.com/PradipaJavierFatah",
         linkedin: "https://linkedin.com/in/pradipajavier",
         email: "mailto:pradipa@example.com",
     },
