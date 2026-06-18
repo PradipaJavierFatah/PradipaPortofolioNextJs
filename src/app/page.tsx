@@ -13,7 +13,7 @@ import { GitHubContributions } from "@/components/sections/github-contributions"
 
 export default function Home() {
     return (
-        <main className="relative flex min-h-screen flex-col bg-background overflow-hidden">
+        <main className="relative flex min-h-screen flex-col bg-background">
             {/* GLOBAL SQUIGGLE PATTERN */}
             <div 
                 className="absolute inset-0 opacity-[0.07] pointer-events-none -z-10"
