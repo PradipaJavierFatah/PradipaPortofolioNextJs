@@ -107,11 +107,18 @@ function formatContribDate(dateStr: string): string {
     });
 }
 
+interface TooltipState {
+    x: number;
+    y: number;
+    text: string;
+}
+
 export function GitHubContributions() {
     const [contribData, setContribData] = useState<ContributionsData | null>(null);
     const [githubUser, setGithubUser] = useState<GitHubUser | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
+    const [tooltip, setTooltip] = useState<TooltipState | null>(null);
 
     useEffect(() => {
         (async () => {
@@ -276,12 +283,19 @@ export function GitHubContributions() {
                                                 {week.map((day, di) => (
                                                     <div
                                                         key={di}
-                                                        className={`w-full aspect-square rounded-[2px] transition-transform duration-100 hover:scale-110 ${LEVEL_CLASSES[day.level]}`}
-                                                        title={
-                                                            day.date
-                                                                ? `${day.count} contribution${day.count !== 1 ? "s" : ""} on ${formatContribDate(day.date)}`
-                                                                : ""
-                                                        }
+                                                        className={`w-full aspect-square rounded-[2px] transition-transform duration-100 hover:scale-110 cursor-default ${LEVEL_CLASSES[day.level]}`}
+                                                        onMouseEnter={(e) => {
+                                                            if (!day.date) return;
+                                                            const text = day.count === 0
+                                                                ? `No contributions on ${formatContribDate(day.date)}`
+                                                                : `${day.count} contribution${day.count !== 1 ? "s" : ""} on ${formatContribDate(day.date)}`;
+                                                            setTooltip({ x: e.clientX, y: e.clientY, text });
+                                                        }}
+                                                        onMouseMove={(e) => {
+                                                            if (!day.date) return;
+                                                            setTooltip((prev) => prev ? { ...prev, x: e.clientX, y: e.clientY } : prev);
+                                                        }}
+                                                        onMouseLeave={() => setTooltip(null)}
                                                     />
                                                 ))}
                                             </div>
@@ -306,6 +320,22 @@ export function GitHubContributions() {
                     )}
                 </div>
             </motion.div>
+
+            {/* Custom tooltip — fixed to viewport, follows mouse */}
+            {tooltip && (
+                <div
+                    className="fixed z-50 pointer-events-none px-2.5 py-1.5 rounded-md bg-foreground text-background text-xs font-medium shadow-lg whitespace-nowrap"
+                    style={{
+                        left: tooltip.x,
+                        top: tooltip.y - 36,
+                        transform: "translateX(-50%)",
+                    }}
+                >
+                    {tooltip.text}
+                    {/* Arrow */}
+                    <div className="absolute left-1/2 -translate-x-1/2 -bottom-1 w-2 h-2 bg-foreground rotate-45" />
+                </div>
+            )}
         </section>
     );
 }
