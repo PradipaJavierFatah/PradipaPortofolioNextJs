@@ -66,6 +66,7 @@ export function FeaturedProjects({ variant = "grid", showViewAll = false }: Feat
                                         index={index}
                                         t={t}
                                         disableAnimation
+                                        eagerLoad
                                         onConfidentialClick={() => setShowConfidential(true)}
                                     />
                                 </div>
@@ -177,7 +178,7 @@ export function FeaturedProjects({ variant = "grid", showViewAll = false }: Feat
 }
 
 // Reusable Project Card Component
-function ProjectCard({ project, index, t, disableAnimation = false, onConfidentialClick }: { project: any, index: number, t: any, disableAnimation?: boolean, onConfidentialClick?: () => void }) {
+function ProjectCard({ project, index, t, disableAnimation = false, eagerLoad = false, onConfidentialClick }: { project: any, index: number, t: any, disableAnimation?: boolean, eagerLoad?: boolean, onConfidentialClick?: () => void }) {
     const CardContent = (
         <Card className="h-full flex flex-col overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1 border-primary/20 bg-card/50 backdrop-blur-sm">
             <div className="relative aspect-video w-full overflow-hidden bg-muted group">
@@ -186,6 +187,8 @@ function ProjectCard({ project, index, t, disableAnimation = false, onConfidenti
                         src={project.image}
                         alt={project.title}
                         fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+                        loading={eagerLoad ? "eager" : "lazy"}
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                 ) : (

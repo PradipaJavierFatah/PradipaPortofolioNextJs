@@ -92,6 +92,10 @@
   }
 }
 
+/* Hide scrollbar while keeping scroll functionality */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
 /* Text Selection Highlight - Global Scope with !important for iOS override */
 ::selection {
   background-color: #afee07 !important; /* User Lime Green */

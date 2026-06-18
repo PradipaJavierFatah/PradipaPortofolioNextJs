@@ -134,7 +134,7 @@ export function SkillsSection() {
                 transition={{ duration: 0.5, delay: 0.1 }}
             >
                 {/* Folder tabs */}
-                <div className="flex gap-1 overflow-x-auto">
+                <div className="flex gap-1 overflow-x-auto no-scrollbar">
                     {tabs.map((tab) => {
                         const active = activeTab === tab.id;
                         return (
