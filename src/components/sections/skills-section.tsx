@@ -19,7 +19,7 @@ const ICONS: Record<string, IconDef> = {
     /* Tech & tools — real brand logos via Iconify logos set */
     "Python":           { kind: "logo", id: "logos:python" },
     "R":                { kind: "logo", id: "logos:r-lang" },
-    "Excel":            { kind: "logo", id: "logos:microsoft-excel" },
+    "Excel":            { kind: "logo", id: "vscode-icons:file-type-excel" },
     "Looker Studio":    { kind: "logo", id: "logos:google-analytics" },
     "Tableau":          { kind: "logo", id: "logos:tableau-icon" },
     "SQL":              { kind: "logo", id: "logos:postgresql" },
@@ -39,7 +39,7 @@ const ICONS: Record<string, IconDef> = {
     "Laravel":          { kind: "logo", id: "logos:laravel" },
     "Jira":             { kind: "logo", id: "logos:jira" },
     "Figma":            { kind: "logo", id: "logos:figma" },
-    "PowerPoint":       { kind: "logo", id: "logos:microsoft-powerpoint" },
+    "PowerPoint":       { kind: "logo", id: "vscode-icons:file-type-powerpoint" },
     "Canva":            { kind: "logo", id: "logos:canva" },
     /* Soft skills — abstract lucide icons with brand colours */
     "Communication":    { kind: "lucide", Component: MessageSquare, color: "#0F766E" },
@@ -178,15 +178,15 @@ export function SkillsSection() {
                                         variants={outerVariants}
                                         whileHover="hover"
                                     >
-                                        {/* Icon tile */}
+                                        {/* Icon tile — always white bg, logo/icon inside carries the colour */}
                                         <motion.div
                                             className="w-full aspect-square rounded-[22%] flex items-center justify-center"
-                                            style={{ backgroundColor: ld ? ld.color : "#ffffff" }}
+                                            style={{ backgroundColor: "#ffffff" }}
                                             variants={ld ? {
-                                                rest:  { boxShadow: `0 4px 14px ${ld.color}44` },
-                                                hover: { boxShadow: `0 8px 28px ${ld.color}99` },
+                                                rest:  { boxShadow: `0 2px 10px ${ld.color}33` },
+                                                hover: { boxShadow: `0 8px 26px ${ld.color}66` },
                                             } : {
-                                                rest:  { boxShadow: "0 2px 10px rgba(0,0,0,0.13)" },
+                                                rest:  { boxShadow: "0 2px 10px rgba(0,0,0,0.12)" },
                                                 hover: { boxShadow: "0 7px 24px rgba(0,0,0,0.22)" },
                                             }}
                                         >
@@ -200,7 +200,10 @@ export function SkillsSection() {
                                                         style={{ width: "100%", height: "100%" }}
                                                     />
                                                 ) : (
-                                                    <FallbackIcon className="w-full h-full text-white" />
+                                                    <FallbackIcon
+                                                        className="w-full h-full"
+                                                        style={{ color: ld?.color ?? "#6b7280" }}
+                                                    />
                                                 )}
                                             </motion.span>
                                         </motion.div>
