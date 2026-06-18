@@ -167,66 +167,69 @@ export function GitHubContributions() {
                             <div className="h-2 w-28 bg-muted rounded mb-3" />
                             <div className="flex gap-[3px]">
                                 {Array.from({ length: 53 }).map((_, wi) => (
-                                    <div key={wi} className="flex flex-col gap-[3px]">
+                                    <div key={wi} className="flex-1 flex flex-col gap-[3px]">
                                         {Array.from({ length: 7 }).map((_, di) => (
-                                            <div key={di} className="w-[10px] h-[10px] rounded-[2px] bg-muted" />
+                                            <div key={di} className="w-full aspect-square rounded-[2px] bg-muted" />
                                         ))}
                                     </div>
                                 ))}
                             </div>
                         </div>
                     ) : weeks.length > 0 ? (
+                        /* scroll only on mobile; stretches full-width on md+ */
                         <div className="overflow-x-auto">
-                            {/* Month labels */}
-                            <div className="flex mb-[5px] pl-[28px] min-w-max">
-                                {weeks.map((_, wi) => {
-                                    const found = monthLabels.find((m) => m.col === wi);
-                                    return (
-                                        <div key={wi} className="w-[13px] flex-shrink-0 text-[9px] text-muted-foreground leading-none">
-                                            {found?.label ?? ""}
-                                        </div>
-                                    );
-                                })}
-                            </div>
-
-                            {/* Grid */}
-                            <div className="flex min-w-max">
-                                {/* Day labels */}
-                                <div className="flex flex-col gap-[3px] pr-1 pt-px">
-                                    {["", "Mon", "", "Wed", "", "Fri", ""].map((label, i) => (
-                                        <div key={i} className="h-[10px] w-6 text-[9px] text-muted-foreground flex items-center">
-                                            {label}
-                                        </div>
-                                    ))}
+                            <div className="flex flex-col min-w-[560px]">
+                                {/* Month labels aligned with week columns */}
+                                <div className="flex mb-[4px] pl-[26px]">
+                                    {weeks.map((_, wi) => {
+                                        const found = monthLabels.find((m) => m.col === wi);
+                                        return (
+                                            <div key={wi} className="flex-1 text-[9px] text-muted-foreground leading-none min-w-0 truncate">
+                                                {found?.label ?? ""}
+                                            </div>
+                                        );
+                                    })}
                                 </div>
 
-                                {/* Week columns */}
-                                <div className="flex gap-[3px]">
-                                    {weeks.map((week, wi) => (
-                                        <div key={wi} className="flex flex-col gap-[3px]">
-                                            {week.map((day, di) => (
-                                                <div
-                                                    key={di}
-                                                    className={`w-[10px] h-[10px] rounded-[2px] transition-transform duration-100 hover:scale-125 ${LEVEL_CLASSES[day.level]}`}
-                                                    title={
-                                                        day.date
-                                                            ? `${day.count} contribution${day.count !== 1 ? "s" : ""} on ${formatContribDate(day.date)}`
-                                                            : ""
-                                                    }
-                                                />
-                                            ))}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
+                                {/* Grid: day labels + week columns */}
+                                <div className="flex">
+                                    {/* Day labels */}
+                                    <div className="flex flex-col gap-[3px] pr-1 pt-px w-[26px] flex-shrink-0">
+                                        {["", "Mon", "", "Wed", "", "Fri", ""].map((label, i) => (
+                                            <div key={i} className="flex-1 min-h-[10px] text-[9px] text-muted-foreground flex items-center">
+                                                {label}
+                                            </div>
+                                        ))}
+                                    </div>
 
-                            {/* Legend */}
-                            <div className="flex items-center justify-end gap-1.5 mt-3 min-w-max">
-                                <span className="text-[9px] text-muted-foreground">Less</span>
-                                {([0, 1, 2, 3, 4] as const).map((level) => (
-                                    <div key={level} className={`w-[10px] h-[10px] rounded-[2px] ${LEVEL_CLASSES[level]}`} />
-                                ))}
-                                <span className="text-[9px] text-muted-foreground">More</span>
+                                    {/* Week columns — flex-1 fills remaining width */}
+                                    <div className="flex flex-1 gap-[3px]">
+                                        {weeks.map((week, wi) => (
+                                            <div key={wi} className="flex-1 flex flex-col gap-[3px]">
+                                                {week.map((day, di) => (
+                                                    <div
+                                                        key={di}
+                                                        className={`w-full aspect-square rounded-[2px] transition-transform duration-100 hover:scale-110 ${LEVEL_CLASSES[day.level]}`}
+                                                        title={
+                                                            day.date
+                                                                ? `${day.count} contribution${day.count !== 1 ? "s" : ""} on ${formatContribDate(day.date)}`
+                                                                : ""
+                                                        }
+                                                    />
+                                                ))}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Legend */}
+                                <div className="flex items-center justify-end gap-1.5 mt-2.5">
+                                    <span className="text-[9px] text-muted-foreground">Less</span>
+                                    {([0, 1, 2, 3, 4] as const).map((level) => (
+                                        <div key={level} className={`w-[10px] h-[10px] rounded-[2px] flex-shrink-0 ${LEVEL_CLASSES[level]}`} />
+                                    ))}
+                                    <span className="text-[9px] text-muted-foreground">More</span>
+                                </div>
                             </div>
                         </div>
                     ) : (
