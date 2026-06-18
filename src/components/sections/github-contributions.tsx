@@ -120,37 +120,9 @@ function formatContribDate(dateStr: string): string {
 }
 
 async function fetchTopLanguages(): Promise<LanguageStat[]> {
-    // One API call only — use each repo's primary `language` field.
-    // Per-repo language endpoint requires N+1 calls and hits the 60 req/hr
-    // unauthenticated rate limit when there are many repos.
-    const res = await fetch(
-        `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=pushed&type=owner`
-    );
+    const res = await fetch("/api/github-languages");
     if (!res.ok) return [];
-
-    const repos: Array<{ fork: boolean; language: string | null; size: number }> =
-        await res.json();
-
-    // Count repos per primary language (skip forks and empty repos)
-    const counts: Record<string, number> = {};
-    for (const repo of repos) {
-        if (repo.fork || repo.size === 0 || !repo.language) continue;
-        counts[repo.language] = (counts[repo.language] ?? 0) + 1;
-    }
-
-    if (Object.keys(counts).length === 0) return [];
-
-    const top5 = Object.entries(counts)
-        .sort(([, a], [, b]) => b - a)
-        .slice(0, 5);
-
-    const top5Total = top5.reduce((s, [, c]) => s + c, 0);
-
-    return top5.map(([name, count]) => ({
-        name,
-        percentage: Math.round((count / top5Total) * 1000) / 10,
-        color: LANG_COLORS[name] ?? "#8b8b8b",
-    }));
+    return res.json();
 }
 
 export function GitHubContributions() {
