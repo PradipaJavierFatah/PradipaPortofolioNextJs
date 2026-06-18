@@ -81,36 +81,23 @@ function buildWeekGrid(contributions: Contribution[], year: number, isCurrentYea
     const map = new Map(contributions.map((c) => [c.date, c]));
     const weeks: Contribution[][] = [];
 
-    if (isCurrentYear) {
-        const now = new Date();
-        const start = new Date(now);
-        start.setDate(now.getDate() - now.getDay() - 52 * 7);
-        const cursor = new Date(start);
-        for (let w = 0; w < 53; w++) {
-            const days: Contribution[] = [];
-            for (let d = 0; d < 7; d++) {
-                const s = formatDate(cursor);
-                days.push(map.get(s) ?? { date: s, count: 0, level: 0 });
-                cursor.setDate(cursor.getDate() + 1);
-            }
-            weeks.push(days);
+    // Always Jan 1 → Dec 31, or Jan 1 → today for the current year
+    const jan1  = new Date(year, 0, 1);
+    const end   = isCurrentYear ? new Date() : new Date(year, 11, 31);
+
+    // Rewind to the Sunday on or before Jan 1
+    const cursor = new Date(jan1);
+    cursor.setDate(jan1.getDate() - jan1.getDay());
+
+    while (cursor <= end) {
+        const days: Contribution[] = [];
+        for (let d = 0; d < 7; d++) {
+            const s      = formatDate(cursor);
+            const inYear = cursor.getFullYear() === year;
+            days.push(inYear ? (map.get(s) ?? { date: s, count: 0, level: 0 }) : { date: "", count: 0, level: 0 });
+            cursor.setDate(cursor.getDate() + 1);
         }
-    } else {
-        const jan1  = new Date(year, 0, 1);
-        const dec31 = new Date(year, 11, 31);
-        const start = new Date(jan1);
-        start.setDate(jan1.getDate() - jan1.getDay());
-        const cursor = new Date(start);
-        while (cursor <= dec31) {
-            const days: Contribution[] = [];
-            for (let d = 0; d < 7; d++) {
-                const s = formatDate(cursor);
-                const inYear = cursor.getFullYear() === year;
-                days.push(inYear ? (map.get(s) ?? { date: s, count: 0, level: 0 }) : { date: "", count: 0, level: 0 });
-                cursor.setDate(cursor.getDate() + 1);
-            }
-            weeks.push(days);
-        }
+        weeks.push(days);
     }
     return weeks;
 }
@@ -388,9 +375,8 @@ export function GitHubContributions() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="rounded-xl border border-border bg-card/60 p-4 sm:p-5"
             >
-                <div className="flex items-center justify-between mb-4 pb-3 border-b border-border">
+                <div className="mb-4 pb-3 border-b border-border">
                     <span className="font-semibold text-base tracking-tight">Top Languages</span>
-                    <span className="text-xs text-muted-foreground">by bytes · non-fork repos</span>
                 </div>
 
                 {isLoadingLangs ? (
