@@ -77,13 +77,14 @@ function formatDate(d: Date): string {
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }
 
-function buildWeekGrid(contributions: Contribution[], year: number, isCurrentYear: boolean): Contribution[][] {
+function buildWeekGrid(contributions: Contribution[], year: number): Contribution[][] {
     const map = new Map(contributions.map((c) => [c.date, c]));
     const weeks: Contribution[][] = [];
+    const today = formatDate(new Date());
 
-    // Always Jan 1 → Dec 31, or Jan 1 → today for the current year
+    // Always full Jan 1 → Dec 31; future cells render as empty (level 0)
     const jan1  = new Date(year, 0, 1);
-    const end   = isCurrentYear ? new Date() : new Date(year, 11, 31);
+    const end   = new Date(year, 11, 31);
 
     // Rewind to the Sunday on or before Jan 1
     const cursor = new Date(jan1);
@@ -94,7 +95,9 @@ function buildWeekGrid(contributions: Contribution[], year: number, isCurrentYea
         for (let d = 0; d < 7; d++) {
             const s      = formatDate(cursor);
             const inYear = cursor.getFullYear() === year;
-            days.push(inYear ? (map.get(s) ?? { date: s, count: 0, level: 0 }) : { date: "", count: 0, level: 0 });
+            // Future dates: render as empty placeholder (no date = no tooltip)
+            const isFuture = s > today;
+            days.push(inYear && !isFuture ? (map.get(s) ?? { date: s, count: 0, level: 0 }) : { date: "", count: 0, level: 0 });
             cursor.setDate(cursor.getDate() + 1);
         }
         weeks.push(days);
@@ -158,13 +161,11 @@ export function GitHubContributions() {
         fetchTopLanguages().then(setLanguages).finally(() => setIsLoadingLangs(false));
     }, []);
 
-    const currentYear    = new Date().getFullYear();
-    const isCurrentYear  = selectedYear === currentYear;
     const availableYears = contribData
         ? Object.keys(contribData.total).map(Number).sort((a, b) => b - a)
         : [];
     const totalForYear = contribData?.total?.[selectedYear] ?? 0;
-    const weeks        = contribData ? buildWeekGrid(contribData.contributions, selectedYear, isCurrentYear) : [];
+    const weeks        = contribData ? buildWeekGrid(contribData.contributions, selectedYear) : [];
     const monthLabels  = weeks.length > 0 ? getMonthLabels(weeks) : [];
 
     return (
@@ -223,15 +224,15 @@ export function GitHubContributions() {
                     ) : <div />}
 
                     {!isLoading && availableYears.length > 1 && (
-                        <div className="flex flex-wrap items-center gap-1">
+                        <div className="flex items-center bg-muted/60 rounded-lg p-0.5 gap-0.5">
                             {availableYears.map((year) => (
                                 <button
                                     key={year}
                                     onClick={() => setSelectedYear(year)}
-                                    className={`text-xs font-medium transition-colors ${
+                                    className={`px-2.5 py-1 rounded-md text-xs font-medium transition-all duration-150 ${
                                         selectedYear === year
-                                            ? "text-primary underline underline-offset-2"
-                                            : "text-muted-foreground hover:text-foreground"
+                                            ? "bg-background text-foreground shadow-sm"
+                                            : "text-muted-foreground hover:text-foreground hover:bg-background/50"
                                     }`}
                                 >
                                     {year}
