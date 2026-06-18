@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Icon } from "@iconify/react";
 import {
     Code2, MessageSquare, BrainCircuit, Users,
-    Clock, RefreshCw, Flag, Folder, FolderOpen
+    Clock, RefreshCw, Flag, Folder, FolderOpen, Palette
 } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 import type { Variants } from "framer-motion";
@@ -40,7 +40,8 @@ const ICONS: Record<string, IconDef> = {
     "Jira":             { kind: "logo", id: "logos:jira" },
     "Figma":            { kind: "logo", id: "logos:figma" },
     "PowerPoint":       { kind: "logo", id: "vscode-icons:file-type-powerpoint" },
-    "Canva":            { kind: "logo", id: "logos:canva" },
+    /* Design tools — lucide icons with brand colours */
+    "Canva":            { kind: "lucide", Component: Palette, color: "#00C4CC" },
     /* Soft skills — abstract lucide icons with brand colours */
     "Communication":    { kind: "lucide", Component: MessageSquare, color: "#0F766E" },
     "Komunikasi":       { kind: "lucide", Component: MessageSquare, color: "#0F766E" },
