@@ -9,6 +9,7 @@ import { FeaturedProjects } from "@/components/sections/featured-projects";
 import { ContactSection } from "@/components/sections/contact-section";
 import { SocialConnect } from "@/components/sections/social-connect";
 import { BioInterests } from "@/components/sections/bio-interests";
+import { GitHubContributions } from "@/components/sections/github-contributions";
 
 export default function Home() {
     return (
@@ -23,6 +24,7 @@ export default function Home() {
             />
 
             <HeroSection />
+            <GitHubContributions />
             <BioInterests />
             <ExperienceSection />
             <SkillsSection />
