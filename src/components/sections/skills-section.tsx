@@ -2,15 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-    SiPython, SiCplusplus, SiTypescript, SiJavascript, SiMysql,
-    SiReact, SiNextdotjs, SiTailwindcss, SiFigma,
-    SiNodedotjs, SiPostgresql, SiPhp, SiHtml5, SiCss3, SiJira, SiCanva,
-    SiTableau, SiGoogleanalytics, SiLaravel
-} from "react-icons/si";
-import { FaJava, FaRProject } from "react-icons/fa";
-import { RiFileExcel2Fill } from "react-icons/ri";
-import { BiSolidSlideshow } from "react-icons/bi";
+import { Icon } from "@iconify/react";
 import {
     Code2, MessageSquare, BrainCircuit, Users,
     Clock, RefreshCw, Flag, Folder, FolderOpen
@@ -18,62 +10,50 @@ import {
 import { useLanguage } from "@/lib/language-context";
 import type { Variants } from "framer-motion";
 
-/* ── Brand colours per skill ───────────────────────────────── */
-const SKILL_BG: Record<string, string> = {
-    "Python":           "#3572A5",
-    "R":                "#198CE7",
-    "JavaScript":       "#F0DB4F",
-    "TypeScript":       "#3178C6",
-    "React":            "#23272f",
-    "Next.js":          "#111111",
-    "Node.js":          "#215732",
-    "HTML":             "#E34F26",
-    "CSS":              "#1572B6",
-    "PHP":              "#4F5D95",
-    "Java":             "#007396",
-    "C":                "#5C6BC0",
-    "MySQL":            "#00618A",
-    "SQL":              "#336791",
-    "PostgreSQL":       "#336791",
-    "Laravel":          "#FF2D20",
-    "Tailwind CSS":     "#0ea5e9",
-    "Figma":            "#1E1E1E",
-    "Jira":             "#0052CC",
-    "Canva":            "#00C4CC",
-    "Excel":            "#1D6F42",
-    "Tableau":          "#E97627",
-    "PowerPoint":       "#B7472A",
-    "Looker Studio":    "#4285F4",
-    /* Soft skills */
-    "Communication":    "#0F766E", "Komunikasi":       "#0F766E",
-    "Problem Solving":  "#7C3AED", "Pemecahan Masalah":"#7C3AED",
-    "Teamwork":         "#0369A1", "Kerjasama Tim":    "#0369A1",
-    "Time Management":  "#B45309", "Manajemen Waktu":  "#B45309",
-    "Adaptability":     "#0F766E", "Adaptabilitas":    "#0F766E",
-    "Leadership":       "#BE123C", "Kepemimpinan":     "#BE123C",
-};
+/* ── Icon definitions ────────────────────────────────────────── */
+type LogoDef   = { kind: "logo";   id: string };
+type LucideDef = { kind: "lucide"; Component: React.ElementType; color: string };
+type IconDef   = LogoDef | LucideDef;
 
-/* Skills whose background is light → use dark icon text */
-const DARK_ICON = new Set(["JavaScript", "Excel", "Tableau"]);
-
-/* ── Icon map ──────────────────────────────────────────────── */
-const ICON_MAP: Record<string, React.ElementType> = {
-    "Python": SiPython, "R": FaRProject,
-    "Excel": RiFileExcel2Fill, "Looker Studio": SiGoogleanalytics,
-    "Tableau": SiTableau, "SQL": SiPostgresql, "MySQL": SiMysql,
-    "C": SiCplusplus, "Java": FaJava, "PHP": SiPhp,
-    "HTML": SiHtml5, "CSS": SiCss3,
-    "JavaScript": SiJavascript, "TypeScript": SiTypescript,
-    "Node.js": SiNodedotjs, "Tailwind CSS": SiTailwindcss,
-    "React": SiReact, "Next.js": SiNextdotjs, "Laravel": SiLaravel,
-    "Jira": SiJira, "Figma": SiFigma,
-    "PowerPoint": BiSolidSlideshow, "Canva": SiCanva,
-    "Communication": MessageSquare, "Komunikasi": MessageSquare,
-    "Problem Solving": BrainCircuit, "Pemecahan Masalah": BrainCircuit,
-    "Teamwork": Users, "Kerjasama Tim": Users,
-    "Time Management": Clock, "Manajemen Waktu": Clock,
-    "Adaptability": RefreshCw, "Adaptabilitas": RefreshCw,
-    "Leadership": Flag, "Kepemimpinan": Flag,
+const ICONS: Record<string, IconDef> = {
+    /* Tech & tools — real brand logos via Iconify logos set */
+    "Python":           { kind: "logo", id: "logos:python" },
+    "R":                { kind: "logo", id: "logos:r-lang" },
+    "Excel":            { kind: "logo", id: "logos:microsoft-excel" },
+    "Looker Studio":    { kind: "logo", id: "logos:google-analytics" },
+    "Tableau":          { kind: "logo", id: "logos:tableau-icon" },
+    "SQL":              { kind: "logo", id: "logos:postgresql" },
+    "MySQL":            { kind: "logo", id: "logos:mysql-icon" },
+    "PostgreSQL":       { kind: "logo", id: "logos:postgresql" },
+    "C":                { kind: "logo", id: "logos:c" },
+    "Java":             { kind: "logo", id: "logos:java" },
+    "PHP":              { kind: "logo", id: "logos:php" },
+    "HTML":             { kind: "logo", id: "logos:html-5" },
+    "CSS":              { kind: "logo", id: "logos:css-3" },
+    "JavaScript":       { kind: "logo", id: "logos:javascript" },
+    "TypeScript":       { kind: "logo", id: "logos:typescript-icon" },
+    "Node.js":          { kind: "logo", id: "logos:nodejs-icon" },
+    "Tailwind CSS":     { kind: "logo", id: "logos:tailwindcss-icon" },
+    "React":            { kind: "logo", id: "logos:react" },
+    "Next.js":          { kind: "logo", id: "logos:nextjs-icon" },
+    "Laravel":          { kind: "logo", id: "logos:laravel" },
+    "Jira":             { kind: "logo", id: "logos:jira" },
+    "Figma":            { kind: "logo", id: "logos:figma" },
+    "PowerPoint":       { kind: "logo", id: "logos:microsoft-powerpoint" },
+    "Canva":            { kind: "logo", id: "logos:canva" },
+    /* Soft skills — abstract lucide icons with brand colours */
+    "Communication":    { kind: "lucide", Component: MessageSquare, color: "#0F766E" },
+    "Komunikasi":       { kind: "lucide", Component: MessageSquare, color: "#0F766E" },
+    "Problem Solving":  { kind: "lucide", Component: BrainCircuit,  color: "#7C3AED" },
+    "Pemecahan Masalah":{ kind: "lucide", Component: BrainCircuit,  color: "#7C3AED" },
+    "Teamwork":         { kind: "lucide", Component: Users,          color: "#0369A1" },
+    "Kerjasama Tim":    { kind: "lucide", Component: Users,          color: "#0369A1" },
+    "Time Management":  { kind: "lucide", Component: Clock,          color: "#B45309" },
+    "Manajemen Waktu":  { kind: "lucide", Component: Clock,          color: "#B45309" },
+    "Adaptability":     { kind: "lucide", Component: RefreshCw,      color: "#0F766E" },
+    "Adaptabilitas":    { kind: "lucide", Component: RefreshCw,      color: "#0F766E" },
+    "Leadership":       { kind: "lucide", Component: Flag,           color: "#BE123C" },
+    "Kepemimpinan":     { kind: "lucide", Component: Flag,           color: "#BE123C" },
 };
 
 /* ── Hover variants: outer lifts, inner jiggles ─────────────── */
@@ -83,10 +63,7 @@ const outerVariants: Variants = {
 };
 const innerVariants: Variants = {
     rest:  { rotate: 0 },
-    hover: {
-        rotate: [-4, 4, -3, 3, 0],
-        transition: { duration: 0.45 },
-    },
+    hover: { rotate: [-4, 4, -3, 3, 0], transition: { duration: 0.45 } },
 };
 
 export function SkillsSection() {
@@ -165,7 +142,7 @@ export function SkillsSection() {
                 {/* Folder body */}
                 <div className="border border-border bg-card rounded-b-2xl rounded-tr-2xl p-5 sm:p-8">
 
-                    {/* dotted grid paper texture */}
+                    {/* dotted rule */}
                     <div
                         className="w-full h-px mb-6 opacity-40"
                         style={{ background: "repeating-linear-gradient(90deg, hsl(var(--border)) 0, hsl(var(--border)) 4px, transparent 4px, transparent 16px)" }}
@@ -181,9 +158,10 @@ export function SkillsSection() {
                             className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 gap-x-4 gap-y-6"
                         >
                             {currentSkills.map((skill, i) => {
-                                const Icon = ICON_MAP[skill] ?? Code2;
-                                const bg  = SKILL_BG[skill] ?? "#374151";
-                                const darkIcon = DARK_ICON.has(skill);
+                                const def = ICONS[skill];
+                                const isLucide = def?.kind === "lucide";
+                                const ld = isLucide ? (def as LucideDef) : null;
+                                const FallbackIcon = ld?.Component ?? Code2;
 
                                 return (
                                     <motion.div
@@ -202,24 +180,28 @@ export function SkillsSection() {
                                     >
                                         {/* Icon tile */}
                                         <motion.div
-                                            className="w-full aspect-square rounded-[22%] flex items-center justify-center shadow-lg"
-                                            style={{
-                                                backgroundColor: bg,
-                                                /* coloured glow on hover via CSS var trick */
-                                            }}
-                                            variants={{
-                                                rest:  { boxShadow: `0 4px 14px ${bg}33` },
-                                                hover: { boxShadow: `0 8px 28px ${bg}88` },
+                                            className="w-full aspect-square rounded-[22%] flex items-center justify-center"
+                                            style={{ backgroundColor: ld ? ld.color : "#ffffff" }}
+                                            variants={ld ? {
+                                                rest:  { boxShadow: `0 4px 14px ${ld.color}44` },
+                                                hover: { boxShadow: `0 8px 28px ${ld.color}99` },
+                                            } : {
+                                                rest:  { boxShadow: "0 2px 10px rgba(0,0,0,0.13)" },
+                                                hover: { boxShadow: "0 7px 24px rgba(0,0,0,0.22)" },
                                             }}
                                         >
                                             <motion.span
-                                                className={[
-                                                    "text-[28px] leading-none",
-                                                    darkIcon ? "text-gray-800" : "text-white",
-                                                ].join(" ")}
+                                                className="flex items-center justify-center w-[60%] h-[60%]"
                                                 variants={innerVariants}
                                             >
-                                                <Icon />
+                                                {def?.kind === "logo" ? (
+                                                    <Icon
+                                                        icon={(def as LogoDef).id}
+                                                        style={{ width: "100%", height: "100%" }}
+                                                    />
+                                                ) : (
+                                                    <FallbackIcon className="w-full h-full text-white" />
+                                                )}
                                             </motion.span>
                                         </motion.div>
 
