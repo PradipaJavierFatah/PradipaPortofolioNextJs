@@ -5,15 +5,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Icon } from "@iconify/react";
 import {
     Code2, MessageSquare, BrainCircuit, Users,
-    Clock, RefreshCw, Flag, Folder, FolderOpen, Palette
+    Clock, RefreshCw, Flag, Folder, FolderOpen
 } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 import type { Variants } from "framer-motion";
 
 /* ── Icon definitions ────────────────────────────────────────── */
-type LogoDef   = { kind: "logo";   id: string };
-type LucideDef = { kind: "lucide"; Component: React.ElementType; color: string };
-type IconDef   = LogoDef | LucideDef;
+type LogoDef        = { kind: "logo";         id: string };
+type ColoredIconDef = { kind: "icon-colored"; id: string; color: string };
+type LucideDef      = { kind: "lucide";       Component: React.ElementType; color: string };
+type IconDef        = LogoDef | ColoredIconDef | LucideDef;
 
 const ICONS: Record<string, IconDef> = {
     /* Tech & tools — real brand logos via Iconify logos set */
@@ -40,8 +41,8 @@ const ICONS: Record<string, IconDef> = {
     "Jira":             { kind: "logo", id: "logos:jira" },
     "Figma":            { kind: "logo", id: "logos:figma" },
     "PowerPoint":       { kind: "logo", id: "vscode-icons:file-type-powerpoint" },
-    /* Design tools — lucide icons with brand colours */
-    "Canva":            { kind: "lucide", Component: Palette, color: "#00C4CC" },
+    /* Design tools */
+    "Canva":            { kind: "icon-colored", id: "simple-icons:canva", color: "#00C4CC" },
     /* Soft skills — abstract lucide icons with brand colours */
     "Communication":    { kind: "lucide", Component: MessageSquare, color: "#0F766E" },
     "Komunikasi":       { kind: "lucide", Component: MessageSquare, color: "#0F766E" },
@@ -161,7 +162,10 @@ export function SkillsSection() {
                             {currentSkills.map((skill, i) => {
                                 const def = ICONS[skill];
                                 const isLucide = def?.kind === "lucide";
+                                const isColoredIcon = def?.kind === "icon-colored";
                                 const ld = isLucide ? (def as LucideDef) : null;
+                                const ci = isColoredIcon ? (def as ColoredIconDef) : null;
+                                const accentColor = ld?.color ?? ci?.color;
                                 const FallbackIcon = ld?.Component ?? Code2;
 
                                 return (
@@ -179,13 +183,13 @@ export function SkillsSection() {
                                         variants={outerVariants}
                                         whileHover="hover"
                                     >
-                                        {/* Icon tile — always white bg, logo/icon inside carries the colour */}
+                                        {/* Icon tile — always white bg, logo/icon carries the colour */}
                                         <motion.div
                                             className="w-full aspect-square rounded-[22%] flex items-center justify-center"
                                             style={{ backgroundColor: "#ffffff" }}
-                                            variants={ld ? {
-                                                rest:  { boxShadow: `0 2px 10px ${ld.color}33` },
-                                                hover: { boxShadow: `0 8px 26px ${ld.color}66` },
+                                            variants={accentColor ? {
+                                                rest:  { boxShadow: `0 2px 10px ${accentColor}33` },
+                                                hover: { boxShadow: `0 8px 26px ${accentColor}66` },
                                             } : {
                                                 rest:  { boxShadow: "0 2px 10px rgba(0,0,0,0.12)" },
                                                 hover: { boxShadow: "0 7px 24px rgba(0,0,0,0.22)" },
@@ -199,6 +203,11 @@ export function SkillsSection() {
                                                     <Icon
                                                         icon={(def as LogoDef).id}
                                                         style={{ width: "100%", height: "100%" }}
+                                                    />
+                                                ) : isColoredIcon && ci ? (
+                                                    <Icon
+                                                        icon={ci.id}
+                                                        style={{ width: "100%", height: "100%", color: ci.color }}
                                                     />
                                                 ) : (
                                                     <FallbackIcon
