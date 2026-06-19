@@ -53,43 +53,31 @@ export function BioInterests() {
                          * organic breathing effect.
                          */}
 
-                        {/* ── Technology — floats up / down (CSS animation, GPU composited) ── */}
-                        <motion.circle
+                        {/* ── Technology — floats up / down (CSS animation, parent wrapper handles entrance) ── */}
+                        <circle
                             cx="200" cy="140" r="120"
                             fill="rgba(16,163,127,0.38)"
                             stroke="rgba(16,163,127,0.82)"
                             strokeWidth="2"
                             className="float-up-down"
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.1 }}
                         />
 
-                        {/* ── Business — floats bottom-left (CSS animation) ── */}
-                        <motion.circle
+                        {/* ── Business — floats bottom-left ── */}
+                        <circle
                             cx="128" cy="270" r="120"
                             fill="rgba(202,138,4,0.38)"
                             stroke="rgba(202,138,4,0.82)"
                             strokeWidth="2"
                             className="float-bottom-left"
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.25 }}
                         />
 
-                        {/* ── Product — floats bottom-right (CSS animation) ── */}
-                        <motion.circle
+                        {/* ── Product — floats bottom-right ── */}
+                        <circle
                             cx="272" cy="270" r="120"
                             fill="rgba(185,28,28,0.38)"
                             stroke="rgba(185,28,28,0.82)"
                             strokeWidth="2"
                             className="float-bottom-right"
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.4 }}
                         />
 
                         {/* ── Labels — staggered fade-in ── */}

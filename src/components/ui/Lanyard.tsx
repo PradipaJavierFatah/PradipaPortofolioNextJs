@@ -67,7 +67,7 @@ export default function Lanyard({
     <div style={{ position: 'relative', zIndex: 0, width: '100%', height, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Canvas
         camera={{ position, fov }}
-        dpr={[1, isMobile ? 1 : 1.5]}
+        dpr={[1, isMobile ? 1.5 : 2]}
         gl={{ alpha: transparent }}
         onCreated={({ gl }) =>
           gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)
