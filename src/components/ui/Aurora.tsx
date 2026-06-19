@@ -136,7 +136,13 @@ export default function Aurora({
     gl.clearColor(0, 0, 0, 0);
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
-    (gl.canvas as HTMLCanvasElement).style.backgroundColor = 'transparent';
+
+    const canvas = gl.canvas as HTMLCanvasElement;
+    canvas.style.position = 'absolute';
+    canvas.style.inset = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.backgroundColor = 'transparent';
 
     let program: Program;
 
@@ -208,7 +214,7 @@ export default function Aurora({
   return (
     <div
       ref={ctnDom}
-      style={{ width: '100%', height: '100%' }}
+      style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}
     />
   );
 }

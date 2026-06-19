@@ -56,10 +56,10 @@ export function HeroSection() {
             {/* Aurora effect */}
             <div className="absolute inset-0 -z-10 h-full w-full">
                 <Aurora
-                    colorStops={["#163039", "#afee07", "#163039"]}
-                    blend={0.4}
-                    amplitude={1.2}
-                    speed={0.4}
+                    colorStops={["#0c262d", "#afee07", "#0c262d"]}
+                    blend={0.6}
+                    amplitude={1.4}
+                    speed={0.5}
                 />
             </div>
 
