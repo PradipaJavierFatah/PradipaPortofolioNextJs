@@ -33,7 +33,7 @@ export default function RootLayout({
             <body className={cn(plusJakartaSans.variable, "min-h-screen bg-background font-sans antialiased selection:bg-primary selection:text-background")}>
                 <ThemeProvider
                     attribute="class"
-                    defaultTheme="light"
+                    defaultTheme="dark"
                     enableSystem={false}
                     disableTransitionOnChange
                 >

@@ -43,16 +43,20 @@ export function Navbar() {
             <div className={cn(
                 "pointer-events-auto relative flex items-center gap-1 rounded-full px-2 h-11",
                 "transition-all duration-500 ease-out",
-                "bg-gradient-to-b from-white/[0.12] to-white/[0.05]",
+                // dark: white tint glass / light: black tint glass
+                "dark:bg-gradient-to-b dark:from-white/[0.12] dark:to-white/[0.05]",
+                "bg-gradient-to-b from-black/[0.06] to-black/[0.03]",
                 "backdrop-blur-2xl backdrop-saturate-200",
-                "border border-white/[0.18]",
-                "shadow-[0_2px_16px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.18),inset_0_-1px_0_rgba(0,0,0,0.06)]",
-                scrolled && "from-white/[0.16] to-white/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.22),inset_0_-1px_0_rgba(0,0,0,0.06)]"
+                "dark:border-white/[0.18] border-black/[0.10]",
+                "border",
+                "shadow-[0_2px_16px_rgba(0,0,0,0.10),inset_0_1px_0_rgba(255,255,255,0.60),inset_0_-1px_0_rgba(0,0,0,0.04)]",
+                "dark:shadow-[0_2px_16px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.18),inset_0_-1px_0_rgba(0,0,0,0.06)]",
+                scrolled && "dark:from-white/[0.16] dark:to-white/[0.08] from-black/[0.09] to-black/[0.05]"
             )}>
                 {/* Logo */}
                 <Link
                     href="/"
-                    className="flex items-center gap-2 px-2 py-1 rounded-full hover:bg-white/10 transition-colors"
+                    className="flex items-center gap-2 px-2 py-1 rounded-full hover:bg-foreground/[0.08] transition-colors"
                     onClick={handleLogoClick}
                 >
                     <div className="relative h-7 w-7 rounded-full overflow-hidden ring-1 ring-white/20">
@@ -75,13 +79,13 @@ export function Navbar() {
                                 "relative text-sm font-medium px-3.5 py-1.5 rounded-full transition-all duration-200",
                                 pathname === link.href
                                     ? "text-foreground"
-                                    : "text-foreground/60 hover:text-foreground hover:bg-white/10"
+                                    : "text-foreground/60 hover:text-foreground hover:bg-foreground/[0.08]"
                             )}
                         >
                             {pathname === link.href && (
                                 <motion.span
                                     layoutId="pill-active"
-                                    className="absolute inset-0 rounded-full bg-white/[0.14] shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]"
+                                    className="absolute inset-0 rounded-full bg-foreground/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.15)]"
                                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                                 />
                             )}
@@ -99,7 +103,7 @@ export function Navbar() {
                         variant="ghost"
                         size="icon"
                         onClick={toggleLanguage}
-                        className="h-8 w-8 rounded-full text-foreground/60 hover:text-foreground hover:bg-white/10"
+                        className="h-8 w-8 rounded-full text-foreground/60 hover:text-foreground hover:bg-foreground/[0.08]"
                         title={locale === "en" ? "Switch to Indonesian" : "Switch to English"}
                     >
                         <span className="text-xs font-bold">{locale === "en" ? "ID" : "EN"}</span>
@@ -112,7 +116,7 @@ export function Navbar() {
                         variant="ghost"
                         size="icon"
                         onClick={() => setIsOpen(!isOpen)}
-                        className="h-8 w-8 rounded-full text-foreground/60 hover:text-foreground hover:bg-white/10 md:hidden"
+                        className="h-8 w-8 rounded-full text-foreground/60 hover:text-foreground hover:bg-foreground/[0.08] md:hidden"
                     >
                         <AnimatePresence mode="wait" initial={false}>
                             {isOpen ? (
@@ -139,10 +143,12 @@ export function Navbar() {
                             className={cn(
                                 "absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2",
                                 "min-w-[180px] rounded-2xl px-2 py-2",
-                                "bg-gradient-to-b from-white/[0.14] to-white/[0.07]",
+                                "dark:bg-gradient-to-b dark:from-white/[0.14] dark:to-white/[0.07]",
+                                "bg-gradient-to-b from-black/[0.06] to-black/[0.03]",
                                 "backdrop-blur-2xl backdrop-saturate-200",
-                                "border border-white/[0.18]",
-                                "shadow-[0_8px_32px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.18)]"
+                                "dark:border-white/[0.18] border-black/[0.10] border",
+                                "dark:shadow-[0_8px_32px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.18)]",
+                                "shadow-[0_8px_32px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.80)]"
                             )}
                         >
                             <nav className="flex flex-col gap-0.5">
@@ -154,8 +160,8 @@ export function Navbar() {
                                         className={cn(
                                             "text-sm font-medium px-4 py-2 rounded-xl transition-all duration-150",
                                             pathname === link.href
-                                                ? "bg-white/[0.14] text-foreground"
-                                                : "text-foreground/60 hover:text-foreground hover:bg-white/10"
+                                                ? "bg-foreground/[0.10] text-foreground"
+                                                : "text-foreground/60 hover:text-foreground hover:bg-foreground/[0.08]"
                                         )}
                                     >
                                         {link.label}

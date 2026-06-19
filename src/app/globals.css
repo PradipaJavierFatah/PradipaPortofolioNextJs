@@ -3,37 +3,37 @@
 
 @layer base {
   :root {
-    /* Refined Theme - Light Mode (Clean Slate with User-Specified Accents) */
-    --background: 193 30% 98%; 
-    --foreground: 193 58% 5%; 
-    
-    --card: 0 0% 100%;
-    --card-foreground: 193 58% 5%;
- 
-    --popover: 0 0% 100%;
-    --popover-foreground: 193 58% 5%;
- 
-    --primary: 76 94% 48%; /* User Lime Green (#afee07) */
-    --primary-foreground: 193 58% 8%; /* User Deep Teal (#0c262d) */
- 
-    --secondary: 193 20% 96%;
-    --secondary-foreground: 193 58% 10%;
- 
-    --muted: 193 20% 96%;
-    --muted-foreground: 193 10% 40%;
- 
-    --accent: 193 20% 90%;
+    /* Light Mode — airy teal-tinted day palette */
+    --background: 193 40% 96%;        /* #eaf5f7 — light teal air */
+    --foreground: 193 58% 8%;         /* deep teal text */
+
+    --card: 193 30% 99%;
+    --card-foreground: 193 58% 8%;
+
+    --popover: 193 30% 99%;
+    --popover-foreground: 193 58% 8%;
+
+    --primary: 76 94% 48%;            /* #afee07 lime green */
+    --primary-foreground: 193 58% 8%; /* deep teal on lime */
+
+    --secondary: 193 30% 92%;
+    --secondary-foreground: 193 50% 12%;
+
+    --muted: 193 25% 90%;
+    --muted-foreground: 193 20% 40%;
+
+    --accent: 193 35% 88%;
     --accent-foreground: 193 58% 10%;
- 
+
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
- 
-    --border: 193 20% 90%;
-    --input: 193 20% 90%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 193 25% 84%;
+    --input: 193 25% 84%;
     --ring: 76 94% 48%;
- 
+
     --radius: 0.75rem;
-    
+
     --font-jakarta: "Plus Jakarta Sans", sans-serif;
   }
  
