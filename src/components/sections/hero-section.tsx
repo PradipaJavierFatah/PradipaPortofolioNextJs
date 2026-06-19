@@ -50,11 +50,9 @@ export function HeroSection() {
     const typingText = useTypewriter(t.hero.roles, 200, 3000);
 
     return (
-        <section className="relative flex min-h-screen flex-col justify-center overflow-hidden py-16 lg:py-20">
-            {/* Base background colour */}
-            <div className="absolute inset-0 -z-10 h-full w-full bg-background" />
-            {/* Aurora effect */}
-            <div className="absolute inset-0 -z-10 h-full w-full">
+        <section className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-background py-16 lg:py-20">
+            {/* Aurora fills the whole section, sits between bg and content */}
+            <div className="absolute inset-0 z-0">
                 <Aurora
                     colorStops={["#0c262d", "#afee07", "#0c262d"]}
                     blend={0.6}
@@ -63,13 +61,12 @@ export function HeroSection() {
                 />
             </div>
 
-            {/* Desktop: full-height lanyard pinned to the right side of the section.
-                The section is min-h-screen, so inset-y-0 reaches the navbar at top. */}
+            {/* Desktop: full-height lanyard pinned to the right side of the section */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="hidden lg:block absolute inset-y-0 right-0 w-1/2 z-0"
+                className="hidden lg:block absolute inset-y-0 right-0 w-1/2 z-10"
             >
                 <Lanyard
                     position={[0, 0, 19]}
@@ -83,7 +80,7 @@ export function HeroSection() {
                 />
             </motion.div>
 
-            <div className="container relative z-10 px-4">
+            <div className="container relative z-20 px-4">
                 <div className="grid gap-4 lg:gap-6 lg:grid-cols-2 lg:items-center">
 
                     {/* Left Column: Text Content */}

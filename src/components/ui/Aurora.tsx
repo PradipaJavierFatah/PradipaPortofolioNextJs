@@ -151,6 +151,10 @@ export default function Aurora({
       const width = ctn.offsetWidth;
       const height = ctn.offsetHeight;
       renderer.setSize(width, height);
+      // OGL setSize writes pixel values to canvas.style.width/height — restore to fill container
+      const c = gl.canvas as HTMLCanvasElement;
+      c.style.width = '100%';
+      c.style.height = '100%';
       if (program) {
         program.uniforms.uResolution.value = [width, height];
       }
