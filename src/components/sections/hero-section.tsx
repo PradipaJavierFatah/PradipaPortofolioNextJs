@@ -16,11 +16,15 @@ const useTypewriter = (words: string[], speed = 100, pause = 1500) => {
     const [index, setIndex] = useState(0);
     const [subIndex, setSubIndex] = useState(0);
     const [reverse, setReverse] = useState(false);
+    const [isPausing, setIsPausing] = useState(false);
 
     useEffect(() => {
-        if (subIndex === words[index].length + 1 && !reverse) {
-            setReverse(true);
-            return;
+        if (isPausing) return;
+
+        if (subIndex === words[index].length && !reverse) {
+            setIsPausing(true);
+            const t = setTimeout(() => { setIsPausing(false); setReverse(true); }, pause);
+            return () => clearTimeout(t);
         }
 
         if (subIndex === 0 && reverse) {
@@ -29,12 +33,13 @@ const useTypewriter = (words: string[], speed = 100, pause = 1500) => {
             return;
         }
 
+        const delay = reverse ? 60 : speed + Math.floor(Math.random() * 60);
         const timeout = setTimeout(() => {
             setSubIndex((prev) => prev + (reverse ? -1 : 1));
-        }, Math.max(reverse ? 75 : speed, parseInt(Math.random() * 350 as any)));
+        }, delay);
 
         return () => clearTimeout(timeout);
-    }, [subIndex, index, reverse, speed, words]);
+    }, [subIndex, index, reverse, isPausing, speed, pause, words]);
 
     return words[index].substring(0, subIndex);
 };

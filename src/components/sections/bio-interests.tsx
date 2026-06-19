@@ -53,54 +53,43 @@ export function BioInterests() {
                          * organic breathing effect.
                          */}
 
-                        {/* ── Technology — floats up / down ── */}
+                        {/* ── Technology — floats up / down (CSS animation, GPU composited) ── */}
                         <motion.circle
                             cx="200" cy="140" r="120"
                             fill="rgba(16,163,127,0.38)"
                             stroke="rgba(16,163,127,0.82)"
                             strokeWidth="2"
+                            className="float-up-down"
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
-                            animate={{ y: [0, -10, 0] }}
-                            transition={{
-                                opacity: { duration: 0.5, delay: 0.1 },
-                                y: { duration: 4.5, repeat: Infinity, ease: "easeInOut" },
-                            }}
+                            transition={{ duration: 0.5, delay: 0.1 }}
                         />
 
-                        {/* ── Business — floats bottom-left ── */}
+                        {/* ── Business — floats bottom-left (CSS animation) ── */}
                         <motion.circle
                             cx="128" cy="270" r="120"
                             fill="rgba(202,138,4,0.38)"
                             stroke="rgba(202,138,4,0.82)"
                             strokeWidth="2"
+                            className="float-bottom-left"
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
-                            animate={{ x: [0, -7, 0], y: [0, 7, 0] }}
-                            transition={{
-                                opacity: { duration: 0.5, delay: 0.25 },
-                                x: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
-                                y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
-                            }}
+                            transition={{ duration: 0.5, delay: 0.25 }}
                         />
 
-                        {/* ── Product — floats bottom-right ── */}
+                        {/* ── Product — floats bottom-right (CSS animation) ── */}
                         <motion.circle
                             cx="272" cy="270" r="120"
                             fill="rgba(185,28,28,0.38)"
                             stroke="rgba(185,28,28,0.82)"
                             strokeWidth="2"
+                            className="float-bottom-right"
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
-                            animate={{ x: [0, 7, 0], y: [0, 7, 0] }}
-                            transition={{
-                                opacity: { duration: 0.5, delay: 0.4 },
-                                x: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 },
-                                y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 },
-                            }}
+                            transition={{ duration: 0.5, delay: 0.4 }}
                         />
 
                         {/* ── Labels — staggered fade-in ── */}
@@ -156,16 +145,15 @@ export function BioInterests() {
                             viewport={{ once: true }}
                             transition={{ delay: 0.8, duration: 0.35 }}
                         >
-                            {/* pulsing outer glow ring */}
-                            <motion.rect
+                            {/* pulsing outer glow ring (CSS animation) */}
+                            <rect
                                 x="122" y="196"
                                 width="156" height="42"
                                 rx="21"
                                 fill="none"
                                 stroke="rgba(175,238,7,0.18)"
                                 strokeWidth="1"
-                                animate={{ opacity: [0.4, 1, 0.4] }}
-                                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
+                                className="glow-pulse"
                             />
 
                             {/* badge body */}

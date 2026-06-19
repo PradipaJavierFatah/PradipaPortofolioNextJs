@@ -122,10 +122,30 @@ function formatContribDate(dateStr: string): string {
     return new Date(y, m - 1, d).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }
 
+const CACHE_TTL = 60 * 60 * 1000; // 1 hour
+
+function readCache<T>(key: string): T | null {
+    try {
+        const raw = sessionStorage.getItem(key);
+        if (!raw) return null;
+        const { data, ts } = JSON.parse(raw);
+        if (Date.now() - ts > CACHE_TTL) return null;
+        return data as T;
+    } catch { return null; }
+}
+
+function writeCache(key: string, data: unknown) {
+    try { sessionStorage.setItem(key, JSON.stringify({ data, ts: Date.now() })); } catch { /* ignore */ }
+}
+
 async function fetchTopLanguages(): Promise<LanguageStat[]> {
+    const cached = readCache<LanguageStat[]>("gh_langs");
+    if (cached) return cached;
     const res = await fetch("/api/github-languages");
     if (!res.ok) return [];
-    return res.json();
+    const data = await res.json();
+    writeCache("gh_langs", data);
+    return data;
 }
 
 export function GitHubContributions() {
@@ -138,20 +158,37 @@ export function GitHubContributions() {
     const [tooltip, setTooltip]           = useState<TooltipState | null>(null);
 
     useEffect(() => {
-        // Contributions + user info
+        // Contributions + user info (with sessionStorage cache)
         (async () => {
             try {
+                const cachedContrib = readCache<ContributionsData>(`gh_contrib_${GITHUB_USERNAME}`);
+                const cachedUser    = readCache<GitHubUser>(`gh_user_${GITHUB_USERNAME}`);
+
+                if (cachedContrib) {
+                    setContribData(cachedContrib);
+                    const years = Object.keys(cachedContrib.total).map(Number).sort((a, b) => b - a);
+                    if (years.length) setSelectedYear(years[0]);
+                }
+                if (cachedUser) setGithubUser(cachedUser);
+
+                if (cachedContrib && cachedUser) { setIsLoading(false); return; }
+
                 const [contribRes, userRes] = await Promise.all([
-                    fetch(`https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}`, { cache: "no-store" }),
-                    fetch(`https://api.github.com/users/${GITHUB_USERNAME}`, { cache: "no-store" }),
+                    cachedContrib ? null : fetch(`https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}`),
+                    cachedUser    ? null : fetch(`https://api.github.com/users/${GITHUB_USERNAME}`),
                 ]);
-                if (contribRes.ok) {
+                if (contribRes?.ok) {
                     const data: ContributionsData = await contribRes.json();
                     setContribData(data);
+                    writeCache(`gh_contrib_${GITHUB_USERNAME}`, data);
                     const years = Object.keys(data.total).map(Number).sort((a, b) => b - a);
                     if (years.length) setSelectedYear(years[0]);
                 }
-                if (userRes.ok) setGithubUser(await userRes.json());
+                if (userRes?.ok) {
+                    const user = await userRes.json();
+                    setGithubUser(user);
+                    writeCache(`gh_user_${GITHUB_USERNAME}`, user);
+                }
             } finally {
                 setIsLoading(false);
             }

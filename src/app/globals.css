@@ -96,6 +96,55 @@
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+/* ── Performance-optimized CSS animations (replaces JS-driven Framer Motion loops) ── */
+
+/* Marquee scroll — GPU composited, no JS */
+@keyframes marqueeScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marqueeScroll 50s linear infinite;
+  will-change: transform;
+}
+
+/* Venn diagram circle floats */
+@keyframes floatUpDown {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes floatBottomLeft {
+  0%, 100% { transform: translate(0px, 0px); }
+  50%       { transform: translate(-7px, 7px); }
+}
+@keyframes floatBottomRight {
+  0%, 100% { transform: translate(0px, 0px); }
+  50%       { transform: translate(7px, 7px); }
+}
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1; }
+}
+
+.float-up-down {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: floatUpDown 4.5s ease-in-out infinite;
+}
+.float-bottom-left {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: floatBottomLeft 5s ease-in-out infinite 0.5s;
+}
+.float-bottom-right {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: floatBottomRight 6s ease-in-out infinite 1s;
+}
+.glow-pulse {
+  animation: glowPulse 2.5s ease-in-out infinite 1.2s;
+}
+
 /* Text Selection Highlight - Global Scope with !important for iOS override */
 ::selection {
   background-color: #afee07 !important; /* User Lime Green */

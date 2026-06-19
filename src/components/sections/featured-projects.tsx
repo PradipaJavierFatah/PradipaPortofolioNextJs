@@ -57,14 +57,8 @@ export function FeaturedProjects({ variant = "grid", showViewAll = false }: Feat
                     <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
                     <div className="flex overflow-hidden -mx-4 py-4">
-                        <motion.div
-                            className="flex gap-6 px-4"
-                            animate={{ x: ["0%", "-50%"] }}
-                            transition={{
-                                repeat: Infinity,
-                                ease: "linear",
-                                duration: 50,
-                            }}
+                        <div
+                            className="flex gap-6 px-4 animate-marquee"
                             style={{ width: "max-content" }}
                         >
                             {[...allProjects, ...allProjects].map((project, index) => (
@@ -82,7 +76,7 @@ export function FeaturedProjects({ variant = "grid", showViewAll = false }: Feat
                                     />
                                 </div>
                             ))}
-                        </motion.div>
+                        </div>
                     </div>
                 </div>
             ) : (
