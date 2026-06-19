@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
-import { Menu, X, Globe } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
@@ -18,7 +18,7 @@ export function Navbar() {
     const { t, locale, toggleLanguage } = useLanguage();
 
     useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 10);
+        const onScroll = () => setScrolled(window.scrollY > 20);
         onScroll();
         window.addEventListener("scroll", onScroll, { passive: true });
         return () => window.removeEventListener("scroll", onScroll);
@@ -26,7 +26,6 @@ export function Navbar() {
 
     const links = [
         { href: "/", label: t.nav.home },
-        // { href: "/about", label: t.nav.about },
         { href: "/projects", label: t.nav.projects },
         { href: "/contact", label: t.nav.contact },
     ];
@@ -34,136 +33,139 @@ export function Navbar() {
     const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         if (pathname === "/") {
             e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-            });
+            window.scrollTo({ top: 0, behavior: "smooth" });
         }
     };
 
     return (
-        <header className={cn(
-            "sticky top-0 z-40 w-full transition-all duration-300",
-            scrolled
-                ? "bg-background/80 backdrop-blur-lg supports-[backdrop-filter]:bg-background/60 border-b border-border/40"
-                : "bg-transparent"
-        )}>
-            <div className="container flex h-16 items-center justify-between px-4">
+        <header className="sticky top-0 z-50 w-full h-16 flex justify-center items-center px-4 pointer-events-none">
+            {/* Liquid glass pill */}
+            <div className={cn(
+                "pointer-events-auto relative flex items-center gap-1 rounded-full px-2 h-11",
+                "transition-all duration-500 ease-out",
+                "bg-gradient-to-b from-white/[0.12] to-white/[0.05]",
+                "backdrop-blur-2xl backdrop-saturate-200",
+                "border border-white/[0.18]",
+                "shadow-[0_2px_16px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.18),inset_0_-1px_0_rgba(0,0,0,0.06)]",
+                scrolled && "from-white/[0.16] to-white/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.22),inset_0_-1px_0_rgba(0,0,0,0.06)]"
+            )}>
                 {/* Logo */}
                 <Link
                     href="/"
-                    className="font-bold text-xl flex items-center gap-2"
+                    className="flex items-center gap-2 px-2 py-1 rounded-full hover:bg-white/10 transition-colors"
                     onClick={handleLogoClick}
                 >
-                    {/* Hide full name on mobile to save space */}
-                    <div className="relative h-10 w-10 rounded-full overflow-hidden border border-border/10">
-                        {/* Light Mode Logo (Black) */}
-                        <Image
-                            src="/images/Favicon_Black.png"
-                            alt="Logo"
-                            fill
-                            className="object-cover dark:hidden"
-                        />
-                        {/* Dark Mode Logo (White) */}
-                        <Image
-                            src="/images/Favicon_White.png"
-                            alt="Logo"
-                            fill
-                            className="object-cover hidden dark:block"
-                        />
+                    <div className="relative h-7 w-7 rounded-full overflow-hidden ring-1 ring-white/20">
+                        <Image src="/images/Favicon_Black.png" alt="Logo" fill className="object-cover dark:hidden" />
+                        <Image src="/images/Favicon_White.png" alt="Logo" fill className="object-cover hidden dark:block" />
                     </div>
-                    {/* Hide full name on mobile to save space */}
-                    <span className="hidden sm:inline-block">Pradipa Javier Fatah</span>
+                    <span className="hidden sm:inline-block text-sm font-semibold tracking-tight">Pradipa Javier Fatah</span>
                 </Link>
 
+                {/* Divider */}
+                <div className="hidden md:block h-4 w-px bg-white/20 mx-1" />
+
                 {/* Desktop Nav */}
-                <nav className="hidden md:flex items-center gap-6">
+                <nav className="hidden md:flex items-center gap-0.5">
                     {links.map((link) => (
                         <Link
                             key={link.href}
                             href={link.href}
                             className={cn(
-                                "text-sm font-medium transition-colors hover:text-primary relative",
+                                "relative text-sm font-medium px-3.5 py-1.5 rounded-full transition-all duration-200",
                                 pathname === link.href
-                                    ? "text-primary"
-                                    : "text-muted-foreground"
+                                    ? "text-foreground"
+                                    : "text-foreground/60 hover:text-foreground hover:bg-white/10"
                             )}
                         >
-                            {link.label}
                             {pathname === link.href && (
-                                <motion.div
-                                    layoutId="navbar-indicator"
-                                    className="absolute -bottom-[1.35rem] left-0 right-0 h-1 bg-primary rounded-t-full"
-                                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                                <motion.span
+                                    layoutId="pill-active"
+                                    className="absolute inset-0 rounded-full bg-white/[0.14] shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]"
+                                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
                                 />
                             )}
+                            <span className="relative z-10">{link.label}</span>
                         </Link>
                     ))}
-
-                    {/* Divider */}
-                    <div className="h-6 w-px bg-border" />
-
-                    <div className="flex items-center gap-2">
-                        <Button
-                            variant="ghost"
-                            size="icon"
-                            onClick={toggleLanguage}
-                            className="relative overflow-hidden"
-                            title={locale === 'en' ? "Switch to Indonesian" : "Ganti ke Bahasa Indonesia"}
-                        >
-                            <span className="sr-only">Toggle Language</span>
-                            {/* Simple text or icon toggle */}
-                            <span className={cn("text-xs font-bold transition-all", locale === 'en' ? "opacity-100 scale-100" : "opacity-0 absolute scale-0")}>ID</span>
-                            <span className={cn("text-xs font-bold transition-all", locale === 'id' ? "opacity-100 scale-100" : "opacity-0 absolute scale-0")}>EN</span>
-                            <Globe className="h-[1.2rem] w-[1.2rem] absolute opacity-20" />
-                        </Button>
-                        <ThemeToggle />
-                    </div>
                 </nav>
 
-                {/* Mobile Menu Toggle */}
-                <div className="flex items-center gap-4 md:hidden">
+                {/* Divider */}
+                <div className="hidden md:block h-4 w-px bg-white/20 mx-1" />
+
+                {/* Controls */}
+                <div className="flex items-center gap-0.5">
                     <Button
                         variant="ghost"
                         size="icon"
                         onClick={toggleLanguage}
+                        className="h-8 w-8 rounded-full text-foreground/60 hover:text-foreground hover:bg-white/10"
+                        title={locale === "en" ? "Switch to Indonesian" : "Switch to English"}
                     >
-                        <span className="text-xs font-bold">{locale === 'en' ? 'ID' : 'EN'}</span>
+                        <span className="text-xs font-bold">{locale === "en" ? "ID" : "EN"}</span>
                     </Button>
+
                     <ThemeToggle />
-                    <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
-                        {isOpen ? <X /> : <Menu />}
+
+                    {/* Mobile toggle */}
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="h-8 w-8 rounded-full text-foreground/60 hover:text-foreground hover:bg-white/10 md:hidden"
+                    >
+                        <AnimatePresence mode="wait" initial={false}>
+                            {isOpen ? (
+                                <motion.div key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                                    <X className="h-4 w-4" />
+                                </motion.div>
+                            ) : (
+                                <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                                    <Menu className="h-4 w-4" />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </Button>
                 </div>
-            </div>
 
-            {/* Mobile Nav Overlay */}
-            {isOpen && (
-                <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    className="md:hidden border-b bg-background"
-                >
-                    <nav className="flex flex-col p-4 gap-4">
-                        {links.map((link) => (
-                            <Link
-                                key={link.href}
-                                href={link.href}
-                                onClick={() => setIsOpen(false)}
-                                className={cn(
-                                    "text-sm font-medium transition-colors hover:text-primary p-2 rounded-md hover:bg-muted",
-                                    pathname === link.href
-                                        ? "bg-muted text-primary"
-                                        : "text-muted-foreground"
-                                )}
-                            >
-                                {link.label}
-                            </Link>
-                        ))}
-                    </nav>
-                </motion.div>
-            )}
+                {/* Mobile dropdown — absolutely below pill */}
+                <AnimatePresence>
+                    {isOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, y: -6, scale: 0.97 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: -6, scale: 0.97 }}
+                            transition={{ duration: 0.18, ease: "easeOut" }}
+                            className={cn(
+                                "absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2",
+                                "min-w-[180px] rounded-2xl px-2 py-2",
+                                "bg-gradient-to-b from-white/[0.14] to-white/[0.07]",
+                                "backdrop-blur-2xl backdrop-saturate-200",
+                                "border border-white/[0.18]",
+                                "shadow-[0_8px_32px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.18)]"
+                            )}
+                        >
+                            <nav className="flex flex-col gap-0.5">
+                                {links.map((link) => (
+                                    <Link
+                                        key={link.href}
+                                        href={link.href}
+                                        onClick={() => setIsOpen(false)}
+                                        className={cn(
+                                            "text-sm font-medium px-4 py-2 rounded-xl transition-all duration-150",
+                                            pathname === link.href
+                                                ? "bg-white/[0.14] text-foreground"
+                                                : "text-foreground/60 hover:text-foreground hover:bg-white/10"
+                                        )}
+                                    >
+                                        {link.label}
+                                    </Link>
+                                ))}
+                            </nav>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>
         </header>
     );
 }
