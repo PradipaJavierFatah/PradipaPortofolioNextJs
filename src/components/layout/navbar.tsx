@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { Menu, X, Globe } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -13,8 +13,16 @@ import { useLanguage } from "@/lib/language-context";
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
     const pathname = usePathname();
     const { t, locale, toggleLanguage } = useLanguage();
+
+    useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 10);
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
 
     const links = [
         { href: "/", label: t.nav.home },
@@ -34,7 +42,12 @@ export function Navbar() {
     };
 
     return (
-        <header className="sticky top-0 z-40 w-full bg-background/80 backdrop-blur-lg supports-[backdrop-filter]:bg-background/60">
+        <header className={cn(
+            "sticky top-0 z-40 w-full transition-all duration-300",
+            scrolled
+                ? "bg-background/80 backdrop-blur-lg supports-[backdrop-filter]:bg-background/60 border-b border-border/40"
+                : "bg-transparent"
+        )}>
             <div className="container flex h-16 items-center justify-between px-4">
                 {/* Logo */}
                 <Link
