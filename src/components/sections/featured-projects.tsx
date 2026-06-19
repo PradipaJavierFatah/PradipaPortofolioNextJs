@@ -15,6 +15,8 @@ import { ProjectDetailModal } from "@/components/ui/project-detail-modal";
 interface Project {
     title: string;
     description: string;
+    problem: string;
+    thinking: string;
     role: string;
     workflow: string[];
     impact: string;
@@ -181,6 +183,8 @@ export function FeaturedProjects({ variant = "grid", showViewAll = false }: Feat
                 project={selectedProject}
                 onClose={() => setSelectedProject(null)}
                 labels={{
+                    problem: t.projects.labels.problem,
+                    thinking: t.projects.labels.thinking,
                     role: t.projects.labels.role,
                     workflow: t.projects.labels.workflow,
                     impact: t.projects.labels.impact,

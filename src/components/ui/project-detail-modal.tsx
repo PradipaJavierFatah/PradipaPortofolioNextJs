@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { X, User2, GitBranch, TrendingUp, Globe, Github, Lock } from "lucide-react";
+import { X, User2, GitBranch, TrendingUp, Globe, Github, Lock, Target, Lightbulb } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/button";
 interface Project {
     title: string;
     description: string;
+    problem: string;
+    thinking: string;
     role: string;
     workflow: string[];
     impact: string;
@@ -24,6 +26,8 @@ interface ProjectDetailModalProps {
     project: Project | null;
     onClose: () => void;
     labels: {
+        problem: string;
+        thinking: string;
         role: string;
         workflow: string;
         impact: string;
@@ -115,6 +119,28 @@ export function ProjectDetailModal({ project, onClose, labels }: ProjectDetailMo
                             </div>
 
                             <div className="h-px bg-border" />
+
+                            {/* Problem */}
+                            <div className="space-y-2">
+                                <div className="flex items-center gap-2">
+                                    <div className="rounded-md bg-primary/10 p-1.5">
+                                        <Target className="h-3.5 w-3.5 text-primary" />
+                                    </div>
+                                    <span className="text-sm font-semibold text-primary">{labels.problem}</span>
+                                </div>
+                                <p className="text-sm text-muted-foreground pl-8 leading-relaxed">{project.problem}</p>
+                            </div>
+
+                            {/* Thinking */}
+                            <div className="space-y-2">
+                                <div className="flex items-center gap-2">
+                                    <div className="rounded-md bg-primary/10 p-1.5">
+                                        <Lightbulb className="h-3.5 w-3.5 text-primary" />
+                                    </div>
+                                    <span className="text-sm font-semibold text-primary">{labels.thinking}</span>
+                                </div>
+                                <p className="text-sm text-muted-foreground pl-8 leading-relaxed">{project.thinking}</p>
+                            </div>
 
                             {/* Role */}
                             <div className="space-y-2">
