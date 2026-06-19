@@ -1,39 +1,44 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export function CustomCursor() {
     const [isVisible, setIsVisible] = useState(false);
 
-    // Mouse position values
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
-    // Smooth spring animation for the trailing glow
     const springConfig = { damping: 25, stiffness: 150, mass: 0.5 };
     const cursorX = useSpring(mouseX, springConfig);
     const cursorY = useSpring(mouseY, springConfig);
 
+    const rafRef = useRef<number | null>(null);
+
     useEffect(() => {
-        // Only show custom cursor on devices that support hover (non-touch)
         if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
             setIsVisible(true);
         }
 
         const moveCursor = (e: MouseEvent) => {
-            mouseX.set(e.clientX);
-            mouseY.set(e.clientY);
+            // Throttle to one update per animation frame
+            if (rafRef.current !== null) return;
+            rafRef.current = requestAnimationFrame(() => {
+                mouseX.set(e.clientX);
+                mouseY.set(e.clientY);
+                rafRef.current = null;
+            });
         };
 
         const handleMouseEnter = () => setIsVisible(true);
         const handleMouseLeave = () => setIsVisible(false);
 
-        window.addEventListener("mousemove", moveCursor);
+        window.addEventListener("mousemove", moveCursor, { passive: true });
         document.body.addEventListener("mouseenter", handleMouseEnter);
         document.body.addEventListener("mouseleave", handleMouseLeave);
 
         return () => {
+            if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
             window.removeEventListener("mousemove", moveCursor);
             document.body.removeEventListener("mouseenter", handleMouseEnter);
             document.body.removeEventListener("mouseleave", handleMouseLeave);
