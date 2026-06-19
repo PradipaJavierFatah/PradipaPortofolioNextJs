@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -8,11 +6,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 import { useLanguage } from "@/lib/language-context";
 import { useState } from "react";
-import { ConfidentialModal } from "@/components/ui/confidential-modal";
+import { ProjectDetailModal } from "@/components/ui/project-detail-modal";
+
+interface Project {
+    title: string;
+    description: string;
+    role: string;
+    workflow: string[];
+    impact: string;
+    techStack: string[];
+    link: string;
+    github?: string;
+    image?: string;
+    badge?: string;
+}
 
 interface FeaturedProjectsProps {
     variant?: "grid" | "marquee";
@@ -21,10 +32,9 @@ interface FeaturedProjectsProps {
 
 export function FeaturedProjects({ variant = "grid", showViewAll = false }: FeaturedProjectsProps) {
     const { t } = useLanguage();
-    const [showConfidential, setShowConfidential] = useState(false);
+    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-    // Combine all projects for the marquee view
-    const allProjects = [...t.projects.data, ...t.projects.web, ...t.projects.design];
+    const allProjects = [...t.projects.data, ...t.projects.web, ...t.projects.design] as Project[];
 
     return (
         <section id="projects" className="container py-20 px-4 overflow-hidden">
@@ -51,11 +61,10 @@ export function FeaturedProjects({ variant = "grid", showViewAll = false }: Feat
                             transition={{
                                 repeat: Infinity,
                                 ease: "linear",
-                                duration: 50, // Adjust speed here
+                                duration: 50,
                             }}
                             style={{ width: "max-content" }}
                         >
-                            {/* Render list twice for seamless loop */}
                             {[...allProjects, ...allProjects].map((project, index) => (
                                 <div
                                     key={`${index}-${project.title}`}
@@ -67,7 +76,7 @@ export function FeaturedProjects({ variant = "grid", showViewAll = false }: Feat
                                         t={t}
                                         disableAnimation
                                         eagerLoad
-                                        onConfidentialClick={() => setShowConfidential(true)}
+                                        onProjectClick={setSelectedProject}
                                     />
                                 </div>
                             ))}
@@ -75,7 +84,7 @@ export function FeaturedProjects({ variant = "grid", showViewAll = false }: Feat
                     </div>
                 </div>
             ) : (
-                // GRID VARIANT (Existing Categorized Layout)
+                // GRID VARIANT
                 <div className="space-y-24">
                     {/* Data Section */}
                     {t.projects.data.length > 0 && (
@@ -83,18 +92,18 @@ export function FeaturedProjects({ variant = "grid", showViewAll = false }: Feat
                             <div className="flex items-center gap-4">
                                 <div className="h-px bg-border flex-1" />
                                 <h3 className="text-xl font-bold bg-[#0c262d] text-primary px-6 py-2 rounded-full border border-primary/20">
-                                     {t.projects.categories.data}
-                                 </h3>
-                                 <div className="h-px bg-border flex-1" />
+                                    {t.projects.categories.data}
+                                </h3>
+                                <div className="h-px bg-border flex-1" />
                             </div>
                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {t.projects.data.map((project, index) => (
+                                {(t.projects.data as Project[]).map((project, index) => (
                                     <ProjectCard
                                         key={index}
                                         project={project}
                                         index={index}
                                         t={t}
-                                        onConfidentialClick={() => setShowConfidential(true)}
+                                        onProjectClick={setSelectedProject}
                                     />
                                 ))}
                             </div>
@@ -107,18 +116,18 @@ export function FeaturedProjects({ variant = "grid", showViewAll = false }: Feat
                             <div className="flex items-center gap-4">
                                 <div className="h-px bg-border flex-1" />
                                 <h3 className="text-xl font-bold bg-[#0c262d] text-primary px-6 py-2 rounded-full border border-primary/20">
-                                     {t.projects.categories.web}
-                                 </h3>
-                                 <div className="h-px bg-border flex-1" />
+                                    {t.projects.categories.web}
+                                </h3>
+                                <div className="h-px bg-border flex-1" />
                             </div>
                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {t.projects.web.map((project, index) => (
+                                {(t.projects.web as Project[]).map((project, index) => (
                                     <ProjectCard
                                         key={index}
                                         project={project}
                                         index={index}
                                         t={t}
-                                        onConfidentialClick={() => setShowConfidential(true)}
+                                        onProjectClick={setSelectedProject}
                                     />
                                 ))}
                             </div>
@@ -131,18 +140,18 @@ export function FeaturedProjects({ variant = "grid", showViewAll = false }: Feat
                             <div className="flex items-center gap-4">
                                 <div className="h-px bg-border flex-1" />
                                 <h3 className="text-xl font-bold bg-[#0c262d] text-primary px-6 py-2 rounded-full border border-primary/20">
-                                     {t.projects.categories.design}
-                                 </h3>
-                                 <div className="h-px bg-border flex-1" />
+                                    {t.projects.categories.design}
+                                </h3>
+                                <div className="h-px bg-border flex-1" />
                             </div>
                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {t.projects.design.map((project, index) => (
+                                {(t.projects.design as Project[]).map((project, index) => (
                                     <ProjectCard
                                         key={index}
                                         project={project}
                                         index={index}
                                         t={t}
-                                        onConfidentialClick={() => setShowConfidential(true)}
+                                        onProjectClick={setSelectedProject}
                                     />
                                 ))}
                             </div>
@@ -168,20 +177,45 @@ export function FeaturedProjects({ variant = "grid", showViewAll = false }: Feat
                 </motion.div>
             )}
 
-            <ConfidentialModal
-                isOpen={showConfidential}
-                onClose={() => setShowConfidential(false)}
-                description={t.projects.confidentialMsg}
+            <ProjectDetailModal
+                project={selectedProject}
+                onClose={() => setSelectedProject(null)}
+                labels={{
+                    role: t.projects.labels.role,
+                    workflow: t.projects.labels.workflow,
+                    impact: t.projects.labels.impact,
+                    viewProject: t.projects.viewProject,
+                    viewCode: t.projects.viewCode,
+                    confidentialMsg: t.projects.confidentialMsg,
+                }}
             />
         </section>
     );
 }
 
-// Reusable Project Card Component
-function ProjectCard({ project, index, t, disableAnimation = false, eagerLoad = false, onConfidentialClick }: { project: any, index: number, t: any, disableAnimation?: boolean, eagerLoad?: boolean, onConfidentialClick?: () => void }) {
-    const CardContent = (
-        <Card className="h-full flex flex-col overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1 border-primary/20 bg-card/50 backdrop-blur-sm">
-            <div className="relative aspect-video w-full overflow-hidden bg-muted group">
+function ProjectCard({
+    project,
+    index,
+    t,
+    disableAnimation = false,
+    eagerLoad = false,
+    onProjectClick,
+}: {
+    project: Project;
+    index: number;
+    t: any;
+    disableAnimation?: boolean;
+    eagerLoad?: boolean;
+    onProjectClick?: (project: Project) => void;
+}) {
+    const isConfidential = project.link === "CONFIDENTIAL";
+
+    const cardContent = (
+        <Card
+            className="h-full flex flex-col overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1 border-primary/20 bg-card/50 backdrop-blur-sm cursor-pointer group/card"
+            onClick={() => onProjectClick?.(project)}
+        >
+            <div className="relative aspect-video w-full overflow-hidden bg-muted">
                 {project.image ? (
                     <Image
                         src={project.image}
@@ -189,10 +223,10 @@ function ProjectCard({ project, index, t, disableAnimation = false, eagerLoad = 
                         fill
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
                         loading={eagerLoad ? "eager" : "lazy"}
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        className="object-cover transition-transform duration-500 group-hover/card:scale-110"
                     />
                 ) : (
-                    <div className="absolute inset-0 flex items-center justify-center bg-secondary/20 text-muted-foreground group-hover:bg-secondary/30 transition-colors">
+                    <div className="absolute inset-0 flex items-center justify-center bg-secondary/20 text-muted-foreground group-hover/card:bg-secondary/30 transition-colors">
                         <FolderGit2 className="h-12 w-12 opacity-20" />
                     </div>
                 )}
@@ -220,13 +254,16 @@ function ProjectCard({ project, index, t, disableAnimation = false, eagerLoad = 
                 </div>
             </div>
 
-            <CardFooter className="flex gap-2 pt-0 mt-4">
-                {project.link === "CONFIDENTIAL" ? (
+            <CardFooter
+                className="flex gap-2 pt-0 mt-4"
+                onClick={(e) => e.stopPropagation()}
+            >
+                {isConfidential ? (
                     <Button
                         size="sm"
                         variant="outline"
                         className="flex-1 group h-8 text-xs hover:bg-primary/10 hover:text-primary hover:border-primary/50 transition-colors"
-                        onClick={onConfidentialClick}
+                        onClick={() => onProjectClick?.(project)}
                     >
                         <div className="flex flex-row items-center justify-center gap-2">
                             <Lock className="h-3 w-3 text-primary" />
@@ -257,7 +294,7 @@ function ProjectCard({ project, index, t, disableAnimation = false, eagerLoad = 
     );
 
     if (disableAnimation) {
-        return CardContent;
+        return cardContent;
     }
 
     return (
@@ -268,7 +305,7 @@ function ProjectCard({ project, index, t, disableAnimation = false, eagerLoad = 
             transition={{ delay: index * 0.1 }}
             className="h-full"
         >
-            {CardContent}
+            {cardContent}
         </motion.div>
     );
 }
