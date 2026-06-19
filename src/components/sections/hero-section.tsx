@@ -45,7 +45,26 @@ export function HeroSection() {
 
     return (
         <section className="relative flex min-h-screen flex-col justify-center overflow-hidden py-16 lg:py-20">
-            <div className="absolute inset-0 -z-10 h-full w-full bg-background overflow-hidden" />
+            <div className="absolute inset-0 -z-10 h-full w-full bg-background" />
+
+            {/* Desktop: full-height lanyard pinned to the right side of the section.
+                The section is min-h-screen, so inset-y-0 reaches the navbar at top. */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="hidden lg:block absolute inset-y-0 right-0 w-1/2 z-0"
+            >
+                <Lanyard
+                    position={[0, 0, 13]}
+                    fov={15}
+                    gravity={[0, -40, 0]}
+                    frontImage="/images/profileDipa1.jpg"
+                    imageFit="cover"
+                    lanyardWidth={1}
+                    height="100%"
+                />
+            </motion.div>
 
             <div className="container relative z-10 px-4">
                 <div className="grid gap-4 lg:gap-6 lg:grid-cols-2 lg:items-center">
@@ -104,15 +123,16 @@ export function HeroSection() {
                         </motion.div>
                     </div>
 
-                    {/* Right Column: Interactive Lanyard */}
+                    {/* Mobile / tablet: inline lanyard (hidden on desktop, handled above) */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.8, delay: 0.3 }}
-                        className="relative w-full h-[420px] sm:h-[500px] lg:h-[600px]"
+                        className="relative w-full h-[450px] sm:h-[540px] lg:hidden"
                     >
                         <Lanyard
-                            position={[0, 0, 22]}
+                            position={[0, 0, 16]}
+                            fov={18}
                             gravity={[0, -40, 0]}
                             frontImage="/images/profileDipa1.jpg"
                             imageFit="cover"
@@ -120,6 +140,9 @@ export function HeroSection() {
                             height="100%"
                         />
                     </motion.div>
+
+                    {/* Desktop: empty spacer to keep 2-col grid balanced */}
+                    <div className="hidden lg:block" />
                 </div>
             </div>
         </section>
