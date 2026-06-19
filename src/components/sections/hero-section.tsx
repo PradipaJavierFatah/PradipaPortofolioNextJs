@@ -62,7 +62,7 @@ export function HeroSection() {
                     frontImage="/images/profileDipa1.jpg"
                     imageFit="cover"
                     lanyardWidth={1}
-                    sceneY={6}
+                    sceneY={5.2}
                     height="100%"
                 />
             </motion.div>
@@ -138,7 +138,7 @@ export function HeroSection() {
                             frontImage="/images/profileDipa1.jpg"
                             imageFit="cover"
                             lanyardWidth={1}
-                            sceneY={5.5}
+                            sceneY={4.8}
                             height="100%"
                         />
                     </motion.div>
