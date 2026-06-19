@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { useLanguage } from "@/lib/language-context";
 
 const Lanyard = dynamic(() => import("@/components/ui/Lanyard"), { ssr: false });
+const Aurora = dynamic(() => import("@/components/ui/Aurora"), { ssr: false });
 
 // Simple Typewriter Hook
 const useTypewriter = (words: string[], speed = 100, pause = 1500) => {
@@ -50,7 +51,17 @@ export function HeroSection() {
 
     return (
         <section className="relative flex min-h-screen flex-col justify-center overflow-hidden py-16 lg:py-20">
+            {/* Base background colour */}
             <div className="absolute inset-0 -z-10 h-full w-full bg-background" />
+            {/* Aurora effect */}
+            <div className="absolute inset-0 -z-10 h-full w-full">
+                <Aurora
+                    colorStops={["#163039", "#afee07", "#163039"]}
+                    blend={0.4}
+                    amplitude={1.2}
+                    speed={0.4}
+                />
+            </div>
 
             {/* Desktop: full-height lanyard pinned to the right side of the section.
                 The section is min-h-screen, so inset-y-0 reaches the navbar at top. */}
