@@ -117,7 +117,7 @@ export const DICTIONARY = {
                     title: "Adira Finance Data Analyst",
                     description: "Analyzed financial data trends and generated actionable business insights to support decision-making processes.",
                     problem: "Financial data was scattered across multiple internal systems with no unified view, making it difficult for business teams to identify trends and make timely, data-driven decisions.",
-                    thinking: "I mapped all data sources first before touching any tool. My focus was on surfacing only the metrics that actually matter to decision-makers — not just generating reports, but generating the right reports with clear narrative.",
+                    thinking: "I mapped all data sources first before touching any tool. My focus was on surfacing only the metrics that actually matter to decision-makers, not just generating reports, but generating the right reports with clear narrative.",
                     role: "Data Analyst Intern",
                     workflow: [
                         "Collected and cleaned financial datasets from multiple internal sources",
@@ -136,11 +136,11 @@ export const DICTIONARY = {
                     title: "Data Mining Project",
                     description: "Extracted patterns and insights from large datasets using advanced data mining techniques.",
                     problem: "Diabetes is often diagnosed too late because accessible predictive tools are scarce. The challenge was to build a model that could flag high-risk patients early using only common health indicators available in standard records.",
-                    thinking: "I treated this as a model selection problem before a coding problem. I compared multiple algorithms under cross-validation — not just accuracy, but precision and recall balance — to ensure the model wouldn't miss high-risk cases in the name of overall score.",
+                    thinking: "I treated this as a model selection problem before a coding problem. I compared multiple algorithms under cross-validation, not just accuracy, but precision and recall balance, to ensure the model wouldn't miss high-risk cases in the name of overall score.",
                     role: "Data Scientist",
                     workflow: [
                         "Defined problem scope and selected the Diabetes dataset",
-                        "Preprocessed data — handled missing values, encoding, and normalization",
+                        "Preprocessed data, handled missing values, encoding, and normalization",
                         "Trained and compared multiple classification models (Logistic Regression, Random Forest, KNN)",
                         "Evaluated with cross-validation and tuned hyperparameters",
                         "Documented findings and published a Notion report",
@@ -154,7 +154,7 @@ export const DICTIONARY = {
                 {
                     title: "Data Visualization Dashboard",
                     description: "Created interactive dashboards to visualize complex datasets, enabling easier data interpretation.",
-                    problem: "Raw housing sales data is impossible to interpret in tabular form. Non-technical stakeholders needed a way to explore pricing trends, location patterns, and volume shifts — without writing a single line of SQL.",
+                    problem: "Raw housing sales data is impossible to interpret in tabular form. Non-technical stakeholders needed a way to explore pricing trends, location patterns, and volume shifts, without writing a single line of SQL.",
                     thinking: "I focused on reducing cognitive load: fewer but more meaningful charts, intuitive filters, and a layout that guides the eye naturally from overview to detail. The design goal was insight in under 30 seconds.",
                     role: "Data Analyst & Visualization Designer",
                     workflow: [
@@ -176,8 +176,8 @@ export const DICTIONARY = {
                     title: "Neuro Smart Parking System",
                     badge: "New",
                     description: "Designed and implemented a complete end-to-end smart parking management system integrating computer vision (ALPR), IoT hardware, real-time monitoring, and digital payment processing using React, FastAPI, PostgreSQL, and Xendit.",
-                    problem: "Traditional parking lots rely on manual operators for entry/exit control and cash payments — slow, error-prone, and impossible to scale. The core challenge was building a system that could operate autonomously without human intervention at the gate.",
-                    thinking: "I broke the problem into three independent layers: detection (ALPR), control (IoT gates), and management (dashboard + payments). Designing each layer to fail gracefully in isolation was the key architectural decision — so a payment outage wouldn't lock the gate, and a camera failure wouldn't kill the dashboard.",
+                    problem: "Traditional parking lots rely on manual operators for entry/exit control and cash payments, slow, error-prone, and impossible to scale. The core challenge was building a system that could operate autonomously without human intervention at the gate.",
+                    thinking: "I broke the problem into three independent layers: detection (ALPR), control (IoT gates), and management (dashboard + payments). Designing each layer to fail gracefully in isolation was the key architectural decision, so a payment outage wouldn't lock the gate, and a camera failure wouldn't kill the dashboard.",
                     role: "Founder & Full Stack Developer",
                     workflow: [
                         "Designed the overall system architecture and PostgreSQL database schema",
@@ -197,7 +197,7 @@ export const DICTIONARY = {
                     title: "Sistem Layanan Penyaluran Sampah (SILAP)",
                     description: "A comprehensive reporting system dashboard for managing data analytics and generating insights.",
                     problem: "Waste channeling data was tracked manually in spreadsheets, making it nearly impossible to spot patterns, track progress over time, or generate timely reports for local government stakeholders.",
-                    thinking: "Rather than just digitizing the spreadsheet, I rethought the entire data flow — designing a system where reports are generated automatically from structured inputs. The key was asking: what decision does this data need to support, and how do we make that decision obvious at a glance?",
+                    thinking: "Rather than just digitizing the spreadsheet, I rethought the entire data flow, designing a system where reports are generated automatically from structured inputs. The key was asking: what decision does this data need to support, and how do we make that decision obvious at a glance?",
                     role: "Full Stack Developer",
                     workflow: [
                         "Gathered requirements for the waste reporting and tracking workflows",
@@ -215,7 +215,7 @@ export const DICTIONARY = {
                 {
                     title: "Kawan Project",
                     description: "A web application designed to connect people and foster community engagement.",
-                    problem: "University students lacked a dedicated platform to find collaborators for side projects outside of class. Existing social networks were too general — there was no way to signal skills, availability, or project intent.",
+                    problem: "University students lacked a dedicated platform to find collaborators for side projects outside of class. Existing social networks were too general, there was no way to signal skills, availability, or project intent.",
                     thinking: "I focused on the matchmaking problem before writing any code: what data does a user need to see to decide 'yes, I want to collaborate with this person'? That question defined the core data model and UI before a single backend route was written.",
                     role: "Full Stack Developer",
                     workflow: [
@@ -236,8 +236,8 @@ export const DICTIONARY = {
                 {
                     title: "Adira Finance App Redesign",
                     description: "Redesigned the user interface for Adira's mobile application to improve user experience and accessibility.",
-                    problem: "User complaints pointed to a confusing navigation structure in the existing Adira Finance mobile app — key actions were buried several taps deep and the visual hierarchy didn't reflect what users actually needed to do first.",
-                    thinking: "I started with a heuristic evaluation, mapping every friction point in the current app before touching Figma. The redesign was driven by user feedback data, not aesthetic preference — every layout decision had to justify itself against a real user pain point.",
+                    problem: "User complaints pointed to a confusing navigation structure in the existing Adira Finance mobile app, key actions were buried several taps deep and the visual hierarchy didn't reflect what users actually needed to do first.",
+                    thinking: "I started with a heuristic evaluation, mapping every friction point in the current app before touching Figma. The redesign was driven by user feedback data, not aesthetic preference, every layout decision had to justify itself against a real user pain point.",
                     role: "UI/UX Designer",
                     workflow: [
                         "Conducted user research and identified pain points in the existing app",
@@ -255,8 +255,8 @@ export const DICTIONARY = {
                 {
                     title: "Diswipe",
                     description: "Designed a clean and modern user interface for a digital swiping application.",
-                    problem: "Existing dating apps prioritize volume over intent — users feel exhausted by endless swiping with no clear signal of what the other person is looking for. The challenge was designing a more intentional matching experience.",
-                    thinking: "I approached it from the business model side first: if we constrain swipe volume, how does monetization work? That constraint shaped the product design backward — the UI exists to serve the business logic, not the other way around.",
+                    problem: "Existing dating apps prioritize volume over intent, users feel exhausted by endless swiping with no clear signal of what the other person is looking for. The challenge was designing a more intentional matching experience.",
+                    thinking: "I approached it from the business model side first: if we constrain swipe volume, how does monetization work? That constraint shaped the product design backward, the UI exists to serve the business logic, not the other way around.",
                     role: "UI/UX Designer & Business Developer",
                     workflow: [
                         "Conducted market research and competitor analysis",
@@ -265,7 +265,7 @@ export const DICTIONARY = {
                         "Designed high-fidelity UI in Figma with a modern visual language",
                         "Developed the business model and prepared a structured pitch deck",
                     ],
-                    impact: "Designed a complete product concept — from UI to business model — for a digital matchmaking swiping app, validated through a formal pitch presentation.",
+                    impact: "Designed a complete product concept, from UI to business model, for a digital matchmaking swiping app, validated through a formal pitch presentation.",
                     techStack: ["Figma", "UI Design", "Business Development"],
                     link: "https://steadfast-beard-007.notion.site/diswipe-213e97aa4e8a80e5b807e23ff9e6529d",
                     github: "#",
@@ -274,8 +274,8 @@ export const DICTIONARY = {
                 {
                     title: "FILE Magazine Design",
                     description: "Created layout and visual assets for FILE Magazine's digital presence.",
-                    problem: "FILE Magazine's digital content lacked visual consistency — each post felt disconnected from the last, which weakened brand recognition and caused audience engagement to plateau over time.",
-                    thinking: "I built a design system before creating any single piece of content: templates, color rules, typographic hierarchy. Consistency at scale requires systems, not just good taste — one template well-designed is worth a hundred individual posts.",
+                    problem: "FILE Magazine's digital content lacked visual consistency, each post felt disconnected from the last, which weakened brand recognition and caused audience engagement to plateau over time.",
+                    thinking: "I built a design system before creating any single piece of content: templates, color rules, typographic hierarchy. Consistency at scale requires systems, not just good taste, one template well-designed is worth a hundred individual posts.",
                     role: "Social Media Specialist & Visual Designer",
                     workflow: [
                         "Planned monthly content calendars and visual themes",
@@ -292,7 +292,7 @@ export const DICTIONARY = {
                 {
                     title: "Technoscape Design",
                     description: "Designed promotional materials and visual identity for the Technoscape event.",
-                    problem: "The event needed a strong visual identity that would hold up across vastly different formats — large-format posters, small social media thumbnails, and digital banners — all without losing coherence or brand recognition.",
+                    problem: "The event needed a strong visual identity that would hold up across vastly different formats, large-format posters, small social media thumbnails, and digital banners, all without losing coherence or brand recognition.",
                     thinking: "I anchored everything to one core visual motif that scaled well at any size. Designing the system before the individual assets meant every deliverable felt like it came from the same place, even when produced under tight deadlines.",
                     role: "Graphic Designer & Brand Specialist",
                     workflow: [
@@ -455,7 +455,7 @@ export const DICTIONARY = {
                     title: "Adira Finance Data Analyst",
                     description: "Menganalisis tren data keuangan dan menghasilkan wawasan bisnis yang dapat ditindaklanjuti untuk mendukung pengambilan keputusan.",
                     problem: "Data keuangan tersebar di berbagai sistem internal tanpa tampilan terpadu, sehingga tim bisnis kesulitan mengidentifikasi tren dan membuat keputusan berbasis data secara tepat waktu.",
-                    thinking: "Saya memetakan semua sumber data terlebih dahulu sebelum menyentuh alat apapun. Fokus saya adalah menampilkan hanya metrik yang benar-benar penting bagi pengambil keputusan — bukan sekadar membuat laporan, tapi membuat laporan yang tepat dengan narasi yang jelas.",
+                    thinking: "Saya memetakan semua sumber data terlebih dahulu sebelum menyentuh alat apapun. Fokus saya adalah menampilkan hanya metrik yang benar-benar penting bagi pengambil keputusan, bukan sekadar membuat laporan, tapi membuat laporan yang tepat dengan narasi yang jelas.",
                     role: "Data Analyst Intern",
                     workflow: [
                         "Mengumpulkan dan membersihkan dataset keuangan dari berbagai sumber internal",
@@ -474,11 +474,11 @@ export const DICTIONARY = {
                     title: "Proyek Data Mining",
                     description: "Mengekstrak pola dan wawasan dari kumpulan data besar menggunakan teknik data mining tingkat lanjut.",
                     problem: "Diabetes sering didiagnosis terlambat karena minimnya alat prediktif yang mudah diakses. Tantangannya adalah membangun model yang dapat menandai pasien berisiko tinggi sejak dini hanya menggunakan indikator kesehatan umum yang tersedia di rekam medis standar.",
-                    thinking: "Saya memperlakukan ini sebagai masalah pemilihan model sebelum masalah coding. Saya membandingkan beberapa algoritma dengan cross-validation — bukan hanya akurasi, tapi keseimbangan precision dan recall — agar model tidak melewatkan kasus berisiko tinggi demi mengejar skor keseluruhan.",
+                    thinking: "Saya memperlakukan ini sebagai masalah pemilihan model sebelum masalah coding. Saya membandingkan beberapa algoritma dengan cross-validation, bukan hanya akurasi, tapi keseimbangan precision dan recall, agar model tidak melewatkan kasus berisiko tinggi demi mengejar skor keseluruhan.",
                     role: "Data Scientist",
                     workflow: [
                         "Mendefinisikan lingkup masalah dan memilih dataset Diabetes",
-                        "Memproses data — menangani nilai hilang, encoding, dan normalisasi",
+                        "Memproses data, menangani nilai hilang, encoding, dan normalisasi",
                         "Melatih dan membandingkan beberapa model klasifikasi (Logistic Regression, Random Forest, KNN)",
                         "Evaluasi dengan cross-validation dan tuning hyperparameter",
                         "Mendokumentasikan temuan dan mempublikasikan laporan Notion",
@@ -492,7 +492,7 @@ export const DICTIONARY = {
                 {
                     title: "Dashboard Visualisasi Data",
                     description: "Membuat dashboard interaktif untuk memvisualisasikan data kompleks, memudahkan interpretasi data.",
-                    problem: "Data penjualan properti mentah tidak mungkin diinterpretasikan dalam bentuk tabel. Pemangku kepentingan non-teknis membutuhkan cara untuk menjelajahi tren harga, pola lokasi, dan pergeseran volume — tanpa menulis satu baris SQL pun.",
+                    problem: "Data penjualan properti mentah tidak mungkin diinterpretasikan dalam bentuk tabel. Pemangku kepentingan non-teknis membutuhkan cara untuk menjelajahi tren harga, pola lokasi, dan pergeseran volume, tanpa menulis satu baris SQL pun.",
                     thinking: "Saya fokus pada pengurangan beban kognitif: lebih sedikit chart tapi lebih bermakna, filter yang intuitif, dan tata letak yang mengarahkan mata secara alami dari gambaran besar ke detail. Target desainnya: insight dalam waktu kurang dari 30 detik.",
                     role: "Data Analyst & Visualization Designer",
                     workflow: [
@@ -514,8 +514,8 @@ export const DICTIONARY = {
                     title: "Neuro Smart Parking System",
                     badge: "New",
                     description: "Merancang dan mengimplementasikan sistem manajemen parkir pintar end-to-end lengkap yang mengintegrasikan computer vision (ALPR), perangkat keras IoT, pemantauan real-time, dan pemrosesan pembayaran digital menggunakan React, FastAPI, PostgreSQL, dan Xendit.",
-                    problem: "Tempat parkir tradisional mengandalkan operator manual untuk kontrol masuk/keluar dan pembayaran tunai — lambat, rawan error, dan tidak bisa diskalakan. Tantangan utamanya adalah membangun sistem yang bisa beroperasi secara otonom tanpa intervensi manusia di gerbang.",
-                    thinking: "Saya memecah masalah menjadi tiga lapisan independen: deteksi (ALPR), kontrol (gerbang IoT), dan manajemen (dashboard + pembayaran). Keputusan arsitektur kunci adalah memastikan setiap lapisan gagal secara terisolasi — gangguan pembayaran tidak boleh mengunci gerbang, dan kegagalan kamera tidak boleh mematikan dashboard.",
+                    problem: "Tempat parkir tradisional mengandalkan operator manual untuk kontrol masuk/keluar dan pembayaran tunai, lambat, rawan error, dan tidak bisa diskalakan. Tantangan utamanya adalah membangun sistem yang bisa beroperasi secara otonom tanpa intervensi manusia di gerbang.",
+                    thinking: "Saya memecah masalah menjadi tiga lapisan independen: deteksi (ALPR), kontrol (gerbang IoT), dan manajemen (dashboard + pembayaran). Keputusan arsitektur kunci adalah memastikan setiap lapisan gagal secara terisolasi, gangguan pembayaran tidak boleh mengunci gerbang, dan kegagalan kamera tidak boleh mematikan dashboard.",
                     role: "Founder & Full Stack Developer",
                     workflow: [
                         "Merancang arsitektur sistem keseluruhan dan skema database PostgreSQL",
@@ -535,7 +535,7 @@ export const DICTIONARY = {
                     title: "Sistem Layanan Penyaluran Sampah (SILAP)",
                     description: "Dashboard sistem laporan komprehensif untuk mengelola analitik data dan menghasilkan wawasan.",
                     problem: "Data penyaluran sampah dilacak secara manual dalam spreadsheet, sehingga hampir mustahil untuk melihat pola, melacak progres, atau menghasilkan laporan tepat waktu bagi pemangku kepentingan pemerintah daerah.",
-                    thinking: "Daripada sekadar mendigitalkan spreadsheet, saya memikirkan ulang seluruh alur data — membangun sistem di mana laporan dihasilkan secara otomatis dari input terstruktur. Pertanyaan kuncinya adalah: keputusan apa yang perlu didukung data ini, dan bagaimana kita membuat keputusan itu terlihat jelas sekilas pandang?",
+                    thinking: "Daripada sekadar mendigitalkan spreadsheet, saya memikirkan ulang seluruh alur data, membangun sistem di mana laporan dihasilkan secara otomatis dari input terstruktur. Pertanyaan kuncinya adalah: keputusan apa yang perlu didukung data ini, dan bagaimana kita membuat keputusan itu terlihat jelas sekilas pandang?",
                     role: "Full Stack Developer",
                     workflow: [
                         "Mengumpulkan kebutuhan untuk alur kerja pelaporan dan pelacakan sampah",
@@ -553,7 +553,7 @@ export const DICTIONARY = {
                 {
                     title: "Kawan Project",
                     description: "Aplikasi web yang dirancang untuk menghubungkan orang-orang dan meningkatkan keterlibatan komunitas.",
-                    problem: "Mahasiswa tidak memiliki platform khusus untuk mencari kolaborator proyek di luar perkuliahan. Media sosial yang ada terlalu umum — tidak ada cara untuk menunjukkan keahlian, ketersediaan, atau intensi proyek secara spesifik.",
+                    problem: "Mahasiswa tidak memiliki platform khusus untuk mencari kolaborator proyek di luar perkuliahan. Media sosial yang ada terlalu umum, tidak ada cara untuk menunjukkan keahlian, ketersediaan, atau intensi proyek secara spesifik.",
                     thinking: "Saya fokus pada masalah matchmaking sebelum menulis satu baris kode: data apa yang perlu dilihat pengguna untuk memutuskan 'ya, saya mau berkolaborasi dengan orang ini'? Pertanyaan itu yang mendefinisikan model data inti dan UI sebelum satu route backend pun ditulis.",
                     role: "Full Stack Developer",
                     workflow: [
@@ -574,8 +574,8 @@ export const DICTIONARY = {
                 {
                     title: "Desain Ulang Aplikasi Adira",
                     description: "Mendesain ulang antarmuka pengguna untuk aplikasi mobile Adira guna meningkatkan pengalaman pengguna.",
-                    problem: "Keluhan pengguna menunjukkan struktur navigasi yang membingungkan di aplikasi mobile Adira Finance yang lama — tindakan utama tersembunyi beberapa tap dalam, dan hierarki visual tidak mencerminkan apa yang paling sering dibutuhkan pengguna.",
-                    thinking: "Saya memulai dengan evaluasi heuristik, memetakan setiap titik gesekan di aplikasi yang ada sebelum menyentuh Figma. Setiap keputusan tata letak harus membenarkan dirinya terhadap pain point pengguna yang nyata — desain ulang ini didorong data, bukan preferensi estetika.",
+                    problem: "Keluhan pengguna menunjukkan struktur navigasi yang membingungkan di aplikasi mobile Adira Finance yang lama, tindakan utama tersembunyi beberapa tap dalam, dan hierarki visual tidak mencerminkan apa yang paling sering dibutuhkan pengguna.",
+                    thinking: "Saya memulai dengan evaluasi heuristik, memetakan setiap titik gesekan di aplikasi yang ada sebelum menyentuh Figma. Setiap keputusan tata letak harus membenarkan dirinya terhadap pain point pengguna yang nyata, desain ulang ini didorong data, bukan preferensi estetika.",
                     role: "UI/UX Designer",
                     workflow: [
                         "Melakukan riset pengguna dan mengidentifikasi pain point di aplikasi lama",
@@ -593,8 +593,8 @@ export const DICTIONARY = {
                 {
                     title: "Diswipe",
                     description: "Mendesain antarmuka pengguna yang bersih dan modern untuk aplikasi swiping digital.",
-                    problem: "Aplikasi kencan yang ada memprioritaskan kuantitas daripada intensi — pengguna merasa kelelahan dengan swipe tanpa henti tanpa sinyal yang jelas tentang apa yang dicari orang lain. Tantangannya adalah merancang pengalaman pencocokan yang lebih intentional.",
-                    thinking: "Saya mendekatinya dari sisi model bisnis terlebih dahulu: jika kita membatasi volume swipe, bagaimana monetisasinya? Batasan itu yang membentuk desain produk secara mundur — UI ada untuk melayani logika bisnis, bukan sebaliknya.",
+                    problem: "Aplikasi kencan yang ada memprioritaskan kuantitas daripada intensi, pengguna merasa kelelahan dengan swipe tanpa henti tanpa sinyal yang jelas tentang apa yang dicari orang lain. Tantangannya adalah merancang pengalaman pencocokan yang lebih intentional.",
+                    thinking: "Saya mendekatinya dari sisi model bisnis terlebih dahulu: jika kita membatasi volume swipe, bagaimana monetisasinya? Batasan itu yang membentuk desain produk secara mundur, UI ada untuk melayani logika bisnis, bukan sebaliknya.",
                     role: "UI/UX Designer & Business Developer",
                     workflow: [
                         "Melakukan riset pasar dan analisis kompetitor",
@@ -603,7 +603,7 @@ export const DICTIONARY = {
                         "Mendesain UI high-fidelity di Figma dengan bahasa visual modern",
                         "Mengembangkan model bisnis dan menyiapkan pitch deck yang terstruktur",
                     ],
-                    impact: "Mendesain konsep produk lengkap — dari UI hingga model bisnis — untuk aplikasi swiping matchmaking digital, divalidasi melalui presentasi pitch yang formal.",
+                    impact: "Mendesain konsep produk lengkap, dari UI hingga model bisnis, untuk aplikasi swiping matchmaking digital, divalidasi melalui presentasi pitch yang formal.",
                     techStack: ["Figma", "Desain UI", "Riset Pengguna"],
                     link: "#",
                     github: "#",
@@ -612,8 +612,8 @@ export const DICTIONARY = {
                 {
                     title: "Desain Majalah FILE",
                     description: "Membuat tata letak dan aset visual untuk kehadiran digital Majalah FILE.",
-                    problem: "Konten digital FILE Magazine kurang konsistensi visual — setiap postingan terasa terputus dari postingan sebelumnya, yang melemahkan pengenalan merek dan membuat engagement audiens stagnan dari waktu ke waktu.",
-                    thinking: "Saya membangun design system sebelum membuat satu konten pun: template, aturan warna, hierarki tipografi. Konsistensi dalam skala besar membutuhkan sistem, bukan sekadar selera yang baik — satu template yang dirancang dengan baik lebih berharga dari seratus postingan individual.",
+                    problem: "Konten digital FILE Magazine kurang konsistensi visual, setiap postingan terasa terputus dari postingan sebelumnya, yang melemahkan pengenalan merek dan membuat engagement audiens stagnan dari waktu ke waktu.",
+                    thinking: "Saya membangun design system sebelum membuat satu konten pun: template, aturan warna, hierarki tipografi. Konsistensi dalam skala besar membutuhkan sistem, bukan sekadar selera yang baik, satu template yang dirancang dengan baik lebih berharga dari seratus postingan individual.",
                     role: "Social Media Specialist & Visual Designer",
                     workflow: [
                         "Merencanakan kalender konten bulanan dan tema visual",
@@ -630,7 +630,7 @@ export const DICTIONARY = {
                 {
                     title: "Desain Technoscape",
                     description: "Mendesain materi promosi dan identitas visual untuk acara Technoscape.",
-                    problem: "Acara ini membutuhkan identitas visual yang kuat yang dapat bertahan di berbagai format yang sangat berbeda — poster ukuran besar, thumbnail media sosial kecil, dan banner digital — tanpa kehilangan koherensi atau pengenalan merek.",
+                    problem: "Acara ini membutuhkan identitas visual yang kuat yang dapat bertahan di berbagai format yang sangat berbeda, poster ukuran besar, thumbnail media sosial kecil, dan banner digital, tanpa kehilangan koherensi atau pengenalan merek.",
                     thinking: "Saya mendasarkan semuanya pada satu motif visual inti yang skalabel di ukuran apapun. Merancang sistem sebelum aset individual memastikan setiap hasil karya terasa berasal dari satu sumber yang sama, bahkan saat diproduksi di bawah tenggat waktu yang ketat.",
                     role: "Graphic Designer & Brand Specialist",
                     workflow: [
