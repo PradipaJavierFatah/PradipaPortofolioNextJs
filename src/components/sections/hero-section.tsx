@@ -50,7 +50,7 @@ export function HeroSection() {
     const typingText = useTypewriter(t.hero.roles, 200, 3000);
 
     return (
-        <section className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-background py-16 lg:py-20">
+        <section className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-background -mt-16 py-16 lg:py-20">
             {/* Aurora fills the whole section, sits between bg and content */}
             <div className="absolute inset-0 z-0">
                 <Aurora
