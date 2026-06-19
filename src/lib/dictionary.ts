@@ -362,7 +362,7 @@ export const DICTIONARY = {
             bio2: "Ketika tidak sedang coding, saya mengeksplorasi pola desain sistem baru, berkontribusi pada open source, atau belajar tentang infrastruktur cloud. Saya percaya pada pembelajaran berkelanjutan dan penerapan praktik terbaik rekayasa untuk memecahkan masalah dunia nyata.",
             educationTitle: "Pendidikan",
             university: "Universitas Binus",
-            major: "Ilmu Komputer, 2021 - 2025",
+            major: "Computer Science, 2021 - 2025",
             gpa: "IPK: 3.85/4.00",
         },
         experience: {
@@ -371,31 +371,31 @@ export const DICTIONARY = {
             list: [
                 {
                     company: "Neuro Park ⋅ Wirausaha (Dalam Pengembangan)",
-                    role: "Founder & Pengembang Full Stack",
+                    role: "Founder & Full Stack Developer",
                     period: "Feb 2026 – Sekarang",
                     description: "Arsitektur & Pengembangan Sistem Full Stack: Merancang dan mengimplementasikan sistem manajemen parkir pintar end-to-end lengkap yang mengintegrasikan computer vision (ALPR),",
                 },
                 {
                     company: "Adira Finance",
-                    role: "Magang Analis Data",
+                    role: "Data Analyst Intern",
                     period: "Feb 2025 - Feb 2026",
                     description: "Menganalisis tren data keuangan dan menghasilkan wawasan bisnis yang dapat ditindaklanjuti untuk mendukung pengambilan keputusan.",
                 },
                 {
                     company: "FILE",
-                    role: "Spesialis Media Sosial",
+                    role: "Social Media Specialist",
                     period: "Nov 2023 - Nov 2024",
                     description: "Mengelola strategi konten media sosial, meningkatkan keterlibatan, dan menganalisis metrik audiens.",
                 },
                 {
                     company: "BNCC",
-                    role: "Staf",
+                    role: "Staff",
                     period: "Nov 2022 - Nov 2024",
                     description: "Berkontribusi pada komunitas teknologi dengan mengorganisir acara dan memfasilitasi berbagi pengetahuan antar mahasiswa.",
                 },
                 {
                     company: "Universitas Binus",
-                    role: "Mahasiswa Ilmu Komputer",
+                    role: "Computer Science Student",
                     period: "Agu 2022 - Agu 2026",
                     description: "Jurusan Ilmu Komputer. Fokus pada dasar-dasar Rekayasa Perangkat Lunak dan Sains Data.",
                 },
@@ -456,7 +456,7 @@ export const DICTIONARY = {
                     description: "Menganalisis tren data keuangan dan menghasilkan wawasan bisnis yang dapat ditindaklanjuti untuk mendukung pengambilan keputusan.",
                     problem: "Data keuangan tersebar di berbagai sistem internal tanpa tampilan terpadu, sehingga tim bisnis kesulitan mengidentifikasi tren dan membuat keputusan berbasis data secara tepat waktu.",
                     thinking: "Saya memetakan semua sumber data terlebih dahulu sebelum menyentuh alat apapun. Fokus saya adalah menampilkan hanya metrik yang benar-benar penting bagi pengambil keputusan — bukan sekadar membuat laporan, tapi membuat laporan yang tepat dengan narasi yang jelas.",
-                    role: "Magang Analis Data",
+                    role: "Data Analyst Intern",
                     workflow: [
                         "Mengumpulkan dan membersihkan dataset keuangan dari berbagai sumber internal",
                         "Melakukan analisis data eksploratif untuk mengidentifikasi tren dan anomali",
@@ -475,7 +475,7 @@ export const DICTIONARY = {
                     description: "Mengekstrak pola dan wawasan dari kumpulan data besar menggunakan teknik data mining tingkat lanjut.",
                     problem: "Diabetes sering didiagnosis terlambat karena minimnya alat prediktif yang mudah diakses. Tantangannya adalah membangun model yang dapat menandai pasien berisiko tinggi sejak dini hanya menggunakan indikator kesehatan umum yang tersedia di rekam medis standar.",
                     thinking: "Saya memperlakukan ini sebagai masalah pemilihan model sebelum masalah coding. Saya membandingkan beberapa algoritma dengan cross-validation — bukan hanya akurasi, tapi keseimbangan precision dan recall — agar model tidak melewatkan kasus berisiko tinggi demi mengejar skor keseluruhan.",
-                    role: "Ilmuwan Data",
+                    role: "Data Scientist",
                     workflow: [
                         "Mendefinisikan lingkup masalah dan memilih dataset Diabetes",
                         "Memproses data — menangani nilai hilang, encoding, dan normalisasi",
@@ -494,7 +494,7 @@ export const DICTIONARY = {
                     description: "Membuat dashboard interaktif untuk memvisualisasikan data kompleks, memudahkan interpretasi data.",
                     problem: "Data penjualan properti mentah tidak mungkin diinterpretasikan dalam bentuk tabel. Pemangku kepentingan non-teknis membutuhkan cara untuk menjelajahi tren harga, pola lokasi, dan pergeseran volume — tanpa menulis satu baris SQL pun.",
                     thinking: "Saya fokus pada pengurangan beban kognitif: lebih sedikit chart tapi lebih bermakna, filter yang intuitif, dan tata letak yang mengarahkan mata secara alami dari gambaran besar ke detail. Target desainnya: insight dalam waktu kurang dari 30 detik.",
-                    role: "Analis Data & Desainer Visualisasi",
+                    role: "Data Analyst & Visualization Designer",
                     workflow: [
                         "Melakukan query dan menyusun data properti mentah menggunakan SQL",
                         "Mengidentifikasi metrik bisnis dan KPI utama yang perlu ditampilkan",
@@ -516,7 +516,7 @@ export const DICTIONARY = {
                     description: "Merancang dan mengimplementasikan sistem manajemen parkir pintar end-to-end lengkap yang mengintegrasikan computer vision (ALPR), perangkat keras IoT, pemantauan real-time, dan pemrosesan pembayaran digital menggunakan React, FastAPI, PostgreSQL, dan Xendit.",
                     problem: "Tempat parkir tradisional mengandalkan operator manual untuk kontrol masuk/keluar dan pembayaran tunai — lambat, rawan error, dan tidak bisa diskalakan. Tantangan utamanya adalah membangun sistem yang bisa beroperasi secara otonom tanpa intervensi manusia di gerbang.",
                     thinking: "Saya memecah masalah menjadi tiga lapisan independen: deteksi (ALPR), kontrol (gerbang IoT), dan manajemen (dashboard + pembayaran). Keputusan arsitektur kunci adalah memastikan setiap lapisan gagal secara terisolasi — gangguan pembayaran tidak boleh mengunci gerbang, dan kegagalan kamera tidak boleh mematikan dashboard.",
-                    role: "Founder & Pengembang Full Stack",
+                    role: "Founder & Full Stack Developer",
                     workflow: [
                         "Merancang arsitektur sistem keseluruhan dan skema database PostgreSQL",
                         "Membangun modul computer vision ALPR dengan Python untuk deteksi plat nomor",
@@ -536,7 +536,7 @@ export const DICTIONARY = {
                     description: "Dashboard sistem laporan komprehensif untuk mengelola analitik data dan menghasilkan wawasan.",
                     problem: "Data penyaluran sampah dilacak secara manual dalam spreadsheet, sehingga hampir mustahil untuk melihat pola, melacak progres, atau menghasilkan laporan tepat waktu bagi pemangku kepentingan pemerintah daerah.",
                     thinking: "Daripada sekadar mendigitalkan spreadsheet, saya memikirkan ulang seluruh alur data — membangun sistem di mana laporan dihasilkan secara otomatis dari input terstruktur. Pertanyaan kuncinya adalah: keputusan apa yang perlu didukung data ini, dan bagaimana kita membuat keputusan itu terlihat jelas sekilas pandang?",
-                    role: "Pengembang Full Stack",
+                    role: "Full Stack Developer",
                     workflow: [
                         "Mengumpulkan kebutuhan untuk alur kerja pelaporan dan pelacakan sampah",
                         "Mendesain wireframe UI dan arsitektur komponen",
@@ -555,7 +555,7 @@ export const DICTIONARY = {
                     description: "Aplikasi web yang dirancang untuk menghubungkan orang-orang dan meningkatkan keterlibatan komunitas.",
                     problem: "Mahasiswa tidak memiliki platform khusus untuk mencari kolaborator proyek di luar perkuliahan. Media sosial yang ada terlalu umum — tidak ada cara untuk menunjukkan keahlian, ketersediaan, atau intensi proyek secara spesifik.",
                     thinking: "Saya fokus pada masalah matchmaking sebelum menulis satu baris kode: data apa yang perlu dilihat pengguna untuk memutuskan 'ya, saya mau berkolaborasi dengan orang ini'? Pertanyaan itu yang mendefinisikan model data inti dan UI sebelum satu route backend pun ditulis.",
-                    role: "Pengembang Full Stack",
+                    role: "Full Stack Developer",
                     workflow: [
                         "Merancang skema database MySQL untuk relasi pengguna dan proyek",
                         "Membangun RESTful API backend menggunakan Laravel dan PHP",
@@ -576,7 +576,7 @@ export const DICTIONARY = {
                     description: "Mendesain ulang antarmuka pengguna untuk aplikasi mobile Adira guna meningkatkan pengalaman pengguna.",
                     problem: "Keluhan pengguna menunjukkan struktur navigasi yang membingungkan di aplikasi mobile Adira Finance yang lama — tindakan utama tersembunyi beberapa tap dalam, dan hierarki visual tidak mencerminkan apa yang paling sering dibutuhkan pengguna.",
                     thinking: "Saya memulai dengan evaluasi heuristik, memetakan setiap titik gesekan di aplikasi yang ada sebelum menyentuh Figma. Setiap keputusan tata letak harus membenarkan dirinya terhadap pain point pengguna yang nyata — desain ulang ini didorong data, bukan preferensi estetika.",
-                    role: "Desainer UI/UX",
+                    role: "UI/UX Designer",
                     workflow: [
                         "Melakukan riset pengguna dan mengidentifikasi pain point di aplikasi lama",
                         "Merestrukturisasi arsitektur informasi dan alur navigasi",
@@ -595,7 +595,7 @@ export const DICTIONARY = {
                     description: "Mendesain antarmuka pengguna yang bersih dan modern untuk aplikasi swiping digital.",
                     problem: "Aplikasi kencan yang ada memprioritaskan kuantitas daripada intensi — pengguna merasa kelelahan dengan swipe tanpa henti tanpa sinyal yang jelas tentang apa yang dicari orang lain. Tantangannya adalah merancang pengalaman pencocokan yang lebih intentional.",
                     thinking: "Saya mendekatinya dari sisi model bisnis terlebih dahulu: jika kita membatasi volume swipe, bagaimana monetisasinya? Batasan itu yang membentuk desain produk secara mundur — UI ada untuk melayani logika bisnis, bukan sebaliknya.",
-                    role: "Desainer UI/UX & Pengembang Bisnis",
+                    role: "UI/UX Designer & Business Developer",
                     workflow: [
                         "Melakukan riset pasar dan analisis kompetitor",
                         "Mendefinisikan persona pengguna dan memetakan alur pengguna utama",
@@ -614,7 +614,7 @@ export const DICTIONARY = {
                     description: "Membuat tata letak dan aset visual untuk kehadiran digital Majalah FILE.",
                     problem: "Konten digital FILE Magazine kurang konsistensi visual — setiap postingan terasa terputus dari postingan sebelumnya, yang melemahkan pengenalan merek dan membuat engagement audiens stagnan dari waktu ke waktu.",
                     thinking: "Saya membangun design system sebelum membuat satu konten pun: template, aturan warna, hierarki tipografi. Konsistensi dalam skala besar membutuhkan sistem, bukan sekadar selera yang baik — satu template yang dirancang dengan baik lebih berharga dari seratus postingan individual.",
-                    role: "Spesialis Media Sosial & Desainer Visual",
+                    role: "Social Media Specialist & Visual Designer",
                     workflow: [
                         "Merencanakan kalender konten bulanan dan tema visual",
                         "Mendesain tata letak, tipografi, dan aset visual bermerek",
@@ -632,7 +632,7 @@ export const DICTIONARY = {
                     description: "Mendesain materi promosi dan identitas visual untuk acara Technoscape.",
                     problem: "Acara ini membutuhkan identitas visual yang kuat yang dapat bertahan di berbagai format yang sangat berbeda — poster ukuran besar, thumbnail media sosial kecil, dan banner digital — tanpa kehilangan koherensi atau pengenalan merek.",
                     thinking: "Saya mendasarkan semuanya pada satu motif visual inti yang skalabel di ukuran apapun. Merancang sistem sebelum aset individual memastikan setiap hasil karya terasa berasal dari satu sumber yang sama, bahkan saat diproduksi di bawah tenggat waktu yang ketat.",
-                    role: "Desainer Grafis & Spesialis Merek",
+                    role: "Graphic Designer & Brand Specialist",
                     workflow: [
                         "Meneliti tema acara dan menganalisis target audiens",
                         "Mengembangkan konsep visual, palet warna, dan sistem tipografi",
