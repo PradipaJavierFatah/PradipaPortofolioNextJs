@@ -37,6 +37,7 @@ interface LanyardProps {
   lanyardImage?: string | null;
   lanyardWidth?: number;
   height?: string;
+  sceneY?: number;
 }
 
 export default function Lanyard({
@@ -50,6 +51,7 @@ export default function Lanyard({
   lanyardImage = null,
   lanyardWidth = 1,
   height = '100vh',
+  sceneY = 4,
 }: LanyardProps) {
   const [isMobile, setIsMobile] = useState(
     () => typeof window !== 'undefined' && window.innerWidth < 768
@@ -80,6 +82,7 @@ export default function Lanyard({
             imageFit={imageFit}
             lanyardImage={lanyardImage}
             lanyardWidth={lanyardWidth}
+            sceneY={sceneY}
           />
         </Physics>
         <Environment blur={0.75}>
@@ -126,6 +129,7 @@ interface BandProps {
   imageFit?: 'cover' | 'contain';
   lanyardImage?: string | null;
   lanyardWidth?: number;
+  sceneY?: number;
 }
 
 function Band({
@@ -137,6 +141,7 @@ function Band({
   imageFit = 'cover',
   lanyardImage = null,
   lanyardWidth = 1,
+  sceneY = 4,
 }: BandProps) {
   const band = useRef<any>(null);
   const fixed = useRef<any>(null);
@@ -277,7 +282,7 @@ function Band({
 
   return (
     <>
-      <group position={[0, 4, 0]}>
+      <group position={[0, sceneY, 0]}>
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
         <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps}>
           <BallCollider args={[0.1]} />

@@ -56,12 +56,13 @@ export function HeroSection() {
                 className="hidden lg:block absolute inset-y-0 right-0 w-1/2 z-0"
             >
                 <Lanyard
-                    position={[0, 0, 13]}
-                    fov={15}
+                    position={[0, 0, 19]}
+                    fov={17}
                     gravity={[0, -40, 0]}
                     frontImage="/images/profileDipa1.jpg"
                     imageFit="cover"
                     lanyardWidth={1}
+                    sceneY={6}
                     height="100%"
                 />
             </motion.div>
@@ -131,12 +132,13 @@ export function HeroSection() {
                         className="relative w-full h-[450px] sm:h-[540px] lg:hidden"
                     >
                         <Lanyard
-                            position={[0, 0, 16]}
+                            position={[0, 0, 18]}
                             fov={18}
                             gravity={[0, -40, 0]}
                             frontImage="/images/profileDipa1.jpg"
                             imageFit="cover"
                             lanyardWidth={1}
+                            sceneY={5.5}
                             height="100%"
                         />
                     </motion.div>
