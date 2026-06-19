@@ -3,11 +3,13 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
+import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { SITE_CONFIG } from "@/lib/data";
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/lib/language-context";
+
+const Lanyard = dynamic(() => import("@/components/ui/Lanyard"), { ssr: false });
 
 // Simple Typewriter Hook
 const useTypewriter = (words: string[], speed = 100, pause = 1500) => {
@@ -15,7 +17,6 @@ const useTypewriter = (words: string[], speed = 100, pause = 1500) => {
     const [subIndex, setSubIndex] = useState(0);
     const [reverse, setReverse] = useState(false);
 
-    // Slower, smoother typing
     useEffect(() => {
         if (subIndex === words[index].length + 1 && !reverse) {
             setReverse(true);
@@ -40,12 +41,10 @@ const useTypewriter = (words: string[], speed = 100, pause = 1500) => {
 
 export function HeroSection() {
     const { t } = useLanguage();
-    // Use translated roles
     const typingText = useTypewriter(t.hero.roles, 200, 3000);
 
     return (
         <section className="relative flex min-h-screen flex-col justify-center overflow-hidden py-16 lg:py-20">
-            {/* BACKGROUND: Clean, no gradients */}
             <div className="absolute inset-0 -z-10 h-full w-full bg-background overflow-hidden" />
 
             <div className="container relative z-10 px-4">
@@ -53,8 +52,6 @@ export function HeroSection() {
 
                     {/* Left Column: Text Content */}
                     <div className="flex flex-col gap-6 text-center lg:text-left items-center lg:items-start">
-
-
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -92,7 +89,6 @@ export function HeroSection() {
                             transition={{ duration: 0.5, delay: 0.3 }}
                             className="flex flex-col sm:flex-row gap-3 w-full justify-center lg:justify-start max-w-md lg:max-w-none"
                         >
-                            {/* Download CV */}
                             <Button size="sm" asChild className="px-5 text-sm sm:text-base bg-primary hover:bg-primary/90 rounded-full group">
                                 <Link href={t.links.cv} target="_blank" className="flex items-center gap-2">
                                     <Download className="h-4 w-4" />
@@ -100,7 +96,6 @@ export function HeroSection() {
                                 </Link>
                             </Button>
 
-                            {/* View Projects */}
                             <Button variant="outline" size="sm" className="px-5 text-sm sm:text-base rounded-full border-primary/20 bg-background/50 hover:bg-primary/5 text-foreground backdrop-blur-sm group" asChild>
                                 <Link href="/projects" className="flex items-center gap-2">
                                     {t.hero.viewProjects} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -109,34 +104,22 @@ export function HeroSection() {
                         </motion.div>
                     </div>
 
-                    {/* Right Column: Profile Photo */}
-                    <div className="relative flex justify-center lg:justify-end items-center mt-8 lg:mt-0">
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.5, delay: 0.2 }}
-                            className="relative"
-                        >
-                            {/* PHOTO CONTAINER */}
-                            <div className="relative w-64 sm:w-80 lg:w-96 bg-white p-3 sm:p-4 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.2)] rotate-3 hover:rotate-0 transition-all duration-500 border border-zinc-100">
-                                <div className="relative aspect-square w-full overflow-hidden bg-zinc-900/50 ring-1 ring-black/5">
-                                    <Image
-                                        src="/images/profileDipa1.jpg"
-                                        alt="Pradipa Javier Fatah"
-                                        width={500}
-                                        height={500}
-                                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                                        priority
-                                        unoptimized
-                                    />
-                                </div>
-                                <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-transparent via-transparent to-white/10" />
-                                <div className="absolute bottom-4 left-0 right-0 text-center select-none">
-                                    <p className="text-zinc-400 font-serif italic text-sm sm:text-base opacity-40">Pradipa Javier Fatah</p>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
+                    {/* Right Column: Interactive Lanyard */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                        className="relative w-full h-[420px] sm:h-[500px] lg:h-[600px]"
+                    >
+                        <Lanyard
+                            position={[0, 0, 22]}
+                            gravity={[0, -40, 0]}
+                            frontImage="/images/profileDipa1.jpg"
+                            imageFit="cover"
+                            lanyardWidth={1}
+                            height="100%"
+                        />
+                    </motion.div>
                 </div>
             </div>
         </section>

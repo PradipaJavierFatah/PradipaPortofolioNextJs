@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Icon } from "@iconify/react";
 import {
@@ -166,7 +166,7 @@ export function SkillsSection() {
                                 const ld = isLucide ? (def as LucideDef) : null;
                                 const ci = isColoredIcon ? (def as ColoredIconDef) : null;
                                 const accentColor = ld?.color ?? ci?.color;
-                                const FallbackIcon = ld?.Component ?? Code2;
+                                const FallbackIcon = (ld?.Component ?? Code2) as React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
 
                                 return (
                                     <motion.div
