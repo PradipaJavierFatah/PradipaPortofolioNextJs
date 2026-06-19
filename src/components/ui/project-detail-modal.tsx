@@ -118,15 +118,13 @@ export function ProjectDetailModal({ project, onClose, labels }: ProjectDetailMo
                                 <p className="text-muted-foreground text-sm leading-relaxed">{project.description}</p>
                             </div>
 
-                            <div className="h-px bg-border" />
-
                             {/* Problem */}
                             <div className="space-y-2">
                                 <div className="flex items-center gap-2">
-                                    <div className="rounded-md bg-primary/10 p-1.5">
-                                        <Target className="h-3.5 w-3.5 text-primary" />
+                                    <div className="rounded-md bg-[#0c262d]/10 dark:bg-primary/10 p-1.5">
+                                        <Target className="h-3.5 w-3.5 text-[#0c262d] dark:text-primary" />
                                     </div>
-                                    <span className="text-sm font-semibold text-primary">{labels.problem}</span>
+                                    <span className="text-sm font-semibold text-[#0c262d] dark:text-primary">{labels.problem}</span>
                                 </div>
                                 <p className="text-sm text-muted-foreground pl-8 leading-relaxed">{project.problem}</p>
                             </div>
@@ -134,10 +132,10 @@ export function ProjectDetailModal({ project, onClose, labels }: ProjectDetailMo
                             {/* Thinking */}
                             <div className="space-y-2">
                                 <div className="flex items-center gap-2">
-                                    <div className="rounded-md bg-primary/10 p-1.5">
-                                        <Lightbulb className="h-3.5 w-3.5 text-primary" />
+                                    <div className="rounded-md bg-[#0c262d]/10 dark:bg-primary/10 p-1.5">
+                                        <Lightbulb className="h-3.5 w-3.5 text-[#0c262d] dark:text-primary" />
                                     </div>
-                                    <span className="text-sm font-semibold text-primary">{labels.thinking}</span>
+                                    <span className="text-sm font-semibold text-[#0c262d] dark:text-primary">{labels.thinking}</span>
                                 </div>
                                 <p className="text-sm text-muted-foreground pl-8 leading-relaxed">{project.thinking}</p>
                             </div>
@@ -145,10 +143,10 @@ export function ProjectDetailModal({ project, onClose, labels }: ProjectDetailMo
                             {/* Role */}
                             <div className="space-y-2">
                                 <div className="flex items-center gap-2">
-                                    <div className="rounded-md bg-primary/10 p-1.5">
-                                        <User2 className="h-3.5 w-3.5 text-primary" />
+                                    <div className="rounded-md bg-[#0c262d]/10 dark:bg-primary/10 p-1.5">
+                                        <User2 className="h-3.5 w-3.5 text-[#0c262d] dark:text-primary" />
                                     </div>
-                                    <span className="text-sm font-semibold text-primary">{labels.role}</span>
+                                    <span className="text-sm font-semibold text-[#0c262d] dark:text-primary">{labels.role}</span>
                                 </div>
                                 <p className="text-sm text-foreground pl-8">{project.role}</p>
                             </div>
@@ -156,12 +154,12 @@ export function ProjectDetailModal({ project, onClose, labels }: ProjectDetailMo
                             {/* Workflow */}
                             <div className="space-y-3">
                                 <div className="flex items-center gap-2">
-                                    <div className="rounded-md bg-primary/10 p-1.5">
-                                        <GitBranch className="h-3.5 w-3.5 text-primary" />
+                                    <div className="rounded-md bg-[#0c262d]/10 dark:bg-primary/10 p-1.5">
+                                        <GitBranch className="h-3.5 w-3.5 text-[#0c262d] dark:text-primary" />
                                     </div>
-                                    <span className="text-sm font-semibold text-primary">{labels.workflow}</span>
+                                    <span className="text-sm font-semibold text-[#0c262d] dark:text-primary">{labels.workflow}</span>
                                 </div>
-                                <ol className="relative space-y-3 pl-8 border-l border-primary/20 ml-[1.1rem]">
+                                <ol className="relative space-y-3 pl-8 border-l border-[#0c262d]/20 dark:border-primary/20 ml-[1.1rem]">
                                     {project.workflow.map((step, i) => (
                                         <li key={i} className="relative pl-4">
                                             <span className="absolute -left-[1.15rem] flex h-5 w-5 items-center justify-center rounded-full bg-[#0c262d] text-primary text-[9px] font-bold border border-primary/30">
@@ -176,10 +174,10 @@ export function ProjectDetailModal({ project, onClose, labels }: ProjectDetailMo
                             {/* Impact */}
                             <div className="space-y-2">
                                 <div className="flex items-center gap-2">
-                                    <div className="rounded-md bg-primary/10 p-1.5">
-                                        <TrendingUp className="h-3.5 w-3.5 text-primary" />
+                                    <div className="rounded-md bg-[#0c262d]/10 dark:bg-primary/10 p-1.5">
+                                        <TrendingUp className="h-3.5 w-3.5 text-[#0c262d] dark:text-primary" />
                                     </div>
-                                    <span className="text-sm font-semibold text-primary">{labels.impact}</span>
+                                    <span className="text-sm font-semibold text-[#0c262d] dark:text-primary">{labels.impact}</span>
                                 </div>
                                 <p className="text-sm text-muted-foreground pl-8 leading-relaxed">{project.impact}</p>
                             </div>
