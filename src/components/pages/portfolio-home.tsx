@@ -138,7 +138,7 @@ export function PortfolioHome() {
                 </aside>
 
                 <main id="top" className="portfolio-content">
-                    <section className="portfolio-intro" aria-labelledby="intro-title">
+                    <section id="about" className="portfolio-intro" aria-labelledby="intro-title">
                         <motion.div
                             initial="hidden"
                             animate="visible"
@@ -146,10 +146,18 @@ export function PortfolioHome() {
                             transition={{ duration: 0.55, ease: "easeOut" }}
                             className="intro-copy"
                         >
-                            <p className="section-kicker">{t.hero.badge}</p>
-                            <h1 id="intro-title">{t.hero.greeting} <span>{SITE_CONFIG.name}</span>.</h1>
-                            <p className="intro-role">{t.hero.rolePrefix} <strong>{t.hero.roles[0]}</strong> with a builder&apos;s mindset.</p>
-                            <p className="intro-description">{t.hero.description}</p>
+                            <p className="section-kicker">{t.about.title}</p>
+                            <h1 id="intro-title">{t.about.title}<span>.</span></h1>
+                            <p className="intro-role"><strong>{SITE_CONFIG.name}</strong> · {t.about.major}</p>
+                            <p className="intro-description">{t.about.bio1}</p>
+                            <p className="intro-description intro-description-secondary">{t.about.bio2}</p>
+                            <div className="education-line intro-education">
+                                <GraduationCap size={19} />
+                                <div>
+                                    <strong>{t.about.university}</strong>
+                                    <span>{t.about.major} · {t.about.gpa}</span>
+                                </div>
+                            </div>
                             <div className="intro-actions">
                                 <a className="button-primary" href="#work">{t.hero.viewProjects} <ArrowUpRight size={16} /></a>
                                 <a className="button-secondary" href="#contact">{t.contact.title} <ArrowUpRight size={16} /></a>
@@ -176,32 +184,6 @@ export function PortfolioHome() {
                     <div className="content-rule" />
 
                     <motion.section
-                        id="about"
-                        className="portfolio-section about-section"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.18 }}
-                        variants={reveal}
-                        transition={{ duration: 0.5 }}
-                    >
-                        <div className="section-heading">
-                            <span className="section-index">01</span>
-                            <h2>{t.about.title}</h2>
-                        </div>
-                        <div className="about-copy">
-                            <p>{t.about.bio1}</p>
-                            <p>{t.about.bio2}</p>
-                            <div className="education-line">
-                                <GraduationCap size={19} />
-                                <div>
-                                    <strong>{t.about.university}</strong>
-                                    <span>{t.about.major} · {t.about.gpa}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </motion.section>
-
-                    <motion.section
                         id="experience"
                         className="portfolio-section"
                         initial="hidden"
@@ -211,7 +193,7 @@ export function PortfolioHome() {
                         transition={{ duration: 0.5 }}
                     >
                         <div className="section-heading">
-                            <span className="section-index">02</span>
+                            <span className="section-index">01</span>
                             <h2>{t.experience.title}</h2>
                         </div>
                         <div className="journey-list">
@@ -239,7 +221,7 @@ export function PortfolioHome() {
                         transition={{ duration: 0.5 }}
                     >
                         <div className="section-heading">
-                            <span className="section-index">03</span>
+                            <span className="section-index">02</span>
                             <h2>{t.skills.title}</h2>
                         </div>
                         <div className="skills-grid">
@@ -261,7 +243,7 @@ export function PortfolioHome() {
                     >
                         <div className="section-heading section-heading-with-action">
                             <div>
-                                <span className="section-index">04</span>
+                                <span className="section-index">03</span>
                                 <h2>{t.projects.title}</h2>
                             </div>
                             <Link href="/projects" className="text-link">{t.projects.viewAll} <ArrowUpRight size={15} /></Link>
