@@ -295,8 +295,10 @@ function drawShape(
             const pattern = [[0, 8, 2, 10], [12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5]];
             const threshold = pattern[cellY % 4][cellX % 4] / 16;
             if (lum < threshold * 0.95) return;
-            const dot = size * (0.13 + lum * 0.36);
-            ctx.fillRect(centerX - dot / 2, centerY - dot / 2, dot, dot);
+            const dot = size * (0.12 + lum * 0.34);
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, dot, 0, Math.PI * 2);
+            ctx.fill();
             break;
         }
         case "mosaic":
@@ -473,34 +475,93 @@ export function DitherEffect({ src, recipe, className }: DitherEffectProps) {
 
         let width = 1;
         let height = 1;
+        let displayWidth = 1;
+        let displayHeight = 1;
+        let renderScale = 1;
         let dpr = 1;
         let animationFrame = 0;
+        let lastFrame = 0;
         let mounted = true;
         let loaded = false;
         let maskLoaded = false;
+        let cellsDirty = true;
+        let cellsX = 1;
+        let cellsY = 1;
+        let cachedCells: Cell[] = [];
         const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         const shouldAnimate = config.animated && !reduceMotion;
 
         const resize = () => {
             const bounds = parent.getBoundingClientRect();
-            width = Math.max(1, Math.floor(bounds.width));
-            height = Math.max(1, Math.floor(bounds.height));
+            displayWidth = Math.max(1, Math.floor(bounds.width));
+            displayHeight = Math.max(1, Math.floor(bounds.height));
+            renderScale = Math.min(1, 720 / Math.max(displayWidth, displayHeight));
+            width = Math.max(1, Math.floor(displayWidth * renderScale));
+            height = Math.max(1, Math.floor(displayHeight * renderScale));
             dpr = Math.min(2, window.devicePixelRatio || 1);
             canvas.width = Math.floor(width * dpr);
             canvas.height = Math.floor(height * dpr);
-            canvas.style.width = `${width}px`;
-            canvas.style.height = `${height}px`;
+            canvas.style.width = `${displayWidth}px`;
+            canvas.style.height = `${displayHeight}px`;
             sourceCanvas.width = width;
             sourceCanvas.height = height;
             effectCanvas.width = width;
             effectCanvas.height = height;
             maskCanvas.width = width;
             maskCanvas.height = height;
+            cellsDirty = true;
         };
 
         const drawBackground = () => {
             sourceCtx.clearRect(0, 0, width, height);
             coverImage(sourceCtx, image, width, height);
+        };
+
+        const sampleCells = () => {
+            const pixels = sourceCtx.getImageData(0, 0, width, height).data;
+            const cellSize = Math.max(2, Math.round(config.cellSize * renderScale));
+            cellsX = Math.ceil(width / cellSize);
+            cellsY = Math.ceil(height / cellSize);
+            const cells: Cell[] = [];
+            const sampleStep = Math.max(1, Math.floor(cellSize / 3));
+
+            for (let cellY = 0; cellY < cellsY; cellY += 1) {
+                for (let cellX = 0; cellX < cellsX; cellX += 1) {
+                    let r = 0;
+                    let g = 0;
+                    let b = 0;
+                    let count = 0;
+                    const startX = cellX * cellSize;
+                    const startY = cellY * cellSize;
+                    for (let y = startY; y < Math.min(height, startY + cellSize); y += sampleStep) {
+                        for (let x = startX; x < Math.min(width, startX + cellSize); x += sampleStep) {
+                            const offset = (y * width + x) * 4;
+                            r += pixels[offset];
+                            g += pixels[offset + 1];
+                            b += pixels[offset + 2];
+                            count += 1;
+                        }
+                    }
+                    r /= Math.max(1, count);
+                    g /= Math.max(1, count);
+                    b /= Math.max(1, count);
+                    const luminance = toneMap(clamp((r * 0.2126 + g * 0.7152 + b * 0.0722) / 255), config.toneCurve);
+                    cells.push({ r, g, b, lum: config.invert ? 1 - luminance : luminance, edge: 0 });
+                }
+            }
+
+            for (let cellY = 0; cellY < cellsY; cellY += 1) {
+                for (let cellX = 0; cellX < cellsX; cellX += 1) {
+                    const index = cellY * cellsX + cellX;
+                    const cell = cells[index];
+                    const left = cells[cellY * cellsX + Math.max(0, cellX - 1)]?.lum ?? cell.lum;
+                    const right = cells[cellY * cellsX + Math.min(cellsX - 1, cellX + 1)]?.lum ?? cell.lum;
+                    const up = cells[Math.max(0, cellY - 1) * cellsX + cellX]?.lum ?? cell.lum;
+                    const down = cells[Math.min(cellsY - 1, cellY + 1) * cellsX + cellX]?.lum ?? cell.lum;
+                    cell.edge = clamp((Math.abs(right - left) + Math.abs(down - up)) * 0.5);
+                }
+            }
+            return { cells, cellSize };
         };
 
         const drawLights = () => {
@@ -633,51 +694,15 @@ export function DitherEffect({ src, recipe, className }: DitherEffectProps) {
             if (!mounted || !loaded) return;
             const speed = config.animSpeed.enabled ? 0.45 + config.animSpeed.intensity / 100 * 2 : 0.35;
             const time = shouldAnimate ? now * 0.001 * speed : 0;
-            resize();
-            drawBackground();
-            const pixels = sourceCtx.getImageData(0, 0, width, height).data;
-            const cellSize = Math.max(3, Math.round(config.cellSize));
-            const cellsX = Math.ceil(width / cellSize);
-            const cellsY = Math.ceil(height / cellSize);
-            const cells: Cell[] = [];
-            const sampleStep = Math.max(1, Math.floor(cellSize / 3));
-
-            for (let cellY = 0; cellY < cellsY; cellY += 1) {
-                for (let cellX = 0; cellX < cellsX; cellX += 1) {
-                    let r = 0;
-                    let g = 0;
-                    let b = 0;
-                    let count = 0;
-                    const startX = cellX * cellSize;
-                    const startY = cellY * cellSize;
-                    for (let y = startY; y < Math.min(height, startY + cellSize); y += sampleStep) {
-                        for (let x = startX; x < Math.min(width, startX + cellSize); x += sampleStep) {
-                            const offset = (y * width + x) * 4;
-                            r += pixels[offset];
-                            g += pixels[offset + 1];
-                            b += pixels[offset + 2];
-                            count += 1;
-                        }
-                    }
-                    r /= Math.max(1, count);
-                    g /= Math.max(1, count);
-                    b /= Math.max(1, count);
-                    const lum = toneMap(clamp((r * 0.2126 + g * 0.7152 + b * 0.0722) / 255), config.toneCurve);
-                    cells.push({ r, g, b, lum: config.invert ? 1 - lum : lum, edge: 0 });
-                }
+            if (displayWidth === 1) resize();
+            if (cellsDirty) {
+                drawBackground();
+                const sampled = sampleCells();
+                cachedCells = sampled.cells;
+                cellsDirty = false;
             }
-
-            for (let cellY = 0; cellY < cellsY; cellY += 1) {
-                for (let cellX = 0; cellX < cellsX; cellX += 1) {
-                    const index = cellY * cellsX + cellX;
-                    const cell = cells[index];
-                    const left = cells[cellY * cellsX + Math.max(0, cellX - 1)]?.lum ?? cell.lum;
-                    const right = cells[cellY * cellsX + Math.min(cellsX - 1, cellX + 1)]?.lum ?? cell.lum;
-                    const up = cells[Math.max(0, cellY - 1) * cellsX + cellX]?.lum ?? cell.lum;
-                    const down = cells[Math.min(cellsY - 1, cellY + 1) * cellsX + cellX]?.lum ?? cell.lum;
-                    cell.edge = clamp((Math.abs(right - left) + Math.abs(down - up)) * 0.5);
-                }
-            }
+            const cells = cachedCells;
+            const cellSize = Math.max(2, Math.round(config.cellSize * renderScale));
 
             effectCtx.clearRect(0, 0, width, height);
             try {
@@ -759,7 +784,10 @@ export function DitherEffect({ src, recipe, className }: DitherEffectProps) {
         if (shouldAnimate) {
             const tick = (now: number) => {
                 if (!mounted) return;
-                draw(now);
+                if (cellsDirty || !lastFrame || now - lastFrame >= 42) {
+                    draw(now);
+                    lastFrame = now;
+                }
                 animationFrame = window.requestAnimationFrame(tick);
             };
             animationFrame = window.requestAnimationFrame(tick);
