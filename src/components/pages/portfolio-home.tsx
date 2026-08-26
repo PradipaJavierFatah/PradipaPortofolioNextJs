@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import {
     ArrowUpRight,
     BriefcaseBusiness,
-    Check,
     Download,
     ExternalLink,
     Github,
@@ -89,11 +88,19 @@ export function PortfolioHome() {
 
                 <aside className={`portfolio-rail ${menuOpen ? "is-open" : ""}`}>
                     <div className="rail-profile">
+                        <Image
+                            src="/images/profileDipa1.jpg"
+                            alt="Pradipa Javier Fatah"
+                            width={112}
+                            height={112}
+                            className="rail-profile-image"
+                            priority
+                        />
                         <div className="rail-name-row">
                             <Link href="#top" className="rail-name" onClick={() => setMenuOpen(false)}>
                                 {SITE_CONFIG.name}
                             </Link>
-                            <span className="verified-mark" aria-label="Verified portfolio owner"><Check size={12} /></span>
+                            <span className="indonesia-flag" role="img" aria-label="Indonesia" title="Indonesia" />
                         </div>
                         <p className="rail-handle">@pprraaddiippaa</p>
                         <p className="rail-role">{SITE_CONFIG.description}</p>
@@ -154,22 +161,6 @@ export function PortfolioHome() {
                                 <a className="button-primary" href="#work">{t.hero.viewProjects} <ArrowUpRight size={16} /></a>
                                 <a className="button-secondary" href="#contact">{t.contact.title} <ArrowUpRight size={16} /></a>
                             </div>
-                        </motion.div>
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.96 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
-                            className="intro-portrait-wrap"
-                        >
-                            <Image
-                                src="/images/profileDipa1.jpg"
-                                alt="Portrait of Pradipa Javier Fatah"
-                                fill
-                                priority
-                                className="intro-portrait"
-                                sizes="(max-width: 900px) 80vw, 34vw"
-                            />
-                            <span className="portrait-caption">Computer Science / Binus University</span>
                         </motion.div>
                     </section>
 
