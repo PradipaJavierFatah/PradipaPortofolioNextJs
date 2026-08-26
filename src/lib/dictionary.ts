@@ -24,7 +24,7 @@ export const DICTIONARY = {
             bio2: "I am passionate about the intersection of technology, business, and product development where innovative solutions meet real user needs. I enjoy exploring modern technologies to build efficient systems, applying data driven thinking to support strategic decisions, and shaping product experiences that align user value with business goals. My focus is on creating impactful, scalable solutions that drive meaningful outcomes.",
             educationTitle: "Education",
             university: "Binus University",
-            major: "Computer Science, 2021 - 2026",
+            major: "Bachelor of Computer Science, 2022 - 2026",
             gpa: "GPA: 3.43/4.00",
         },
         experience: {

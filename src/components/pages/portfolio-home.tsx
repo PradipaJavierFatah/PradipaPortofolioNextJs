@@ -169,7 +169,6 @@ export function PortfolioHome() {
                             className="intro-copy"
                         >
                             <h1 id="intro-title">{t.about.title}<span>.</span></h1>
-                            <p className="intro-role"><strong>{SITE_CONFIG.name}</strong> · {t.about.major}</p>
                             <p className="intro-description">{t.about.bio1}</p>
                             <p className="intro-description intro-description-secondary">{t.about.bio2}</p>
                             <div className="education-line intro-education">
