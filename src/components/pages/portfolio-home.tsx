@@ -19,6 +19,7 @@ import {
 import { useState } from "react";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { ProjectDetailModal } from "@/components/ui/project-detail-modal";
+import { DitherEffect } from "@/components/ui/dither-effect";
 import { useLanguage } from "@/lib/language-context";
 import { SITE_CONFIG } from "@/lib/data";
 
@@ -138,6 +139,25 @@ export function PortfolioHome() {
 
                 <main id="top" className="portfolio-content">
                     <section id="about" className="portfolio-intro" aria-labelledby="intro-title">
+                        <DitherEffect
+                            src="/images/profileDipa1.jpg"
+                            className="intro-dither"
+                            recipe={{
+                                renderMode: "dither",
+                                bgMode: "none",
+                                cellSize: 9,
+                                coverage: 100,
+                                contrast: 108,
+                                grayscale: 18,
+                                animated: true,
+                                animStyle: "flicker",
+                                animSpeed: { enabled: true, intensity: 80 },
+                                animIntensity: { enabled: true, intensity: 30 },
+                                pfx: {
+                                    chromatic: { enabled: true, intensity: 15 },
+                                },
+                            }}
+                        />
                         <motion.div
                             initial="hidden"
                             animate="visible"
