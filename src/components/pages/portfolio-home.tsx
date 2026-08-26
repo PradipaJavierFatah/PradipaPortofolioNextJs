@@ -16,7 +16,7 @@ import {
     Menu,
     X,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { ProjectDetailModal } from "@/components/ui/project-detail-modal";
 import { DitherEffect } from "@/components/ui/dither-effect";
@@ -49,6 +49,24 @@ export function PortfolioHome() {
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const allProjects = [...t.projects.data, ...t.projects.web, ...t.projects.design] as Project[];
     const featuredProjects = allProjects.slice(0, 6);
+
+    const heroRef = useRef<HTMLElement>(null);
+    const [isHeroActive, setIsHeroActive] = useState(true);
+
+    useEffect(() => {
+        const syncHeroState = () => {
+            const heroBottom = heroRef.current?.getBoundingClientRect().bottom;
+            setIsHeroActive(heroBottom === undefined || heroBottom > 0);
+        };
+
+        syncHeroState();
+        window.addEventListener("scroll", syncHeroState, { passive: true });
+        window.addEventListener("resize", syncHeroState);
+        return () => {
+            window.removeEventListener("scroll", syncHeroState);
+            window.removeEventListener("resize", syncHeroState);
+        };
+    }, []);
 
     const navItems = [
         { href: "#about", label: t.about.title },
@@ -87,7 +105,7 @@ export function PortfolioHome() {
                     </div>
                 </header>
 
-                <aside className={`portfolio-rail ${menuOpen ? "is-open" : ""}`}>
+                <aside className={`portfolio-rail ${menuOpen ? "is-open" : ""} ${isHeroActive ? "hero-fixed" : ""}`}>
                     <div className="rail-profile">
                         <Image
                             src="/images/profileDipa1.jpg"
@@ -138,7 +156,7 @@ export function PortfolioHome() {
                 </aside>
 
                 <main id="top" className="portfolio-content">
-                    <section id="about" className="portfolio-intro" aria-labelledby="intro-title">
+                    <section ref={heroRef} id="about" className="portfolio-intro" aria-labelledby="intro-title">
                         <DitherEffect
                             src="/images/architecture-dither-source.png"
                             className="intro-dither"

@@ -111,31 +111,31 @@
     backdrop-filter: none;
   }
 
-  .light .portfolio-rail {
+  .portfolio-rail.hero-fixed {
     background: hsl(193 58% 8%);
     --dash-color: 193 10% 92% / 0.78;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }
 
-  .light .portfolio-rail .rail-name,
-  .light .portfolio-rail .rail-handle,
-  .light .portfolio-rail .rail-role,
-  .light .portfolio-rail .rail-nav a,
-  .light .portfolio-rail .rail-cv {
+  .portfolio-rail.hero-fixed .rail-name,
+  .portfolio-rail.hero-fixed .rail-handle,
+  .portfolio-rail.hero-fixed .rail-role,
+  .portfolio-rail.hero-fixed .rail-nav a,
+  .portfolio-rail.hero-fixed .rail-cv {
     color: hsl(193 10% 96%);
   }
 
-  .light .portfolio-rail .rail-cv {
+  .portfolio-rail.hero-fixed .rail-cv {
     border-color: hsl(193 10% 98% / 0.72);
   }
 
-  .light .portfolio-rail .rail-socials {
+  .portfolio-rail.hero-fixed .rail-socials {
     color: hsl(193 10% 78%);
   }
 
-  .light .portfolio-rail .rail-nav a:hover,
-  .light .portfolio-rail .rail-name:hover {
+  .portfolio-rail.hero-fixed .rail-nav a:hover,
+  .portfolio-rail.hero-fixed .rail-name:hover {
     color: hsl(var(--primary));
   }
 
