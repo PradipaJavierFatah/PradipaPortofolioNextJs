@@ -89,14 +89,6 @@ export function PortfolioHome() {
 
                 <aside className={`portfolio-rail ${menuOpen ? "is-open" : ""}`}>
                     <div className="rail-profile">
-                        <Image
-                            src="/images/profileDipa1.jpg"
-                            alt="Pradipa Javier Fatah"
-                            width={112}
-                            height={112}
-                            className="rail-avatar"
-                            priority
-                        />
                         <div className="rail-name-row">
                             <Link href="#top" className="rail-name" onClick={() => setMenuOpen(false)}>
                                 {SITE_CONFIG.name}
