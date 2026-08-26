@@ -91,7 +91,7 @@ export const DICTIONARY = {
             instagram: "https://www.instagram.com/pprraaddiippaa/",
             linkedin: "https://www.linkedin.com/in/pradipajavierfatah/",
             github: "https://github.com/PradipaJavierFatah",
-            cv: "https://drive.google.com/file/d/16_9QH9mHrx1c8SYs9dWtADpK8Kf31MJ3/view?usp=sharing",
+            cv: "https://drive.google.com/file/d/1BXh8YklZknWHRH9Lx8DpwfvabGhi8HAo/view?usp=sharing",
         },
         projects: {
             title: "Projects",
@@ -429,7 +429,7 @@ export const DICTIONARY = {
             instagram: "https://www.instagram.com/pprraaddiippaa/",
             linkedin: "https://www.linkedin.com/in/pradipajavierfatah/",
             github: "https://github.com/PradipaJavierFatah",
-            cv: "https://drive.google.com/file/d/16_9QH9mHrx1c8SYs9dWtADpK8Kf31MJ3/view?usp=sharing",
+            cv: "https://drive.google.com/file/d/1BXh8YklZknWHRH9Lx8DpwfvabGhi8HAo/view?usp=sharing",
         },
         projects: {
             title: "Proyek Unggulan",

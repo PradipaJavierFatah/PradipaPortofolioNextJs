@@ -6,7 +6,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { SITE_CONFIG } from "@/lib/data";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/lib/language-context";
 
 const Lanyard = dynamic(() => import("@/components/ui/Lanyard"), { ssr: false });
@@ -15,22 +15,32 @@ const Aurora = dynamic(() => import("@/components/ui/Aurora"), { ssr: false });
 // Simple Typewriter Hook
 const useTypewriter = (words: string[], speed = 100, pause = 1500) => {
     const [index, setIndex] = useState(0);
-    const [subIndex, setSubIndex] = useState(0);
-    const [reverse, setReverse] = useState(false);
-    const [isPausing, setIsPausing] = useState(false);
+    const [subIndex, setSubIndex] = useState(words[0]?.length ?? 0);
+    const [reverse, setReverse] = useState(true);
+    const [isPausing, setIsPausing] = useState(true);
+    const wordsRef = useRef(words);
+    wordsRef.current = words;
 
     useEffect(() => {
-        if (isPausing) return;
+        const w = wordsRef.current;
+        if (w.length === 0) return;
 
-        if (subIndex === words[index].length && !reverse) {
-            setIsPausing(true);
-            const t = setTimeout(() => { setIsPausing(false); setReverse(true); }, pause);
+        if (isPausing) {
+            const t = setTimeout(() => {
+                setIsPausing(false);
+                setReverse(true);
+            }, pause);
             return () => clearTimeout(t);
+        }
+
+        if (subIndex === w[index].length && !reverse) {
+            setIsPausing(true);
+            return;
         }
 
         if (subIndex === 0 && reverse) {
             setReverse(false);
-            setIndex((prev) => (prev + 1) % words.length);
+            setIndex((prev) => (prev + 1) % w.length);
             return;
         }
 
@@ -40,9 +50,9 @@ const useTypewriter = (words: string[], speed = 100, pause = 1500) => {
         }, delay);
 
         return () => clearTimeout(timeout);
-    }, [subIndex, index, reverse, isPausing, speed, pause, words]);
+    }, [subIndex, index, reverse, isPausing, speed, pause]);
 
-    return words[index].substring(0, subIndex);
+    return words[index]?.substring(0, subIndex) ?? "";
 };
 
 export function HeroSection() {

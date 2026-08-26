@@ -1,11 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import { SITE_CONFIG } from "@/lib/data";
-import { useLanguage } from "@/lib/language-context";
+import { usePathname } from "next/navigation";
 
 export function Footer() {
-    const { t } = useLanguage();
+    const pathname = usePathname();
+
+    if (pathname === "/") return null;
 
     return (
         <footer className="border-t border-border/40 bg-background">

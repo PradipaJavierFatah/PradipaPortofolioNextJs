@@ -24,6 +24,8 @@ export function Navbar() {
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
+    if (pathname === "/") return null;
+
     const links = [
         { href: "/", label: t.nav.home },
         { href: "/projects", label: t.nav.projects },

@@ -7,7 +7,6 @@ import { Footer } from "@/components/layout/footer";
 import { cn } from "@/lib/utils";
 import { LanguageProvider } from "@/lib/language-context";
 
-import { CustomCursor } from "@/components/ui/custom-cursor";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -38,7 +37,6 @@ export default function RootLayout({
                     disableTransitionOnChange
                 >
                     <LanguageProvider>
-                        <CustomCursor />
                         <Navbar />
                         <div className="flex-1">
                             {children}
