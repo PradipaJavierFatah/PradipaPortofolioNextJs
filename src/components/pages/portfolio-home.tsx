@@ -103,7 +103,7 @@ export function PortfolioHome() {
                             </Link>
                             <span className="verified-mark" aria-label="Verified portfolio owner"><Check size={12} /></span>
                         </div>
-                        <p className="rail-handle">@pradipajavier</p>
+                        <p className="rail-handle">@pprraaddiippaa</p>
                         <p className="rail-role">{SITE_CONFIG.description}</p>
                         <a className="rail-cv" href={t.links.cv} target="_blank" rel="noreferrer">
                             <Download size={14} />
