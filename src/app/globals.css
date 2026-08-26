@@ -23,6 +23,7 @@
     --input: 193 25% 84%;
     --ring: 76 94% 48%;
     --radius: 0.7rem;
+    --dash-color: 193 35% 42% / 0.62;
     --font-jakarta: "Plus Jakarta Sans", sans-serif;
   }
 
@@ -46,6 +47,7 @@
     --border: 193 40% 18%;
     --input: 193 40% 18%;
     --ring: 76 94% 48%;
+    --dash-color: 193 10% 92% / 0.78;
   }
 
   * {
@@ -197,7 +199,7 @@
   .rail-rule,
   .content-rule {
     height: 0;
-    border-top: 1px dashed hsl(var(--border));
+    border-top: 1px dashed hsl(var(--dash-color));
     background: none;
   }
 
@@ -244,7 +246,7 @@
     right: 0;
     bottom: 0.22rem;
     left: 0;
-    border-top: 1px dashed hsl(var(--primary) / 0.72);
+    border-top: 1px dashed hsl(var(--dash-color));
     opacity: 0;
     transform: scaleX(0);
     transform-origin: left;
@@ -379,9 +381,9 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    filter: grayscale(1) contrast(1.24) brightness(0.5);
-    opacity: 0.58;
-    mix-blend-mode: screen;
+    filter: grayscale(1) contrast(1.2) brightness(0.76);
+    opacity: 0.68;
+    mix-blend-mode: normal;
     pointer-events: none;
   }
 
@@ -394,9 +396,9 @@
     left: calc(-1 * (230px + clamp(3rem, 7vw, 7rem) + max(1.5rem, (100vw - 1350px) / 2)));
     width: 100vw;
     height: 100%;
-    opacity: 0.18;
+    opacity: 0.08;
     pointer-events: none;
-    mix-blend-mode: screen;
+    mix-blend-mode: normal;
   }
 
   .intro-copy {
@@ -584,7 +586,7 @@
     gap: 0.75rem;
     margin-top: 2rem;
     padding-top: 1.35rem;
-    border-top: 1px dashed hsl(var(--border));
+    border-top: 1px dashed hsl(var(--dash-color));
     color: hsl(var(--primary));
   }
 
@@ -685,7 +687,7 @@
 
   .skill-group {
     padding-top: 1rem;
-    border-top: 1px dashed hsl(var(--border));
+    border-top: 1px dashed hsl(var(--dash-color));
   }
 
   .skill-group-title {
@@ -836,8 +838,8 @@
     gap: 2rem;
     margin: 0;
     padding: clamp(5rem, 10vh, 8rem) 0;
-    border-top: 1px dashed hsl(var(--border));
-    border-bottom: 1px dashed hsl(var(--border));
+    border-top: 1px dashed hsl(var(--dash-color));
+    border-bottom: 1px dashed hsl(var(--dash-color));
     scroll-margin-top: 1.5rem;
   }
 
@@ -887,7 +889,7 @@
     justify-content: space-between;
     min-height: 4.25rem;
     padding: 0 1rem;
-    border-bottom: 1px dashed hsl(var(--border) / 0.82);
+    border-bottom: 1px dashed hsl(var(--dash-color));
     background: hsl(var(--background) / 0.86);
     backdrop-filter: blur(18px);
   }
@@ -928,7 +930,7 @@
     display: none;
     min-height: auto;
     padding: 1.25rem 1rem 1.6rem;
-    border-bottom: 1px dashed hsl(var(--border));
+    border-bottom: 1px dashed hsl(var(--dash-color));
     background: hsl(var(--background) / 0.97);
     box-shadow: 0 18px 40px hsl(193 58% 8% / 0.12);
   }
@@ -973,7 +975,7 @@
   .rail-controls {
     margin-top: 0.9rem;
     padding-top: 0.9rem;
-    border-top: 1px dashed hsl(var(--border));
+    border-top: 1px dashed hsl(var(--dash-color));
   }
 
   .rail-socials {

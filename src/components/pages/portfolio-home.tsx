@@ -157,7 +157,7 @@ export function PortfolioHome() {
                                 animSpeed: { enabled: true, intensity: 80 },
                                 animIntensity: { enabled: true, intensity: 30 },
                                 pfx: {
-                                    chromatic: { enabled: true, intensity: 15 },
+                                    chromatic: { enabled: false, intensity: 0 },
                                 },
                             }}
                         />
@@ -184,8 +184,6 @@ export function PortfolioHome() {
                             </div>
                         </motion.div>
                     </section>
-
-                    <div className="content-rule" />
 
                     <motion.section
                         id="experience"
