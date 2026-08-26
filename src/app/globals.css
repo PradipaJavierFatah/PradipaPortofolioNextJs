@@ -3,49 +3,49 @@
 
 @layer base {
   :root {
-    --background: 220 20% 97%;
-    --foreground: 222 30% 13%;
-    --card: 0 0% 100%;
-    --card-foreground: 222 30% 13%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 30% 13%;
-    --primary: 214 79% 53%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 220 16% 92%;
-    --secondary-foreground: 222 30% 16%;
-    --muted: 220 14% 91%;
-    --muted-foreground: 220 10% 42%;
-    --accent: 214 65% 94%;
-    --accent-foreground: 214 64% 33%;
+    --background: 193 40% 96%;
+    --foreground: 193 58% 8%;
+    --card: 193 30% 99%;
+    --card-foreground: 193 58% 8%;
+    --popover: 193 30% 99%;
+    --popover-foreground: 193 58% 8%;
+    --primary: 76 94% 48%;
+    --primary-foreground: 193 58% 8%;
+    --secondary: 193 30% 92%;
+    --secondary-foreground: 193 50% 12%;
+    --muted: 193 25% 90%;
+    --muted-foreground: 193 20% 40%;
+    --accent: 193 35% 88%;
+    --accent-foreground: 193 58% 10%;
     --destructive: 0 68% 48%;
     --destructive-foreground: 0 0% 100%;
-    --border: 220 14% 86%;
-    --input: 220 14% 86%;
-    --ring: 214 79% 53%;
+    --border: 193 25% 84%;
+    --input: 193 25% 84%;
+    --ring: 76 94% 48%;
     --radius: 0.7rem;
     --font-jakarta: "Plus Jakarta Sans", sans-serif;
   }
 
   .dark {
-    --background: 222 26% 9%;
-    --foreground: 220 18% 94%;
-    --card: 222 23% 13%;
-    --card-foreground: 220 18% 94%;
-    --popover: 222 23% 13%;
-    --popover-foreground: 220 18% 94%;
-    --primary: 213 90% 68%;
-    --primary-foreground: 222 30% 11%;
-    --secondary: 222 19% 17%;
-    --secondary-foreground: 220 18% 94%;
-    --muted: 222 18% 18%;
-    --muted-foreground: 220 12% 66%;
-    --accent: 214 38% 20%;
-    --accent-foreground: 213 88% 76%;
+    --background: 193 58% 8%;
+    --foreground: 193 10% 98%;
+    --card: 193 58% 11%;
+    --card-foreground: 193 10% 98%;
+    --popover: 193 58% 11%;
+    --popover-foreground: 193 10% 98%;
+    --primary: 76 94% 48%;
+    --primary-foreground: 193 58% 8%;
+    --secondary: 193 40% 15%;
+    --secondary-foreground: 193 10% 98%;
+    --muted: 193 40% 15%;
+    --muted-foreground: 193 10% 65%;
+    --accent: 193 40% 20%;
+    --accent-foreground: 193 10% 98%;
     --destructive: 0 58% 40%;
-    --destructive-foreground: 220 18% 94%;
-    --border: 222 16% 24%;
-    --input: 222 16% 24%;
-    --ring: 213 90% 68%;
+    --destructive-foreground: 193 10% 98%;
+    --border: 193 40% 18%;
+    --input: 193 40% 18%;
+    --ring: 76 94% 48%;
   }
 
   * {
@@ -75,8 +75,16 @@
   .portfolio-page {
     min-height: 100dvh;
     background:
-      radial-gradient(circle at 80% 0%, hsl(var(--primary) / 0.07), transparent 28rem),
+      radial-gradient(circle at 78% 0%, hsl(var(--primary) / 0.14), transparent 28rem),
+      radial-gradient(circle at 14% 0%, hsl(193 58% 16% / 0.75), transparent 30rem),
       hsl(var(--background));
+  }
+
+  .dark .portfolio-page {
+    background:
+      radial-gradient(circle at 78% 0%, hsl(var(--primary) / 0.18), transparent 30rem),
+      radial-gradient(circle at 16% 0%, hsl(193 58% 14% / 0.9), transparent 34rem),
+      hsl(193 58% 8%);
   }
 
   .portfolio-layout {
@@ -382,14 +390,14 @@
     overflow: hidden;
     border-radius: 1.15rem;
     background: hsl(var(--muted));
-    box-shadow: 0 24px 70px hsl(222 30% 8% / 0.18);
+    box-shadow: 0 24px 70px hsl(193 58% 8% / 0.18);
   }
 
   .intro-portrait-wrap::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 45%, hsl(222 30% 8% / 0.52));
+    background: linear-gradient(180deg, transparent 45%, hsl(193 58% 8% / 0.52));
     pointer-events: none;
   }
 
@@ -658,7 +666,7 @@
     padding: 0.34rem 0.48rem;
     border-radius: 0.28rem;
     color: white;
-    background: hsl(222 30% 8% / 0.68);
+    background: hsl(193 58% 8% / 0.68);
     font-size: 0.61rem;
     font-weight: 700;
     backdrop-filter: blur(8px);
@@ -816,7 +824,7 @@
     padding: 1.25rem 1rem 1.6rem;
     border-bottom: 1px solid hsl(var(--border));
     background: hsl(var(--background) / 0.97);
-    box-shadow: 0 18px 40px hsl(222 30% 8% / 0.12);
+    box-shadow: 0 18px 40px hsl(193 58% 8% / 0.12);
   }
 
   .portfolio-rail.is-open {

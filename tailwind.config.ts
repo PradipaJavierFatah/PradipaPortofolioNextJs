@@ -97,7 +97,7 @@ const config: Config = {
             },
             backgroundImage: {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-                "hero-glow": "conic-gradient(from 180deg at 50% 50%, #2a8af6 0deg, #a853ba 180deg, #e92a67 360deg)",
+                "hero-glow": "conic-gradient(from 180deg at 50% 50%, #0c262d 0deg, #afee07 180deg, #0c262d 360deg)",
             },
         },
     },
