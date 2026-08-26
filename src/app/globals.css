@@ -91,6 +91,7 @@
 
   .portfolio-rail {
     position: sticky;
+    z-index: 2;
     top: 2rem;
     align-self: start;
     min-height: calc(100dvh - 4rem);
@@ -348,7 +349,7 @@
     min-height: 100dvh;
     flex-direction: column;
     justify-content: center;
-    overflow: hidden;
+    overflow: visible;
     isolation: isolate;
     padding: clamp(4.5rem, 9vh, 7rem) 0;
     scroll-margin-top: 1.5rem;
@@ -357,11 +358,18 @@
   .intro-dither {
     position: absolute;
     z-index: 0;
-    inset: 0;
-    width: 100%;
+    top: 0;
+    right: auto;
+    bottom: 0;
+    left: calc(-1 * (230px + clamp(3rem, 7vw, 7rem) + max(1.5rem, (100vw - 1350px) / 2)));
+    width: 100vw;
     height: 100%;
-    opacity: 0.2;
+    opacity: 0.24;
     pointer-events: none;
+    mix-blend-mode: multiply;
+  }
+
+  .dark .intro-dither {
     mix-blend-mode: screen;
   }
 
@@ -940,6 +948,11 @@
     min-height: 100dvh;
     justify-content: flex-start;
     padding: 5.5rem 0 4rem;
+  }
+
+  .intro-dither {
+    left: -1rem;
+    width: 100vw;
   }
 
   .portfolio-section {

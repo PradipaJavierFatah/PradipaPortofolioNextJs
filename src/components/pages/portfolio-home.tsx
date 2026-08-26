@@ -140,7 +140,7 @@ export function PortfolioHome() {
                 <main id="top" className="portfolio-content">
                     <section id="about" className="portfolio-intro" aria-labelledby="intro-title">
                         <DitherEffect
-                            src="/images/profileDipa1.jpg"
+                            src="/images/architecture-dither-source.png"
                             className="intro-dither"
                             recipe={{
                                 renderMode: "dither",
@@ -165,7 +165,6 @@ export function PortfolioHome() {
                             transition={{ duration: 0.55, ease: "easeOut" }}
                             className="intro-copy"
                         >
-                            <p className="section-kicker">{t.about.title}</p>
                             <h1 id="intro-title">{t.about.title}<span>.</span></h1>
                             <p className="intro-role"><strong>{SITE_CONFIG.name}</strong> · {t.about.major}</p>
                             <p className="intro-description">{t.about.bio1}</p>

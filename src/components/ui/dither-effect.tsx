@@ -492,9 +492,12 @@ export function DitherEffect({ src, recipe, className }: DitherEffectProps) {
         const shouldAnimate = config.animated && !reduceMotion;
 
         const resize = () => {
-            const bounds = parent.getBoundingClientRect();
-            displayWidth = Math.max(1, Math.floor(bounds.width));
-            displayHeight = Math.max(1, Math.floor(bounds.height));
+            canvas.style.width = "";
+            canvas.style.height = "";
+            const canvasBounds = canvas.getBoundingClientRect();
+            const parentBounds = parent.getBoundingClientRect();
+            displayWidth = Math.max(1, Math.floor(canvasBounds.width || parentBounds.width));
+            displayHeight = Math.max(1, Math.floor(canvasBounds.height || parentBounds.height));
             renderScale = Math.min(1, 720 / Math.max(displayWidth, displayHeight));
             width = Math.max(1, Math.floor(displayWidth * renderScale));
             height = Math.max(1, Math.floor(displayHeight * renderScale));
